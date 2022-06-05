@@ -233,26 +233,26 @@ class DoctorCubit extends Cubit<DoctorStates> //1
 
     horses=[];
     emit(GetHorsesDataLoadingState());
+    print(userModel!.oId);
+    print(userModel!.section);
     FirebaseFirestore.instance
         .collection('owners')
         .doc(userModel!.oId)
         .collection('sections')
         .doc(userModel!.section)
         .collection('horses')
-        .get()
-        .then((value) {
+        .snapshots()
+        .listen((value) {
 
       horses=[];
       value.docs.forEach((element) {
+
         horseModel=HorseModel.fromJson(element.data());
         horses.add(HorseModel.fromJson(element.data()));
         horseId = element.id;
 
       });
-      emit(GetHorsesDataSuccessfulState());
-    }).catchError((error) {
-      print(error.toString());
-      emit(GetHorsesDataErrorState(error.toString()));
+      // emit(GetHorsesDataSuccessfulState());
     });
   }
 

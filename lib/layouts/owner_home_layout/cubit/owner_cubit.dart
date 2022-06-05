@@ -935,13 +935,14 @@ class OwnerCubit extends Cubit<OwnerState> {
         .collection('owners')
         .doc(oId)
         .collection('sections')
-        .snapshots()
-        .listen((value) {
+        .get()
+        .then((value) {
+      sectionData = [];
       value.docs.forEach((element) {
         sectionData.add(SectionDataModel.fromJson(element.data()));
       });
 
-      // emit(GetSectionsDataSuccessfulStates());
+      emit(GetSectionsDataSuccessfulStates());
       print(sectionData.length);
     });
   }
@@ -1023,6 +1024,13 @@ class OwnerCubit extends Cubit<OwnerState> {
         .doc(horseId)
         .delete()
         .then((value) {
+          if(horses.length==0)
+            FirebaseFirestore.instance
+                .collection('owners')
+                .doc(oId)
+                .collection('sections')
+                .doc(secId)
+                .delete();
       emit(DeleteHorseSuccessfulState());
     }).catchError((error) {
       print(error.toString());

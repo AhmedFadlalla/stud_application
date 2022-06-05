@@ -166,7 +166,7 @@ class DocHomeScreen extends StatelessWidget {
                           child: defaultButton(
                               width:double.infinity,
 
-                              function:(){print("hello flutter");},
+                              function:(){Navigator.push(context, MaterialPageRoute(builder: (context)=>CareHorse()));},
                               text:'التغذية',
                             fontSize: 30.0
 

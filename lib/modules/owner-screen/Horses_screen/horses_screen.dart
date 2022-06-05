@@ -20,6 +20,7 @@ class HorsesScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
 
+
     return BlocConsumer<OwnerCubit,OwnerState>(
         builder: (context,state){
           var cubit=OwnerCubit.get(context);

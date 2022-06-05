@@ -25,8 +25,9 @@ class DoctorCompleteInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     if(dId==null){
       dId=docId;
-      DoctorCubit.get(context).getDocData();
+
     }
+    DoctorCubit.get(context).getDocData();
     return BlocConsumer<DoctorCubit, DoctorStates>(
       listener: (BuildContext context, state) {
 

@@ -53,6 +53,7 @@ Widget defaultFormField({
   var suffixIcon,
   bool isPassword = false,
   var sufixPressed,
+  bool isClickable=true,
 }) =>
     TextFormField(
       controller: controller,
@@ -62,6 +63,7 @@ Widget defaultFormField({
       validator: validator,
       obscureText: isPassword,
       onTap: onTap,
+      enabled: isClickable,
       style: TextStyle(
         color: Colors.black
       ),

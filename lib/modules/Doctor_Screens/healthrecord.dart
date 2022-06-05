@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/layouts/doc_home_layout/Doctor_Cubit/doc_cubit.dart';
 import 'package:graduation_project/layouts/doc_home_layout/Doctor_Cubit/doc_states.dart';
 import 'package:graduation_project/layouts/doc_home_layout/doc_home_layout.dart';
+import 'package:intl/intl.dart';
 
 import '../../main.dart';
 import '../../models/disease_model/disease_model.dart';
@@ -68,70 +69,73 @@ class HealthRecord extends StatelessWidget {
                           child: SingleChildScrollView(
                           child: Column(
                             children: [
-                                Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: defaultFormField(
-                            controller: diseaseDate,
-                            type: TextInputType.text,
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'يجب ادخال البيانات ';
-                              }
-                            },
-                            label: 'تاريخ المرض',
-                            prefixIcon: Icons.calendar_today),
-                      ),
+                                defaultFormField(
+                                  controller: diseaseDate,
+                                  type: TextInputType.datetime,
+
+                                  validator: (value){
+                                    if(value.isEmpty){
+                                      return 'يجب ادخال تاريخ المرض';
+                                    }
+                                    return null;
+                                  },
+                                  label: 'ادخل تاريخ المرض',
+
+                                  prefixIcon: Icons.date_range,
+
+                                  prefixIconTapFunction: (){
+                                    showDatePicker(
+                                        context: context,
+                                        initialDate: DateTime.now(),
+                                        firstDate: DateTime.parse('1990-01-01'),
+                                        lastDate:DateTime.now())
+                                        .then((value) {
+                                      diseaseDate.text=DateFormat.yMMMd().format(value!);
+
+                                    });
+                                  },),
                       SizedBox(
                         height: 15,
                       ),
 
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: defaultFormField(
-                            controller: disease,
-                            type: TextInputType.text,
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'يجب ادخال البيانات ';
-                              }
-                            },
-                            label: 'المرض',
-                            prefixIcon: Icons.coronavirus),
-                      ),
+                      defaultFormField(
+                          controller: disease,
+                          type: TextInputType.text,
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'يجب ادخال البيانات ';
+                            }
+                          },
+                          label: 'المرض',
+                          prefixIcon: Icons.coronavirus),
                       SizedBox(
                         height: 15,
                       ),
 
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: defaultFormField(
-                            controller: doctor,
-                            type: TextInputType.text,
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'يجب ادخال البيانات ';
-                              }
-                            },
-                            label: 'الدكتور المعالج',
-                            prefixIcon: Icons.person),
-                      ),
+                      defaultFormField(
+                          controller: doctor,
+                          type: TextInputType.text,
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'يجب ادخال البيانات ';
+                            }
+                          },
+                          label: 'الدكتور المعالج',
+                          prefixIcon: Icons.person),
                       SizedBox(
                         height: 15,
                       ),
 
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: defaultFormField(
-                            controller: diseaseState,
-                            type: TextInputType.text,
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'يجب ادخال البيانات ';
-                              }
-                            },
-                            label: 'حالة المرض - بيانات اضافية ',
-                            prefixIcon: Icons.medical_services),
-                      ),
+                      defaultFormField(
+                          controller: diseaseState,
+                          type: TextInputType.text,
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'يجب ادخال البيانات ';
+                            }
+                          },
+                          label: 'حالة المرض - بيانات اضافية ',
+                          prefixIcon: Icons.medical_services),
 
                       SizedBox(
                         height: 15,
