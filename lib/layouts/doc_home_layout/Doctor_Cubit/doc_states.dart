@@ -163,6 +163,14 @@ class SendAliqaaErrorState extends DoctorStates{
   SendAliqaaErrorState(this.error);
 }
 
+class DocLikePostSuccessfulState extends DoctorStates{}
+
+class DocSocialLikePostErrorState extends DoctorStates{}
+
+class DocPostCommentSuccessfulState extends DoctorStates{}
+
+class DocPostCommentPostErrorState extends DoctorStates{}
+
 
 
 

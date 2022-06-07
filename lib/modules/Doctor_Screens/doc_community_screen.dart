@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project/layouts/doc_home_layout/Doctor_Cubit/doc_cubit.dart';
+import 'package:graduation_project/modules/Doctor_Screens/comment_screen.dart';
 
 import '../../layouts/doc_home_layout/Doctor_Cubit/doc_states.dart';
 import '../../models/post_model.dart';
@@ -305,7 +306,7 @@ class DocCommunityScreen extends StatelessWidget {
                           SizedBox(
                             width: 5.0,
                           ),
-                          Text('likes',
+                          Text('${DoctorCubit.get(context).likes[index]}',
                             style: Theme.of(context).textTheme.caption!.copyWith(
                                 color: Colors.grey
                             ),)
@@ -374,7 +375,9 @@ class DocCommunityScreen extends StatelessWidget {
                       )
                     ],
                   ),
-                  onTap: (){},
+                  onTap: (){
+                      navigateTo(context, CommentScreen(postId:DoctorCubit.get(context).postsId[index] ,));
+                  },
                 ),
               ),
               InkWell(
@@ -402,7 +405,8 @@ class DocCommunityScreen extends StatelessWidget {
                   ),
                 ),
                 onTap: (){
-                  // DoctorCubit.get(context).likePost(HorseCubit.get(context).postsId[index]);
+                  DoctorCubit.get(context).likePost(DoctorCubit.get(context).postsId[index]);
+                  DoctorCubit.get(context).getAllPosts();
                 },
               )
             ],
