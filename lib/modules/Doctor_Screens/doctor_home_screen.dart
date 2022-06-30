@@ -27,6 +27,7 @@ class DocHomeScreen extends StatelessWidget {
       (
         builder: (context,state){
 
+
         return SingleChildScrollView(
           child:ConditionalBuilder(
             condition: cubit.horses.length>0,

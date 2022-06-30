@@ -11,9 +11,11 @@ import 'cubit/states.dart';
 class HomeScreenLayout extends StatelessWidget {
 
  final  String? userId;
-  HomeScreenLayout({this.userId});
-  @override
-  Widget build(BuildContext context) {
+ final  int?   status;
+  HomeScreenLayout({this.userId,this.status});
+
+   @override
+   Widget build(BuildContext context) {
     if(uId==null)
     {
       uId=userId;
@@ -43,4 +45,9 @@ class HomeScreenLayout extends StatelessWidget {
       },
     );
   }
+
+
+
+
+
 }

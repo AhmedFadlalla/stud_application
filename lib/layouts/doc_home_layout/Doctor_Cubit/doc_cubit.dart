@@ -1,3 +1,4 @@
+
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
@@ -34,7 +35,7 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 //import 'package:youssef_example/standardbloc/standardstates.dart';
 
 class DoctorCubit extends Cubit<DoctorStates> //1
-{
+    {
   DoctorCubit() : super(InitialState()); //السوبر بياخد استاتس//1
   static DoctorCubit get(context) => BlocProvider.of(context);
 
@@ -68,7 +69,6 @@ class DoctorCubit extends Cubit<DoctorStates> //1
   }
 
 ////////////////////////////////////
-
 // ////////////////////////////////////
   String? valueChooseTimesPerDay;
 
@@ -389,10 +389,10 @@ class DoctorCubit extends Cubit<DoctorStates> //1
 
   void uploadProfileImage(
       {required String docName,
-      required String phone,
-      required String bio,
-      required String address,
-      required context}) {
+        required String phone,
+        required String bio,
+        required String address,
+        required context}) {
     emit(DoctorUpdateLoadingState());
 
     firebase_storage.FirebaseStorage.instance
@@ -419,10 +419,10 @@ class DoctorCubit extends Cubit<DoctorStates> //1
 
   void uploadCoverImage(
       {required String docName,
-      required String phone,
-      required String bio,
-      required String address,
-      required context}) {
+        required String phone,
+        required String bio,
+        required String address,
+        required context}) {
     emit(DoctorUpdateLoadingState());
     firebase_storage.FirebaseStorage.instance
         .ref()
@@ -571,8 +571,8 @@ class DoctorCubit extends Cubit<DoctorStates> //1
   }
 
   void getComments({
-  required String postId
-}) {
+    required String postId
+  }) {
     comments=[];
     FirebaseFirestore.instance.collection('posts')
         .doc(postId)
@@ -581,9 +581,9 @@ class DoctorCubit extends Cubit<DoctorStates> //1
         .listen((value) {
       value.docs.forEach((element) {
         comments=[];
-          comments.add(CommentModel.fromJson(element.data()));
+        comments.add(CommentModel.fromJson(element.data()));
 
-          emit(DocPostCommentSuccessfulState());
+        emit(DocPostCommentSuccessfulState());
       });
     });
   }
@@ -941,3 +941,5 @@ class DoctorCubit extends Cubit<DoctorStates> //1
     });
   }
 }
+
+

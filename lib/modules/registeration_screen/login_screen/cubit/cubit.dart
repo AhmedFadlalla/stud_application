@@ -49,7 +49,7 @@ class LoginCubit extends Cubit<LoginStates>{
   void getStatusValue(
       String userId
 ){
-    print('hi');
+
     FirebaseFirestore.instance
         .collection('users')
         .doc(userId)

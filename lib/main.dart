@@ -10,6 +10,8 @@ import 'package:graduation_project/modules/registeration_screen/login_screen/log
 import 'package:graduation_project/modules/splash_screen/splashScreen.dart';
 import 'package:graduation_project/shared/bloc_observer.dart';
 import 'package:graduation_project/shared/component/constants.dart';
+import 'package:graduation_project/shared/cubit/cubit.dart';
+import 'package:graduation_project/shared/cubit/states.dart';
 import 'package:graduation_project/shared/network/local/cach_helper.dart';
 import 'package:graduation_project/shared/styles/themes.dart';
 import 'layouts/doc_home_layout/Doctor_Cubit/doc_cubit.dart';
@@ -29,6 +31,8 @@ void main(context) async {
   oId =CachHelper.getData(key: 'oId');
   dId =CachHelper.getData(key: 'dId');
   dDone =CachHelper.getData(key: 'done');
+
+  isDark = CachHelper.getData(key: 'isDark');
   print(uId);
   print(oId);
   print(dId);
@@ -59,13 +63,15 @@ void main(context) async {
 
   runApp(MyApp(
     startWidget: widget,
+    isDark: isDark,
   ));
 }
 
 class MyApp extends StatelessWidget {
+  final bool? isDark;
   final Widget? startWidget;
 
-  MyApp({this.startWidget});
+  MyApp({this.startWidget,this.isDark});
 
   @override
   Widget build(BuildContext context) {
@@ -88,14 +94,23 @@ class MyApp extends StatelessWidget {
             ..getDocData()
             ..getAllPosts()
             ..getAllUsers()
-          )
+          ),
+          BlocProvider(
+              create: (context) => appCubit()..changeMode(fromShared: isDark)),
         ],
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: lightTheme,
-          darkTheme: darkTheme,
-          themeMode: ThemeMode.light,
-          home:startWidget
+        child:  BlocConsumer<appCubit, AppStates>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: lightTheme,
+              darkTheme: darkTheme,
+              themeMode: appCubit.get(context).isDark
+                  ? ThemeMode.dark
+                  : ThemeMode.light,
+              home: startWidget,
+            );
+          },
         ));
   }
 }

@@ -6,6 +6,7 @@ import 'package:graduation_project/layouts/owner_home_layout/cubit/owner_cubit.d
 import '../../../layouts/doc_home_layout/Doctor_Cubit/doc_cubit.dart';
 import '../../../layouts/doc_home_layout/Doctor_Cubit/doc_states.dart';
 import '../../../layouts/owner_home_layout/cubit/owner_state.dart';
+import '../../../shared/component/constants.dart';
 import '../../../shared/styles/colors.dart';
 import '../../../shared/styles/icon_broken.dart';
 
@@ -68,7 +69,9 @@ class DocAddPostScreen extends StatelessWidget {
                           ),
                           Text(
                             '${DateTime.now()}',
-                            style: Theme.of(context).textTheme.caption,
+                            style: Theme.of(context).textTheme.caption!.copyWith(
+                              color: isDark==true ? Colors.white:Colors.grey
+                            ),
                           ),
                         ],
                       )

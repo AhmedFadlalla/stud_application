@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project/shared/cubit/cubit.dart';
 import 'package:graduation_project/layouts/doc_home_layout/Doctor_Cubit/doc_cubit.dart';
 import 'package:graduation_project/layouts/doc_home_layout/Doctor_Cubit/doc_states.dart';
 import 'package:graduation_project/layouts/owner_home_layout/cubit/owner_cubit.dart';
@@ -9,6 +10,7 @@ import 'package:graduation_project/modules/owner-screen/owner_profile_screen/own
 import 'package:graduation_project/modules/registeration_screen/login_screen/login_screen.dart';
 import 'package:graduation_project/shared/component/components.dart';
 import 'package:graduation_project/shared/network/local/cach_helper.dart';
+import 'package:graduation_project/shared/styles/icon_broken.dart';
 
 import '../../shared/styles/colors.dart';
 import 'doc_profile_screens/doc_profile_screen.dart';
@@ -109,13 +111,15 @@ class DocSettingsScreen extends StatelessWidget {
                     child: Row(
                       children: [
 
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Icon(
+                        IconButton(
+                          onPressed: (){
+                            appCubit.get(context).changeMode();
+
+                          },
+                          icon: Icon(
                             Icons.dark_mode,
-                            size: 40.0,
-                          ),
-                        ),
+                            size: 35,
+                          ),),
                         Text('Dark Mode',
                           style: TextStyle(
                             fontSize: 20,

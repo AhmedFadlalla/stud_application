@@ -4,6 +4,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project/layouts/doc_home_layout/Doctor_Cubit/doc_cubit.dart';
 import 'package:graduation_project/layouts/doc_home_layout/doc_home_layout.dart';
 import 'package:graduation_project/layouts/home_layout/cubit/cubit.dart';
 import 'package:graduation_project/layouts/home_layout/home_layout.dart';
@@ -90,8 +91,9 @@ class LoginScreen extends StatelessWidget {
                     if(dDone==1){
                       navigateAndFinish(context,DocHomeScreenLayout(docId: CachHelper.getData(key: 'dId'),) );
                     }
-                    else
+                    else{
                        navigateAndFinish(context,DoctorCompleteInfo(docId: CachHelper.getData(key: 'dId'),) );
+                    }
                     print(dId);
                   });
                 }

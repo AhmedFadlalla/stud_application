@@ -69,4 +69,4 @@ ThemeData darkTheme = ThemeData(
             height: 1.3
         )
     ),
-    fontFamily: 'Jannah');
+    );

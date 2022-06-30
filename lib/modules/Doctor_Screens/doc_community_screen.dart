@@ -8,6 +8,7 @@ import 'package:graduation_project/modules/Doctor_Screens/comment_screen.dart';
 import '../../layouts/doc_home_layout/Doctor_Cubit/doc_states.dart';
 import '../../models/post_model.dart';
 import '../../shared/component/components.dart';
+import '../../shared/component/constants.dart';
 import '../../shared/styles/colors.dart';
 import '../../shared/styles/icon_broken.dart';
 import 'add_post/add_post_screen.dart';
@@ -114,6 +115,7 @@ class DocCommunityScreen extends StatelessWidget {
 
 
   Widget buildPostItem(PostModel model,BuildContext context,index)=>Card(
+
     clipBehavior: Clip.antiAliasWithSaveLayer,
     elevation: 10.0,
     margin: EdgeInsets.symmetric(
@@ -147,6 +149,7 @@ class DocCommunityScreen extends StatelessWidget {
                             fontSize: 17,
                             fontWeight: FontWeight.bold,
                             height: 1.4,
+                            color: isDark==true ? Colors.white:Colors.black,
 
                           ),),
                         SizedBox(
@@ -168,6 +171,7 @@ class DocCommunityScreen extends StatelessWidget {
                         style: Theme.of(context).textTheme.caption!.copyWith(
 
                           height: 1.4,
+                          color: isDark==true ? Colors.black:Colors.white
                         )
                     )
                   ],
@@ -196,7 +200,7 @@ class DocCommunityScreen extends StatelessWidget {
           Text(
             '${model.text}',
             style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                color: Colors.black
+                color: isDark==true ? Colors.white:Colors.black
             ),
           ),
           // Padding(
@@ -308,7 +312,7 @@ class DocCommunityScreen extends StatelessWidget {
                           ),
                           Text('${DoctorCubit.get(context).likes[index]}',
                             style: Theme.of(context).textTheme.caption!.copyWith(
-                                color: Colors.grey
+                                color: isDark==true ? Colors.white:Colors.grey
                             ),)
                         ],
                       ),
@@ -336,7 +340,7 @@ class DocCommunityScreen extends StatelessWidget {
                           ),
                           Text('1200 comments',
                             style: Theme.of(context).textTheme.caption!.copyWith(
-                                color: Colors.grey
+                                color: isDark==true ? Colors.white:Colors.grey
                             ),)
                         ],
                       ),
@@ -371,7 +375,10 @@ class DocCommunityScreen extends StatelessWidget {
                       ),
                       Text(
                         'Write a comment',
-                        style: Theme.of(context).textTheme.caption,
+                        style: Theme.of(context).textTheme.caption!.copyWith(
+                          color: isDark==true ? Colors.white:Colors.grey
+                        ),
+
                       )
                     ],
                   ),
@@ -399,7 +406,7 @@ class DocCommunityScreen extends StatelessWidget {
                       ),
                       Text('Like',
                         style: Theme.of(context).textTheme.caption!.copyWith(
-                            color: Colors.grey
+                            color: isDark==true ? Colors.white:Colors.grey
                         ),)
                     ],
                   ),
@@ -416,5 +423,6 @@ class DocCommunityScreen extends StatelessWidget {
         ],
       ),
     ),
+    color: isDark==true ? Colors.black12:Colors.white,
   );
 }

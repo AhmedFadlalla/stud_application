@@ -13,7 +13,6 @@ import '../../../models/horsemodel.dart';
 import '../../../shared/component/components.dart';
 import '../../../shared/styles/colors.dart';
 
-
 class DetailsScren extends StatelessWidget {
   List<dynamic> countries = [];
   String? counterid;
@@ -21,7 +20,8 @@ class DetailsScren extends StatelessWidget {
   String? typeid;
   List<dynamic> hoies = [];
   String? horid;
-  int index=0;
+  int index = 0;
+
   @override
   void initState() {
     initState();
@@ -38,15 +38,13 @@ class DetailsScren extends StatelessWidget {
     this.hoies.add({"id": 2, "label": "عليقة 2"});
     this.hoies.add({"id": 3, "label": "عليقة 3"});
   }
-  TextEditingController ageController=TextEditingController();
-  TextEditingController weightController=TextEditingController();
-  TextEditingController alaafQuantityController=TextEditingController();
-  TextEditingController broteinController=TextEditingController();
-  TextEditingController metalController=TextEditingController();
-  TextEditingController powerController=TextEditingController();
 
-
-  
+  TextEditingController ageController = TextEditingController();
+  TextEditingController weightController = TextEditingController();
+  TextEditingController alaafQuantityController = TextEditingController();
+  TextEditingController broteinController = TextEditingController();
+  TextEditingController metalController = TextEditingController();
+  TextEditingController powerController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -78,11 +76,11 @@ class DetailsScren extends StatelessWidget {
                               function: (newValue) {
                                 cubit.onChangeNameItem(newValue);
                               },
-                              items:cubit.horses
-                                  .map((valueItem) {
+                              items: cubit.horses.map((valueItem) {
                                 return DropdownMenuItem(
                                   value: cubit.horses[index].microshipCode,
-                                  child: Text(cubit.horses[cubit.currentIndex].microshipCode),
+                                  child: Text(cubit.horses[cubit.currentIndex]
+                                      .microshipCode),
                                 );
                               }).toList(),
                               value: cubit.HorseNameChoose,
@@ -94,7 +92,7 @@ class DetailsScren extends StatelessWidget {
                             child: Directionality(
                               textDirection: TextDirection.rtl,
                               child: defaultFormField(
-                                controller: ageController,
+                                  controller: ageController,
                                   type: TextInputType.number,
                                   validator: (value) {
                                     if (value.isEmpty) {
@@ -127,7 +125,6 @@ class DetailsScren extends StatelessWidget {
                           )
                         ],
                       )),
-                   
                   Container(
                       margin: EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 10.0),
@@ -206,25 +203,22 @@ class DetailsScren extends StatelessWidget {
                                           height: 40.0,
                                           child: TextFormField(
                                             controller: alaafQuantityController,
-                                            keyboardType:
-                                            TextInputType.number,
+                                            keyboardType: TextInputType.number,
                                           ),
                                           decoration: BoxDecoration(
                                               borderRadius:
-                                              BorderRadius.circular(12),
+                                                  BorderRadius.circular(12),
                                               border: Border.all(
                                                   color: Colors.brown,
                                                   width: 2)),
                                         ),
                                         Container(
                                           child: Padding(
-                                            padding:
-                                            const EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(8.0),
                                             child: Text(
                                               "كمية العلف الازمة للحصان هي:",
                                               style: TextStyle(fontSize: 20),
-                                              textDirection:
-                                              TextDirection.rtl,
+                                              textDirection: TextDirection.rtl,
                                             ),
                                           ),
                                         ),
@@ -252,7 +246,7 @@ class DetailsScren extends StatelessWidget {
                           ),
                           Padding(
                             padding:
-                            const EdgeInsets.only(left: 120.0, top: 10),
+                                const EdgeInsets.only(left: 120.0, top: 10),
                             child: Container(
                               child: Row(
                                 children: [
@@ -264,8 +258,7 @@ class DetailsScren extends StatelessWidget {
                                       keyboardType: TextInputType.number,
                                     ),
                                     decoration: BoxDecoration(
-                                        borderRadius:
-                                        BorderRadius.circular(12),
+                                        borderRadius: BorderRadius.circular(12),
                                         border: Border.all(
                                             color: Colors.brown, width: 2)),
                                   ),
@@ -284,7 +277,7 @@ class DetailsScren extends StatelessWidget {
                           ),
                           Padding(
                             padding:
-                            const EdgeInsets.only(left: 120.0, top: 10),
+                                const EdgeInsets.only(left: 120.0, top: 10),
                             child: Container(
                               child: Row(
                                 children: [
@@ -296,8 +289,7 @@ class DetailsScren extends StatelessWidget {
                                       keyboardType: TextInputType.number,
                                     ),
                                     decoration: BoxDecoration(
-                                        borderRadius:
-                                        BorderRadius.circular(12),
+                                        borderRadius: BorderRadius.circular(12),
                                         border: Border.all(
                                             color: Colors.brown, width: 2)),
                                   ),
@@ -316,7 +308,7 @@ class DetailsScren extends StatelessWidget {
                           ),
                           Padding(
                             padding:
-                            const EdgeInsets.only(left: 120.0, top: 10.0),
+                                const EdgeInsets.only(left: 120.0, top: 10.0),
                             child: Container(
                               child: Row(
                                 children: [
@@ -328,8 +320,7 @@ class DetailsScren extends StatelessWidget {
                                       keyboardType: TextInputType.number,
                                     ),
                                     decoration: BoxDecoration(
-                                        borderRadius:
-                                        BorderRadius.circular(12),
+                                        borderRadius: BorderRadius.circular(12),
                                         border: Border.all(
                                             color: Colors.brown, width: 2)),
                                   ),
@@ -348,7 +339,7 @@ class DetailsScren extends StatelessWidget {
                           ),
                         ],
                       )),
-                   Container(
+                  Container(
                       margin: EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 10.0),
                       height: 200,
@@ -364,68 +355,74 @@ class DetailsScren extends StatelessWidget {
                           StreamBuilder(
                             stream: DoctorCubit.get(context).getelAlaaik(),
                             builder: (context, snapshot) {
-                            if(snapshot.hasData){
-                              List<AlekaModel> alaaek=snapshot.data as List<AlekaModel> ;
-                              List<String>alaaekNames=[];
-                              alaaek.forEach((element) {
-                                alaaekNames.add(element.alekaName??'');
-                              },);
-                              return Padding(
-                                        padding:
-                                        const EdgeInsets.only(left: 35.0, top: 10),
-                                        child: Container(
-                                          child: Center(
-                                            child: Row(
-                                              children: [
-                                                Container(
-                                                  width: 180.0,
-                                                  height: 50.0,
-                                                  child:  BuildDropBottom(
-                                                    dropdownButtonTitle: 'حدد أسم ',
-                                                    function: (newValue) {
-                                                      cubit.onChangeAliqaItem(newValue);
-                                                    },
-                                                    items:alaaekNames
-                                                        .map((valueItem) {
-                                                      return DropdownMenuItem(
-                                                        value: valueItem,
-                                                        child: Text(valueItem),
-                                                      );
-                                                    }).toList(),
-                                                    value: cubit.AliqaValueChoose,
-                                                  ),
-                                                  decoration: BoxDecoration(
-                                                      borderRadius:
-                                                      BorderRadius.circular(12),
-                                                      border: Border.all(
-                                                          color: Colors.brown, width: 1)),
-                                                ),
-                                                SizedBox(width: 20.0),
-                                                Padding(
-                                                  padding: const EdgeInsets.only(left: 0.0),
-                                                  child: Text(
-                                                    "اسم العليقة:",
-                                                    textDirection: TextDirection.rtl,
-                                                    style: TextStyle(fontSize: 20),
-                                                  ),
-                                                ),
-                                              ],
+                              if (snapshot.hasData) {
+                                List<AlekaModel> alaaek =
+                                    snapshot.data as List<AlekaModel>;
+                                List<String> alaaekNames = [];
+                                  alaaek.forEach(
+                                  (element) {
+                                    alaaekNames = [];
+                                    alaaekNames.add(element.alekaName ?? '');
+                                  },
+                                );
+                                return Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 35.0, top: 10),
+                                  child: Container(
+                                    child: Center(
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            width: 180.0,
+                                            height: 50.0,
+                                            child: BuildDropBottom(
+                                              dropdownButtonTitle: 'حدد أسم ',
+                                              function: (newValue) {
+                                                cubit.onChangeAliqaItem(
+                                                    newValue);
+                                              },
+                                              items:
+                                                  alaaekNames.map((valueItem) {
+                                                return DropdownMenuItem(
+                                                  value: valueItem,
+                                                  child: Text(valueItem),
+                                                );
+                                              }).toList(),
+                                              value: cubit.AliqaValueChoose,
+                                            ),
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
+                                                border: Border.all(
+                                                    color: Colors.brown,
+                                                    width: 1)),
+                                          ),
+                                          SizedBox(width: 20.0),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 0.0),
+                                            child: Text(
+                                              "اسم العليقة:",
+                                              textDirection: TextDirection.rtl,
+                                              style: TextStyle(fontSize: 20),
                                             ),
                                           ),
-                                        ),
-                                      ); 
-                          }
-                            else{
-                              print(snapshot.data);
-                              print(snapshot.error);
-                              return Center(
-                                child: Text('error'),
-                              );
-                            }
-                          },),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                print(snapshot.data);
+                                print(snapshot.error);
+                                return Center(
+                                  child: Text('error'),
+                                );
+                              }
+                            },
+                          ),
                           Padding(
-                            padding:
-                            const EdgeInsets.only(left: 30.0, top: 10),
+                            padding: const EdgeInsets.only(left: 30.0, top: 10),
                             child: Container(
                               child: Center(
                                 child: Row(
@@ -433,12 +430,12 @@ class DetailsScren extends StatelessWidget {
                                     Container(
                                       width: 180.0,
                                       height: 50.0,
-                                      child:  BuildDropBottom(
-                                        dropdownButtonTitle:  'حدد الوقت ',
+                                      child: BuildDropBottom(
+                                        dropdownButtonTitle: 'حدد الوقت ',
                                         function: (newValue) {
                                           cubit.onChangedataItem(newValue);
                                         },
-                                        items:  ['مساءآ','بعد الظهر','صباحآ']
+                                        items: ['مساءآ', 'بعد الظهر', 'صباحآ']
                                             .map((valueItem) {
                                           return DropdownMenuItem(
                                             value: valueItem,
@@ -449,7 +446,7 @@ class DetailsScren extends StatelessWidget {
                                       ),
                                       decoration: BoxDecoration(
                                           borderRadius:
-                                          BorderRadius.circular(12),
+                                              BorderRadius.circular(12),
                                           border: Border.all(
                                               color: Colors.brown, width: 1)),
                                     ),
@@ -470,11 +467,11 @@ class DetailsScren extends StatelessWidget {
                         ],
                       )),
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       print(DoctorCubit.get(context).HorseNameChoose);
                       showDialog(
                         context: context,
-                        builder: (_) =>Padding(
+                        builder: (_) => Padding(
                           padding: const EdgeInsets.only(
                             right: 50,
                             left: 50,
@@ -491,7 +488,8 @@ class DetailsScren extends StatelessWidget {
                                   decoration: BoxDecoration(
                                       color: Colors.brown[50],
                                       borderRadius: BorderRadius.circular(12),
-                                      border: Border.all(color: Colors.brown, width: 1)),
+                                      border: Border.all(
+                                          color: Colors.brown, width: 1)),
                                   child: SingleChildScrollView(
                                     child: Column(
                                       children: [
@@ -510,15 +508,29 @@ class DetailsScren extends StatelessWidget {
                                           child: Column(
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsets.only(left: 30.0),
+                                                padding: const EdgeInsets.only(
+                                                    left: 30.0),
                                                 child: Row(
                                                   crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                                      CrossAxisAlignment.start,
                                                   children: [
-                                                    Text(" بروتين" + "%",style: TextStyle(color:Colors.black,fontSize: 18),),
-                                                    SizedBox(width: 5.0,),
-                                                    Text("${broteinController.text}",style: TextStyle(color:Colors.black,fontSize: 20,fontWeight: FontWeight.bold),),
-
+                                                    Text(
+                                                      " بروتين" + "%",
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 18),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 5.0,
+                                                    ),
+                                                    Text(
+                                                      "${broteinController.text}",
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
                                                   ],
                                                 ),
                                               ),
@@ -526,15 +538,29 @@ class DetailsScren extends StatelessWidget {
                                                 height: 10.0,
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.only(left: 37.0),
-                                                child:  Row(
+                                                padding: const EdgeInsets.only(
+                                                    left: 37.0),
+                                                child: Row(
                                                   crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                                      CrossAxisAlignment.start,
                                                   children: [
-                                                    Text(" حديد " + "%",style: TextStyle(color:Colors.black,fontSize: 18),),
-                                                    SizedBox(width: 5.0,),
-                                                    Text("${metalController.text}",style: TextStyle(color:Colors.black,fontSize: 20,fontWeight: FontWeight.bold),),
-
+                                                    Text(
+                                                      " حديد " + "%",
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 18),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 5.0,
+                                                    ),
+                                                    Text(
+                                                      "${metalController.text}",
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
                                                   ],
                                                 ),
                                               ),
@@ -542,66 +568,126 @@ class DetailsScren extends StatelessWidget {
                                                 height: 10,
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.only(left: 20.0),
-                                                child:Row(
+                                                padding: const EdgeInsets.only(
+                                                    left: 20.0),
+                                                child: Row(
                                                   crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                                      CrossAxisAlignment.start,
                                                   children: [
-                                                    Text(" ماغنسيوم" + "%",style: TextStyle(color:Colors.black,fontSize: 18),),
-                                                    SizedBox(width: 5.0,),
-                                                    Text("40",style: TextStyle(color:Colors.black,fontSize: 20,fontWeight: FontWeight.bold),),
-
+                                                    Text(
+                                                      " ماغنسيوم" + "%",
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 18),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 5.0,
+                                                    ),
+                                                    Text(
+                                                      "40",
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
                                                   ],
                                                 ),
                                               ),
                                               SizedBox(
                                                 height: 10,
                                               ),
-                                              Text(" : التكلفة",style: TextStyle(color:Colors.black,fontSize: 22,fontWeight: FontWeight.bold),),
+                                              Text(
+                                                " : التكلفة",
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 22,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
                                               Padding(
-                                                padding: const EdgeInsets.only(left: 55.0),
+                                                padding: const EdgeInsets.only(
+                                                    left: 55.0),
                                                 child: Row(
                                                   children: [
-                                                    Text("جنيه",style: TextStyle(color:Colors.black,fontSize: 22,fontWeight: FontWeight.bold),),
-                                                    Text("100",style: TextStyle(color:Colors.black,fontSize: 22,fontWeight: FontWeight.bold),),
+                                                    Text(
+                                                      "جنيه",
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 22,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                    Text(
+                                                      "100",
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 22,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
                                                   ],
                                                 ),
                                               ),
-                                              InkWell( child:                          Container(
-                      margin: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10.0),
-                      width: 200,
-                      height: 60.0,
-                      child: defaultbutton(
-                          width: double.infinity,
-                          background: Colors.grey,
-                          function: () {
-                            print("hello flutter");
-                          },
-                          text: 'حفظ',
-                          size: 30.0),
-                    ),
-                    onTap: (){
-                      DoctorCubit.get(context).saveHorseFeed(
-                        HorseData(
-                          ageController.text.toString(),
-                         cubit.HorseHalaChoose,
-                          weightController.text.toString(), 
-                          alaafQuantityController.text.toString(),
-                           broteinController.text.toString(), 
-                           powerController.text.toString(),
-                          metalController.text.toString(),
-                           cubit.AliqaValueChoose,
-                            cubit.datanamechoose),DoctorCubit.get(context).HorseNameChoose)
-                          .then((value){
+                                              InkWell(
+                                                child: Container(
+                                                  margin: EdgeInsets.symmetric(
+                                                      horizontal: 10.0,
+                                                      vertical: 10.0),
+                                                  width: 200,
+                                                  height: 60.0,
+                                                  child: defaultbutton(
+                                                      width: double.infinity,
+                                                      background: Colors.grey,
+                                                      function: () {
+                                                        print("hello flutter");
+                                                      },
+                                                      text: 'حفظ',
+                                                      size: 30.0),
+                                                ),
+                                                onTap: () {
+                                                  DoctorCubit.get(context)
+                                                      .saveHorseFeed(
+                                                          HorseData(
+                                                              ageController.text
+                                                                  .toString(),
+                                                              cubit
+                                                                  .HorseHalaChoose,
+                                                              weightController
+                                                                  .text
+                                                                  .toString(),
+                                                              alaafQuantityController
+                                                                  .text
+                                                                  .toString(),
+                                                              broteinController
+                                                                  .text
+                                                                  .toString(),
+                                                              powerController
+                                                                  .text
+                                                                  .toString(),
+                                                              metalController
+                                                                  .text
+                                                                  .toString(),
+                                                              cubit
+                                                                  .AliqaValueChoose,
+                                                              cubit
+                                                                  .datanamechoose),
+                                                          DoctorCubit.get(
+                                                                  context)
+                                                              .HorseNameChoose)
+                                                      .then((value) {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                            const SnackBar(
+                                                                content: Text(
+                                                                    'تم الحفظ')));
+                                                    Navigator.pop(context);
+                                                    Navigator.pop(context);
+                                                  });
+                                                },
+                                              )
 
-                              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('تم الحفظ')));
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                            });
-                    },
-                    )
-                     
                                               //السعر ده انت الي هتححدو هتجيبه من عندك من ال database
                                             ],
                                           ),
@@ -613,7 +699,6 @@ class DetailsScren extends StatelessWidget {
                           ),
                         ),
                       );
-                      
                     },
                     child: Container(
                       margin: EdgeInsets.symmetric(
@@ -624,9 +709,7 @@ class DetailsScren extends StatelessWidget {
                           width: double.infinity,
                           background: defColorApp,
                           function: () {
-                            
                             print("hello flutter");
-
                           },
                           text: 'حفظ',
                           size: 30.0),
