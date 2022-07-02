@@ -1038,6 +1038,74 @@ class OwnerCubit extends Cubit<OwnerState> {
     });
   }
 
+  void updateHorseData({
+    required String secId,
+    required horseId,
+
+
+    required String horseName,
+    required String horseImage,
+    required String fatherName,
+    required String fatherName1,
+    required String fatherName2,
+    required String motherName,
+    required String motherName1,
+    required String motherName2,
+    required String sectionNUmber,
+    required String sectionName,
+    required String boxNum,
+    required String owner,
+    required String initPrice,
+    required String dateTime,
+    required String microshipCode,
+    required String type,
+    required String color,
+    required String gander,
+    required String specific,
+    required String nationality,
+    required String source,
+    required String sourceLocation,
+  }) {
+    HorseModel model = HorseModel(
+      horseName: horseName,
+      horseImage: horseImage,
+      fatherName: fatherName,
+      fatherName1: fatherName1,
+      fatherName2: fatherName2,
+      motherName: motherName,
+      motherName1: motherName1,
+      motherName2: motherName2,
+      sectionNUmber: sectionNUmber,
+      sectionName: sectionName,
+      boxNum: boxNum,
+      owner: owner,
+      type: type,
+      birthDate: dateTime,
+      initPrice: initPrice,
+      microshipCode: microshipCode,
+      color: color,
+      gander: gander,
+      specific: specific,
+      nationality: nationality,
+      source: source,
+      sourceLocation: sourceLocation,
+    );
+    FirebaseFirestore.instance
+        .collection('owners')
+        .doc(oId)
+        .collection('sections')
+        .doc(secId)
+        .collection('horses')
+        .doc(horseId)
+        .update(model.toMap())
+        .then((value) {
+      emit(UpdateHorseSuccessfulState());
+    }).catchError((error) {
+      print(error.toString());
+      emit(UpdateHorseErrorState(error.toString()));
+    });
+  }
+
   Future<void> saveProduct(ProductData productData) async {
     emit(SendProductLoadingState());
     await FirebaseFirestore.instance

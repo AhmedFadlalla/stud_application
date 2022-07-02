@@ -73,6 +73,11 @@ class GetHorsesDetailsErrorState extends OwnerState{
 
 
 }
+class UpdateHorseSuccessfulState extends OwnerState{}
+class UpdateHorseErrorState extends OwnerState{
+  final String error;
+  UpdateHorseErrorState(this.error);
+}
 class DropDownButtonState extends OwnerState{}
 class WeightChangeState extends OwnerState{}
 

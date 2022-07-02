@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:graduation_project/shared/styles/icon_broken.dart';
 
+import 'constants.dart';
+
 
 Widget defaultButton({
   double width = double.infinity,
@@ -65,11 +67,14 @@ Widget defaultFormField({
       onTap: onTap,
       enabled: isClickable,
       style: TextStyle(
-        color: Colors.black
+        color: isDark==true ? Colors.white:Colors.black
       ),
       decoration: InputDecoration(
         labelText: label,
 
+        hintStyle: TextStyle(
+          color: isDark==true ? Colors.white:Colors.black
+        ),
         hintText: hintText,
         prefixIcon: InkWell(
           onTap: prefixIconTapFunction,

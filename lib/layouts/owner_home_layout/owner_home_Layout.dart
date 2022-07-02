@@ -31,7 +31,7 @@ class OwnerHomeScreenLayout extends StatelessWidget {
 
 
         return Scaffold(
-          backgroundColor: Color(0xFF4DB6AC),
+          backgroundColor: isDark==true ? Colors.black:Colors.white,
           body: cubit.ownerScreens[cubit.currentIndex],
           bottomNavigationBar: BottomNavigationBar(
             items: cubit.items,

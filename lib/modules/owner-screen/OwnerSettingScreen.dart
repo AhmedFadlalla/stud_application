@@ -6,7 +6,9 @@ import 'package:graduation_project/layouts/owner_home_layout/cubit/owner_state.d
 import 'package:graduation_project/modules/owner-screen/owner_profile_screen/owner_profile_screen.dart';
 import 'package:graduation_project/shared/component/components.dart';
 import 'package:graduation_project/shared/network/local/cach_helper.dart';
+import 'package:graduation_project/shared/cubit/cubit.dart';
 
+import '../../shared/component/constants.dart';
 import '../../shared/styles/colors.dart';
 
 class OwnerSettingsScreen extends StatelessWidget {
@@ -31,6 +33,7 @@ class OwnerSettingsScreen extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 25.0,
                     fontWeight: FontWeight.bold,
+                    color: isDark==true ? Colors.white:Colors.black
 
                   ),
                 ),
@@ -69,6 +72,7 @@ class OwnerSettingsScreen extends StatelessWidget {
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                   height: 1.3,
+                                  color: isDark==true ? Colors.white:Colors.black
 
                                 ),),
                               SizedBox(
@@ -79,6 +83,7 @@ class OwnerSettingsScreen extends StatelessWidget {
                                   style: Theme.of(context).textTheme.caption!.copyWith(
 
                                     height: 1.4,
+                                    color: isDark==true ? Colors.white:Colors.black
                                   )
                               )
                             ],
@@ -97,36 +102,51 @@ class OwnerSettingsScreen extends StatelessWidget {
               },
             ),
             myDivider(),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    child: Row(
-                      children: [
+            InkWell(
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      child: Row(
+                        children: [
 
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Icon(
-                            Icons.dark_mode,
-                            size: 40.0,
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.dark_mode,
+                              size: 40.0,
+                              color: isDark==true ? Colors.white:Colors.black,
+                            ),
                           ),
-                        ),
-                        Text('Dark Mode',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            height: 1.3,
+                          if(isDark==true)
+                            Text('Light Mode',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  height: 1.3,
+                                  color: Colors.white
 
-                          ),),
+                                ),),
+                          Text('Dark Mode',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              height: 1.3,
+
+                            ),),
 
 
 
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
+              onTap: (){
+                appCubit.get(context).changeMode();
+              },
             ),
             Spacer(),
             defaultButton(
