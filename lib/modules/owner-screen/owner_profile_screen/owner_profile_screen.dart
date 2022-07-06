@@ -5,6 +5,7 @@ import 'package:graduation_project/layouts/owner_home_layout/cubit/owner_cubit.d
 import 'package:graduation_project/layouts/owner_home_layout/cubit/owner_state.dart';
 
 import '../../../shared/component/components.dart';
+import '../../../shared/component/constants.dart';
 import '../../../shared/styles/icon_broken.dart';
 import 'owner_edit_profile.dart';
 
@@ -74,85 +75,87 @@ class OwnerProfileScreen extends StatelessWidget {
                 ),
                 Text(
                   '${OwnerCubit.get(context).ownerModel!.bio}',
-                  style: Theme.of(context).textTheme.caption,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 20.0,
-                  ),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: InkWell(
-                          child: Column(
-                            children: [
-                              Text(
-                                '100',
-                                style: Theme.of(context).textTheme.subtitle2,
-                              ),
-                              Text(
-                                'Posts',
-                                style: Theme.of(context).textTheme.caption,
-                              ),
-                            ],
-                          ),
-                          onTap: () {},
-                        ),
-                      ),
-                      Expanded(
-                        child: InkWell(
-                          child: Column(
-                            children: [
-                              Text(
-                                '265',
-                                style: Theme.of(context).textTheme.subtitle2,
-                              ),
-                              Text(
-                                'Photos',
-                                style: Theme.of(context).textTheme.caption,
-                              ),
-                            ],
-                          ),
-                          onTap: () {},
-                        ),
-                      ),
-                      Expanded(
-                        child: InkWell(
-                          child: Column(
-                            children: [
-                              Text(
-                                '10k',
-                                style: Theme.of(context).textTheme.subtitle2,
-                              ),
-                              Text(
-                                'Followers',
-                                style: Theme.of(context).textTheme.caption,
-                              ),
-                            ],
-                          ),
-                          onTap: () {},
-                        ),
-                      ),
-                      Expanded(
-                        child: InkWell(
-                          child: Column(
-                            children: [
-                              Text(
-                                '64',
-                                style: Theme.of(context).textTheme.subtitle2,
-                              ),
-                              Text(
-                                'Followings',
-                                style: Theme.of(context).textTheme.caption,
-                              ),
-                            ],
-                          ),
-                          onTap: () {},
-                        ),
-                      ),
-                    ],
+                  style: Theme.of(context).textTheme.caption!.copyWith(
+                    color: isDark==true?Colors.white:Colors.grey
                   ),
                 ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(
+                //     vertical: 20.0,
+                //   ),
+                //   child: Row(
+                //     children: [
+                //       Expanded(
+                //         child: InkWell(
+                //           child: Column(
+                //             children: [
+                //               Text(
+                //                 '100',
+                //                 style: Theme.of(context).textTheme.subtitle2,
+                //               ),
+                //               Text(
+                //                 'Posts',
+                //                 style: Theme.of(context).textTheme.caption,
+                //               ),
+                //             ],
+                //           ),
+                //           onTap: () {},
+                //         ),
+                //       ),
+                //       Expanded(
+                //         child: InkWell(
+                //           child: Column(
+                //             children: [
+                //               Text(
+                //                 '265',
+                //                 style: Theme.of(context).textTheme.subtitle2,
+                //               ),
+                //               Text(
+                //                 'Photos',
+                //                 style: Theme.of(context).textTheme.caption,
+                //               ),
+                //             ],
+                //           ),
+                //           onTap: () {},
+                //         ),
+                //       ),
+                //       Expanded(
+                //         child: InkWell(
+                //           child: Column(
+                //             children: [
+                //               Text(
+                //                 '10k',
+                //                 style: Theme.of(context).textTheme.subtitle2,
+                //               ),
+                //               Text(
+                //                 'Followers',
+                //                 style: Theme.of(context).textTheme.caption,
+                //               ),
+                //             ],
+                //           ),
+                //           onTap: () {},
+                //         ),
+                //       ),
+                //       Expanded(
+                //         child: InkWell(
+                //           child: Column(
+                //             children: [
+                //               Text(
+                //                 '64',
+                //                 style: Theme.of(context).textTheme.subtitle2,
+                //               ),
+                //               Text(
+                //                 'Followings',
+                //                 style: Theme.of(context).textTheme.caption,
+                //               ),
+                //             ],
+                //           ),
+                //           onTap: () {},
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
                 Row(
                   children: [
                     Expanded(

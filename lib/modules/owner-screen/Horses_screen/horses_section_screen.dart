@@ -9,6 +9,7 @@ import '../../../layouts/owner_home_layout/cubit/owner_cubit.dart';
 import '../../../layouts/owner_home_layout/cubit/owner_state.dart';
 import '../../../models/doctor_model.dart';
 import '../../../shared/component/components.dart';
+import '../../../shared/component/constants.dart';
 import 'HorseDetails.dart';
 
 class HorsesSectionSection extends StatelessWidget {
@@ -21,7 +22,7 @@ class HorsesSectionSection extends StatelessWidget {
           var cubit=OwnerCubit.get(context);
           Size size = MediaQuery.of(context).size;
           return Scaffold(
-            backgroundColor: Color(0xFF4DB6AC),
+
 
             body: ConditionalBuilder(
               condition: cubit.horseData.length>0,
@@ -85,6 +86,7 @@ class HorsesSectionSection extends StatelessWidget {
     child: Container(
       margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
       height: 190.0,
+
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -92,7 +94,7 @@ class HorsesSectionSection extends StatelessWidget {
             height: 160.0,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(22),
-                color: Colors.white,
+                color: Color(0xFF4DB6AC),
                 boxShadow: [
                   BoxShadow(
                       offset: Offset(0, 25),
@@ -105,10 +107,10 @@ class HorsesSectionSection extends StatelessWidget {
               left: 0.0,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
-                height: 130,
-                width: 190,
+                height: 170,
+                width: 160,
                 child: Container(
-                  height:80,
+                  height:120,
                   width: 80,
                   decoration: BoxDecoration(
                     borderRadius:BorderRadius.circular(70),
@@ -154,31 +156,28 @@ class HorsesSectionSection extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10.0),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              Text(
-                                'المايكروشيب :',
-                                style: TextStyle(color: Colors.black, fontSize: 28,
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Text(
+                              'المايكروشيب :',
+                              style: TextStyle(color: Colors.black, fontSize: 28,
 
-                                ),
                               ),
-                              SizedBox(
-                                width: 5.0,
-                              ),
-                              Text(
-                                '${model.microshipCode}',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 28,
+                            ),
+                            SizedBox(
+                              width: 5.0,
+                            ),
+                            Text(
+                              '${model.microshipCode}',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 28,
 
-                                ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                       Padding(
@@ -199,6 +198,7 @@ class HorsesSectionSection extends StatelessWidget {
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 28,
+
 
                               ),
                             ),

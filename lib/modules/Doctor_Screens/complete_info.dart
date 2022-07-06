@@ -45,8 +45,8 @@ class DoctorCompleteInfo extends StatelessWidget {
 
         var cubit=DoctorCubit.get(context);
 
-        DoctorName.text=cubit.userModel!.name;
-      
+        //DoctorName.text=cubit.userModel!.name;
+
         return Scaffold(
             body: Directionality(
               textDirection: TextDirection.rtl,
@@ -78,82 +78,88 @@ class DoctorCompleteInfo extends StatelessWidget {
                     },
                   ),
 
-                      SizedBox(
-                        height: height*0.01,
-                      ),
+                  SizedBox(
+                    height: height*0.01,
+                  ),
 
 
-                      defaultFormField(
-                          controller: DoctorName,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: defaultFormField(
+                        controller: DoctorName,
+                        type: TextInputType.text,
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'يجب ادخال البيانات ';
+                          }
+                        },
+                        label: 'الاسم',
+                        prefixIcon: Icons.person),
+                  ),
+
+                  Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: defaultFormField(
+                          controller: DoctorAddress,
                           type: TextInputType.text,
                           validator: (value) {
                             if (value.isEmpty) {
                               return 'يجب ادخال البيانات ';
                             }
                           },
-                          label: 'الاسم',
-                          prefixIcon: Icons.person),
-                      SizedBox(
-                        height: height*0.01,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: defaultFormField(
-                            controller: DoctorAddress,
-                            type: TextInputType.text,
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'يجب ادخال البيانات ';
-                              }
-                            },
-                            label: 'العنوان',
-                            prefixIcon: Icons.location_on_sharp),
-                      ),
-                      SizedBox(
-                        height: height*0.01,
-                      ),
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: defaultFormField(
-                            controller: RaqamQuamyDoctor,
-                            type: TextInputType.number,
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'يجب ادخال البيانات ';
-                              }
-                            },
-                            label: 'رقم قومي',
-                            prefixIcon: Icons.perm_identity),
-                      ),
-
-
-                      SizedBox(
-                        height: height*0.01,
-                      ),
-                      Expanded(child: SizedBox(),),
-
-                      defaultButton2(
-                        function: () {
-                          cubit.uploadDocImage(
-                              name: DoctorName.text,
-                              ssn: RaqamQuamyDoctor.text,
-                              address:DoctorAddress.text);
-
-                        },
-                        text: 'Save',
-                        background: defColorApp,
-                        height: 50.0,
-                        width: 200.0,
-                        icon: Icons.done,
-                      ),
-
-
-                    ],
+                          label: 'العنوان',
+                          prefixIcon: Icons.location_on_sharp),
+                    ),
                   ),
-                ));
-          }
-        );
-      }
 
+                  Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: defaultFormField(
+                          controller: RaqamQuamyDoctor,
+                          type: TextInputType.number,
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'يجب ادخال البيانات ';
+                            }
+                          },
+                          label: 'رقم قومي',
+                          prefixIcon: Icons.perm_identity),
+                    ),
+                  ),
+
+
+                  // SizedBox(
+                  //   height: height*0.01,
+                  // ),
+                  Expanded(child: SizedBox(),),
+
+
+
+
+                  defaultButton2(
+                    function: () {
+                      cubit.uploadDocImage(
+                          name: DoctorName.text,
+                          ssn: RaqamQuamyDoctor.text,
+                          address:DoctorAddress.text);
+
+                    },
+                    text: 'حفظ',
+                    background: defColorApp,
+                    height: 50.0,
+                    width: 200.0,
+                    icon: Icons.done,
+                  ),
+                  SizedBox(height: 20,),
+
+                ],
+              ),
+            ));
+      },
+    );
   }
-
+}

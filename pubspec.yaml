@@ -43,6 +43,7 @@ dependencies:
   custom_check_box: ^0.0.4
   date_count_down: ^2.1.0
   url_launcher: ^6.0.3
+  country_picker: ^2.0.15
 
   #google map
 #  flutter_polyline_points: ^1.0.0

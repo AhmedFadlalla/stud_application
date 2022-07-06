@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:graduation_project/models/accom_model.dart';
 import 'package:graduation_project/models/owner_model.dart';
 import 'package:graduation_project/models/product.dart';
+import 'package:graduation_project/modules/UserSettingScreen.dart';
+import 'package:graduation_project/modules/owner-screen/aleka_screens/productss.dart';
 import 'package:graduation_project/modules/registeration_screen/login_screen/cubit/cubit.dart';
 
 
@@ -56,7 +58,7 @@ class HorseCubit extends Cubit<HorseStates> {
     HomeScreen(),
     UserCommunityScreen(),
     UserChatsScreen(),
-    UserProfileScreen(),
+    UserSettingsScreen()
   ];
 
   List<BottomNavigationBarItem> items = [
@@ -64,24 +66,24 @@ class HorseCubit extends Cubit<HorseStates> {
     BottomNavigationBarItem(
         icon: Icon(IconBroken.Activity), label: 'Community'),
     BottomNavigationBarItem(icon: Icon(IconBroken.Chat), label: 'Chat'),
-    BottomNavigationBarItem(icon: Icon(IconBroken.Profile), label: 'Profile'),
+    BottomNavigationBarItem(icon: Icon(IconBroken.Setting), label: 'Settings'),
   ];
-  List<String> titles = ['Home', 'Community', 'Chats', 'Profile'];
+  List<String> titles = ['Home', 'Community', 'Chats', 'Settings'];
 
   void changeBottomNavIndex(int index) {
     currentIndex = index;
     emit(HorseChangeBottomNavState());
   }
 
-  File? horseImage;
+  File? productImage;
 
   var picker = ImagePicker();
 
-  Future<void> getHorseImage() async {
+  Future<void> getProductImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
     if (pickedFile != null) {
-      horseImage = File(pickedFile.path);
-      print(horseImage);
+      productImage = File(pickedFile.path);
+      print(productImage);
       emit(HorseImageSuccessState());
     } else {
       print('No image selected');
@@ -90,19 +92,21 @@ class HorseCubit extends Cubit<HorseStates> {
   }
 
 
-  void uploadHorseProductImage(
+  Future<void> uploadHorseProductImage(
       {required String productName,
         required String productPrice,
         required String productInfo,
         required String phone,
-        required context
-      }) {
+        required context,
+        required String dateTime,
+        required String amount,
+      }) async {
     emit(UserUpdateLoadingState());
 
     firebase_storage.FirebaseStorage.instance
         .ref()
-        .child('horseProducts/${Uri.file(horseImage!.path).pathSegments.last}')
-        .putFile(horseImage!)
+        .child('horseProducts/${Uri.file(productImage!.path).pathSegments.last}')
+        .putFile(productImage!)
         .then((value) {
       value.ref.getDownloadURL().then((value) {
         // emit(SocialUploadProfileImageSuccessState());
@@ -112,7 +116,7 @@ class HorseCubit extends Cubit<HorseStates> {
             phone: phone,
             productInfo: productInfo,
             productName: productName,
-           productPrice: productPrice
+           productPrice: productPrice, amount: amount, dateTime: dateTime
         );
       }).catchError((error) {
         emit(UploadProfileImageErrorState());
@@ -122,13 +126,15 @@ class HorseCubit extends Cubit<HorseStates> {
     });
   }
 
-  void addHorseProduct({
+  Future<void> addHorseProduct({
     required String productName,
     required String productPrice,
     required String productInfo,
     required String phone,
     required String image,
-}){
+    required String dateTime,
+    required String amount,
+})async {
 
     HorseProductModel productModel=HorseProductModel(
         userId: userModel!.uId,
@@ -137,6 +143,8 @@ class HorseCubit extends Cubit<HorseStates> {
         image: image,
         productInfo: productInfo,
         phone: phone,
+      dateTime: dateTime,
+      amount: amount,
     );
 
     FirebaseFirestore.instance
@@ -151,6 +159,16 @@ class HorseCubit extends Cubit<HorseStates> {
     });
 
 
+  }
+
+  List<HorseProductModel> products=[];
+  Future getProductData()async{
+    FirebaseFirestore.instance.collection('HorseProduct')
+        .get().then((value) {
+          value.docs.forEach((element) {
+            products.add(HorseProductModel.fromJson(element.data()));
+          });
+    });
   }
   File? profileImage;
 
@@ -534,13 +552,24 @@ class HorseCubit extends Cubit<HorseStates> {
           value.docs.forEach((element) {
             accomList.add(AccomModel.fromJson(element.data()));
             accomId=element.id;
+
             print(accomId);
           });
+
           emit(GetAccomindationDataSuccessState());
     })
         .catchError((error){
           print(error.toString());
           emit(GetAccomindationDataErrorState(error.toString()));
+    });
+  }
+
+  OwnerModel? specificOwnerModel;
+  void getSpecificAccommData(oId){
+    FirebaseFirestore.instance.collection('owner').doc(oId).get().then((value) {
+        specificOwnerModel=OwnerModel.fromJson(value.data()!);
+
+        print('Done');
     });
   }
 

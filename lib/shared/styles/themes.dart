@@ -29,13 +29,17 @@ ThemeData lightTheme = ThemeData(
     textTheme: TextTheme(
         bodyText1: TextStyle(
             fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.black),
-    subtitle2: TextStyle(
-      fontSize: 16.0,
+    subtitle1: TextStyle(
+      fontSize: 14.0,
       fontWeight: FontWeight.bold,
       color: Colors.black,
         height: 1.3
 
-    )
+    ),
+        caption: TextStyle(
+            height: 1.4,
+            color: Colors.black
+        )
     ),
     );
 ThemeData darkTheme = ThemeData(
@@ -59,6 +63,7 @@ ThemeData darkTheme = ThemeData(
         elevation: 20.0,
         backgroundColor: HexColor('333739')),
 
+
     textTheme: TextTheme(
         bodyText1: TextStyle(
             fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.white),
@@ -67,6 +72,9 @@ ThemeData darkTheme = ThemeData(
             fontWeight: FontWeight.w600,
             color: Colors.white,
             height: 1.3
-        )
+        ),
+        caption: TextStyle(
+            fontSize: 6.0, fontWeight: FontWeight.bold, color: Colors.white)
+
     ),
     );

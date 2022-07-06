@@ -24,7 +24,7 @@ Widget defaultButton({
         child: Text(
           isUpperCase ? text.toUpperCase() : text,
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.black,
             fontSize: fontSize,
             fontWeight: FontWeight.bold
           ),
@@ -67,7 +67,7 @@ Widget defaultFormField({
       onTap: onTap,
       enabled: isClickable,
       style: TextStyle(
-        color: isDark==true ? Colors.white:Colors.black
+        color: isDark==true ? Colors.black:Colors.white
       ),
       decoration: InputDecoration(
         labelText: label,
@@ -114,7 +114,85 @@ Widget defaultFormField({
       ),
     );
 
+Widget horseFormField({
+  required TextEditingController controller,
+  required TextInputType type,
+  var onsubmit,
+  var onChange,
+  var onTap,
+  String? hintText,
+  var prefixIconTapFunction,
+  required var validator,
+  required String label,
+  required IconData prefixIcon,
+  var suffixIcon,
+  bool isPassword = false,
+  var sufixPressed,
+  bool isClickable=true,
+}) =>
+    Container(
+      height: 58.0,
+      child: TextFormField(
+        controller: controller,
+        keyboardType: type,
+        onFieldSubmitted: onsubmit,
+        onChanged: onChange,
+        validator: validator,
+        obscureText: isPassword,
+        onTap: onTap,
+        enabled: isClickable,
+        style: TextStyle(
+            color: isDark==true ? Colors.white:Colors.black
+        ),
 
+        decoration: InputDecoration(
+            labelText: label,
+
+            labelStyle: TextStyle(
+              color: isDark==true ? Colors.white:Colors.black
+            ),
+            hintStyle: TextStyle(
+                color: isDark==true ? Colors.white:Colors.black
+            ),
+            hintText: hintText,
+            prefixIcon: InkWell(
+              onTap: prefixIconTapFunction,
+              child: Icon(
+                prefixIcon,
+              ),
+            ),
+            suffixIcon: suffixIcon != null
+                ? IconButton(
+                onPressed: sufixPressed,
+                icon: Icon(
+                  suffixIcon,
+                ))
+                : null,
+
+            enabledBorder:  OutlineInputBorder(
+
+                borderSide: const BorderSide(
+                  color: Color(0xFF4DB6AC),
+
+                )
+            ),
+            focusedBorder: OutlineInputBorder(
+
+                borderSide: const BorderSide(
+                  color: Colors.red,
+
+                )
+            ),
+            border: OutlineInputBorder(
+
+                borderSide: const BorderSide(
+                  color: Colors.white,
+
+                )
+            )
+        ),
+      ),
+    );
 
 Widget defultLoginField({
   required TextEditingController controller,

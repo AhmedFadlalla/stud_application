@@ -30,12 +30,7 @@ class OwnerSettingsScreen extends StatelessWidget {
                 alignment: AlignmentDirectional.topStart,
                 child: Text(
                   'Menu',
-                  style: TextStyle(
-                      fontSize: 25.0,
-                    fontWeight: FontWeight.bold,
-                    color: isDark==true ? Colors.white:Colors.black
-
-                  ),
+                  style: Theme.of(context).textTheme.bodyText1,
                 ),
               ),
             ),
@@ -68,24 +63,14 @@ class OwnerSettingsScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text('${OwnerCubit.get(context).ownerModel!.studName}',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  height: 1.3,
-                                  color: isDark==true ? Colors.white:Colors.black
-
-                                ),),
+                                style: Theme.of(context).textTheme.bodyText1,),
                               SizedBox(
                                 width: 10.0,
                               ),
                               Text(
                                   'See your profile',
-                                  style: Theme.of(context).textTheme.caption!.copyWith(
+                                  style: Theme.of(context).textTheme.caption)
 
-                                    height: 1.4,
-                                    color: isDark==true ? Colors.white:Colors.black
-                                  )
-                              )
                             ],
 
                           ),
@@ -120,22 +105,11 @@ class OwnerSettingsScreen extends StatelessWidget {
                             ),
                           ),
                           if(isDark==true)
-                            Text('Light Mode',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  height: 1.3,
-                                  color: Colors.white
-
-                                ),),
-                          Text('Dark Mode',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              height: 1.3,
-
-                            ),),
-
+                           Text('Light Mode',
+                            style: Theme.of(context).textTheme.bodyText1,),
+                          if(isDark==false)
+                           Text('Dark Mode',
+                              style: Theme.of(context).textTheme.bodyText1,)
 
 
                         ],

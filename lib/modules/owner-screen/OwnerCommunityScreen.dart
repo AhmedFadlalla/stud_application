@@ -9,9 +9,12 @@ import 'package:graduation_project/layouts/owner_home_layout/cubit/owner_state.d
 import 'package:graduation_project/models/owner_model.dart';
 import 'package:graduation_project/models/post_model.dart';
 import 'package:graduation_project/modules/owner-screen/add_post/add_post_screen.dart';
+import 'package:graduation_project/modules/owner-screen/comment_screen.dart';
 import 'package:graduation_project/shared/component/components.dart';
 import 'package:graduation_project/shared/styles/colors.dart';
 import 'package:graduation_project/shared/styles/icon_broken.dart';
+
+import '../../shared/component/constants.dart';
 
 class OwnerCommunityScreen extends StatelessWidget {
   @override
@@ -115,6 +118,7 @@ class OwnerCommunityScreen extends StatelessWidget {
   Widget buildPostItem(PostModel model,BuildContext context,index)=>Card(
     clipBehavior: Clip.antiAliasWithSaveLayer,
     elevation: 10.0,
+    color: isDark==true ? Colors.black:Colors.white,
 
     margin: EdgeInsets.symmetric(
       horizontal: 8.0,
@@ -143,11 +147,8 @@ class OwnerCommunityScreen extends StatelessWidget {
                     Row(
                       children: [
                         Text('${model.name}',
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                            height: 1.4,
-
+                          style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            fontSize: 25.0
                           ),),
                         SizedBox(
                           width: 4.0,
@@ -166,8 +167,7 @@ class OwnerCommunityScreen extends StatelessWidget {
                     Text(
                         '${model.dateTime}',
                         style: Theme.of(context).textTheme.caption!.copyWith(
-
-                          height: 1.4,
+                          height: 1.4,color:isDark==true? Colors.white:Colors.black
                         )
                     )
                   ],
@@ -195,9 +195,7 @@ class OwnerCommunityScreen extends StatelessWidget {
           ),
           Text(
             '${model.text}',
-            style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                color: Colors.black
-            ),
+            style: Theme.of(context).textTheme.subtitle1
           ),
           // Padding(
           //   padding: const EdgeInsets.only(
@@ -308,7 +306,7 @@ class OwnerCommunityScreen extends StatelessWidget {
                           ),
                           Text('${OwnerCubit.get(context).likes[index]}',
                             style: Theme.of(context).textTheme.caption!.copyWith(
-                                color: Colors.grey
+                                color: isDark==true ? Colors.white:Colors.grey
                             ),)
                         ],
                       ),
@@ -334,9 +332,9 @@ class OwnerCommunityScreen extends StatelessWidget {
                           SizedBox(
                             width: 5.0,
                           ),
-                          Text('1200 comments',
+                          Text('1200',
                             style: Theme.of(context).textTheme.caption!.copyWith(
-                                color: Colors.grey
+                                color: isDark==true ? Colors.white:Colors.grey
                             ),)
                         ],
                       ),
@@ -371,11 +369,15 @@ class OwnerCommunityScreen extends StatelessWidget {
                       ),
                       Text(
                         'Write a comment',
-                        style: Theme.of(context).textTheme.caption,
+                        style: Theme.of(context).textTheme.caption!.copyWith(
+                          color: isDark==true ? Colors.white:Colors.grey
+                        ),
                       )
                     ],
                   ),
-                  onTap: (){},
+                  onTap: (){
+                    navigateTo(context, OwnerCommentScreen(postId: OwnerCubit.get(context).postsId[index],));
+                  },
                 ),
               ),
               InkWell(

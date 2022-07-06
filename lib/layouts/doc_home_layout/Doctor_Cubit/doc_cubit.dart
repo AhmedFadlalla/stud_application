@@ -137,15 +137,11 @@ class DoctorCubit extends Cubit<DoctorStates> //1
   }
 
   void uploadDocImage({
-    required String name,
-    required String ssn,
-    required String address,
+    required String name, required String ssn, required String address,
   }) {
     emit(UpdateDocDataLoadingState());
-
     firebase_storage.FirebaseStorage.instance
-        .ref()
-        .child('docImage/${Uri.file(docImage!.path).pathSegments.last}')
+        .ref().child('docImage/${Uri.file(docImage!.path).pathSegments.last}')
         .putFile(docImage!)
         .then((value) {
       print(value);
@@ -163,37 +159,17 @@ class DoctorCubit extends Cubit<DoctorStates> //1
   }
 
   void updateDocData({
-    required String name,
-    required String ssn,
-    required String image,
-    required String address,
+    required String name, required String ssn, required String image, required String address,
   }) {
     emit(UpdateDocDataLoadingState());
-    print(userModel!.email);
-    print(userModel!.phone);
-    print(userModel!.oId!);
-    print(userModel!.section!);
     DoctorModel model = DoctorModel(
-        name: name,
-        email: userModel!.email,
-        phone: userModel!.phone,
-        ssn: ssn,
-        image: image,
-        oId: userModel!.oId!,
-        dId: dId!,
-        section: userModel!.section!,
-        address: address,
-        cover: userModel!.cover,
-        bio: userModel!.bio,
+        name: name, email: userModel!.email, phone: userModel!.phone, ssn: ssn, image: image, oId: userModel!.oId!,
+        dId: dId!, section: userModel!.section!, address: address, cover: userModel!.cover, bio: userModel!.bio,
         done: 1);
     FirebaseFirestore.instance
-        .collection('owners')
-        .doc(userModel!.oId)
-        .collection('sections')
-        .doc(userModel!.section)
-        .collection('doctor')
-        .doc(dId)
-        .update(model.toMap())
+        .collection('owners').doc(userModel!.oId)
+        .collection('sections').doc(userModel!.section)
+        .collection('doctor').doc(dId).update(model.toMap())
         .then((value) {
       getDocFullData();
       emit(UpdateDocDataSuccessfulState());
@@ -224,27 +200,21 @@ class DoctorCubit extends Cubit<DoctorStates> //1
   String? horseId;
   HorseModel? horseModel;
   String? horseName;
-
   void getHorses() {
     horses = [];
     emit(GetHorsesDataLoadingState());
-    print(userModel!.oId);
-    print(userModel!.section);
-    FirebaseFirestore.instance
-        .collection('owners')
-        .doc(userModel!.oId)
-        .collection('sections')
+    FirebaseFirestore.instance.collection('owners').doc(userModel!.oId).collection('sections')
         .doc(userModel!.section)
         .collection('horses')
-        .snapshots()
-        .listen((value) {
+        .get()
+        .then((value) {
       horses = [];
       value.docs.forEach((element) {
         horseModel = HorseModel.fromJson(element.data());
         horses.add(HorseModel.fromJson(element.data()));
         horseId = element.id;
       });
-      // emit(GetHorsesDataSuccessfulState());
+      emit(GetHorsesDataSuccessfulState());
     });
   }
 
@@ -288,7 +258,6 @@ class DoctorCubit extends Cubit<DoctorStates> //1
   }
 
   List<DiseaseData> diseaseData = [];
-
   Future getdDisease({required hId}) async {
     diseaseData = [];
     FirebaseFirestore.instance
@@ -312,7 +281,6 @@ class DoctorCubit extends Cubit<DoctorStates> //1
   }
 
   List<DiseaseModel> data = [];
-
   Future getdata({required hId}) async {
     data = [];
     FirebaseFirestore.instance
@@ -373,9 +341,7 @@ class DoctorCubit extends Cubit<DoctorStates> //1
       emit(ProfileImageErrorState());
     }
   }
-
   File? coverImage;
-
   Future<void> getCoverImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
     if (pickedFile != null) {
@@ -386,15 +352,9 @@ class DoctorCubit extends Cubit<DoctorStates> //1
       emit(CoverImageErrorState());
     }
   }
-
-  void uploadProfileImage(
-      {required String docName,
-        required String phone,
-        required String bio,
-        required String address,
-        required context}) {
+  void uploadProfileImage({required String docName, required String phone, required String bio,
+        required String address, required context}) {
     emit(DoctorUpdateLoadingState());
-
     firebase_storage.FirebaseStorage.instance
         .ref()
         .child('doctor/${Uri.file(profileImage!.path).pathSegments.last}')
@@ -402,7 +362,6 @@ class DoctorCubit extends Cubit<DoctorStates> //1
         .then((value) {
       value.ref.getDownloadURL().then((value) {
         emit(UploadProfileImageSuccessState());
-        // updateOwner(studName: name, phone: phone, bio: bio, image: value);
         updateDoctor(
             docName: docName,
             phone: phone,
@@ -417,12 +376,8 @@ class DoctorCubit extends Cubit<DoctorStates> //1
     });
   }
 
-  void uploadCoverImage(
-      {required String docName,
-        required String phone,
-        required String bio,
-        required String address,
-        required context}) {
+  void uploadCoverImage({required String docName, required String phone, required String bio,
+        required String address, required context}) {
     emit(DoctorUpdateLoadingState());
     firebase_storage.FirebaseStorage.instance
         .ref()
@@ -446,26 +401,12 @@ class DoctorCubit extends Cubit<DoctorStates> //1
     });
   }
 
-  void updateDoctor({
-    required String docName,
-    required String phone,
-    required String bio,
-    required String address,
-    String? cover,
-    String? image,
-  }) {
+  void updateDoctor({required String docName, required String phone, required String bio,
+    required String address, String? cover, String? image,}) {
     DoctorModel model = DoctorModel(
-        name: docName,
-        email: doctorModel!.email,
-        phone: phone,
-        ssn: doctorModel!.ssn,
-        image: image ?? doctorModel!.image,
-        oId: doctorModel!.oId,
-        dId: dId!,
-        section: doctorModel!.section,
-        address: address,
-        bio: bio,
-        cover: cover ?? doctorModel!.cover);
+        name: docName, email: doctorModel!.email, phone: phone, ssn: doctorModel!.ssn,
+        image: image ?? doctorModel!.image, oId: doctorModel!.oId, dId: dId!,
+        section: doctorModel!.section, address: address, bio: bio, cover: cover ?? doctorModel!.cover);
     FirebaseFirestore.instance
         .collection('owners')
         .doc(doctorModel!.oId)
@@ -640,8 +581,7 @@ class DoctorCubit extends Cubit<DoctorStates> //1
     required String text,
     required String dateTime,
   }) {
-    MessageModel model = MessageModel(
-        dateTime: dateTime, senderId: dId, receiverId: receiverId, text: text);
+    MessageModel model = MessageModel(dateTime: dateTime, senderId: dId, receiverId: receiverId, text: text);
 
     FirebaseFirestore.instance
         .collection('users')

@@ -33,40 +33,18 @@ class AddAccommindationScreen extends StatelessWidget {
                     textDirection: TextDirection.rtl,
                     child: Column(
                       children: [
-                        Card(
-                          elevation: 22.0,
-                          clipBehavior: Clip.antiAlias,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(24),
-                          ),
+                        Card(elevation: 22.0, clipBehavior: Clip.antiAlias,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24),),
                           child: Column(
-                            children: [
-                              InkWell(
-                                child: Stack(
-                                  alignment: Alignment.bottomCenter,
-                                  children: [
-                                    Image(
-                                      image: cubit.AccomImage == null
-                                          ? NetworkImage(
+                            children: [InkWell(child: Stack(alignment: Alignment.bottomCenter,
+                                  children: [Image(image: cubit.AccomImage == null ? NetworkImage(
                                         'https://thumbs.dreamstime.com/b/add-photo-line-icon-image-thumbnail-sign-picture-placeholder-symbol-quality-design-element-linear-style-editable-stroke-vector-219079541.jpg',
-                                      )
-                                          : FileImage(cubit.AccomImage!)
-                                      as ImageProvider,
-                                      width: double.infinity,
-                                      height: 250.0,
-                                      fit: BoxFit.cover,
+                                      ) : FileImage(cubit.AccomImage!) as ImageProvider,
+                                      width: double.infinity, height: 250.0, fit: BoxFit.cover,
                                     ),
-                                    cubit.AccomImage == null
-                                        ? Text(
-                                      'أضف صورة للايواء',
-                                      style: TextStyle(
-                                        fontSize: 25.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    )
-                                        : Text('')
-                                  ],
-                                ),
+                                    cubit.AccomImage == null ? Text('أضف صورة للايواء',
+                                      style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold,),)
+                                        : Text('')],),
                                 onTap: () {
                                   cubit.getAccomImage();
                                 },
@@ -78,85 +56,53 @@ class AddAccommindationScreen extends StatelessWidget {
                           height: 20.0,
                         ),
                         BuildDropBottom(
-                          dropdownButtonTitle: 'اختر',
-                          function: (newValue) {
-                            cubit.dropDownButtonType(newValue);
-                          },
-                          items: [
-                            'بوكس فاضي',
-                            'البوكس +الرعايه الطبيه',
-                            'البوكس + الرعاية +الاكل',
-                            'الحوافر و قص الشعر',
+                          dropdownButtonTitle: 'اختر', function: (newValue) {cubit.dropDownButtonType(newValue);},
+                          items: ['بوكس فاضي', 'البوكس +الرعايه الطبيه', 'البوكس + الرعاية +الاكل', 'الحوافر و قص الشعر',
                           ].map((valueItem) {
-                            return DropdownMenuItem(
-                              value: valueItem,
-                              child: Text(valueItem),
-                            );
-                          }).toList(),
+                            return DropdownMenuItem(value: valueItem, child: Text(valueItem),);}).toList(),
                           value: cubit.valueChooseType,
                         ),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-                        defaultFormField(
-                            controller: periodController,
-                            type: TextInputType.number,
+                        SizedBox(height: 20.0,),
+                        defaultFormField(controller: periodController, type: TextInputType.number,
                             validator: (value) {
                               if (value.isEmpty) {
                                 return 'المدة مطلوبة';
                               }
                               return null;
-                            },
-                            label: 'من فضلك ادخل المدة',
-                            prefixIcon: Icons.price_check),
+                            }, label: 'من فضلك ادخل المدة', prefixIcon: Icons.price_check),
                         SizedBox(
                           height: 20.0,
                         ),
-                        defaultFormField(
-                            controller: priceController,
-                            type: TextInputType.number,
+                        defaultFormField(controller: priceController, type: TextInputType.number,
                             validator: (value) {
                               if (value.isEmpty) {
                                 return 'السعر مطلوب';
                               }
                               return null;
                             },
-                            label: 'من فضلك ادخل السعر',
-                            prefixIcon: Icons.price_check),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-                        defaultFormField(
-                            controller: productionFarmController,
-                            type: TextInputType.text,
+                            label: 'من فضلك ادخل السعر', prefixIcon: Icons.price_check),
+                        SizedBox(height: 20.0,),
+                        defaultFormField(controller: productionFarmController, type: TextInputType.text,
                             validator: (value) {
                               if (value.isEmpty) {
                                 return 'يرجي ادخال البيانات  ';
                               }
                               return null;
                             },
-                            label: 'معلومات عامة عن المزرعة و خدمات الايواء ',
-                            prefixIcon: Icons.info),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-                        defaultFormField(
-                            controller: addressController,
-                            type: TextInputType.text,
+                            label: 'معلومات عامة عن المزرعة و خدمات الايواء ', prefixIcon: Icons.info),
+                        SizedBox(height: 20.0,),
+                        defaultFormField(controller: addressController, type: TextInputType.text,
                             validator: (value) {
                               if (value.isEmpty) {
                                 return 'يرجي ادخال البيانات  ';
                               }
                               return null;
                             },
-                            label: 'العنوان ',
-                            prefixIcon: Icons.location_on),
+                            label: 'العنوان ', prefixIcon: Icons.location_on),
                         SizedBox(
                           height: 20.0,
                         ),
-                        defaultFormField(
-                            controller: phoneController,
-                            type: TextInputType.phone,
+                        defaultFormField(controller: phoneController, type: TextInputType.phone,
                             validator: (value) {
                               if (value.isEmpty) {
                                 return 'يرجي ادخال البيانات  ';

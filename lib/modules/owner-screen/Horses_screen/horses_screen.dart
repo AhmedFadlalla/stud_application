@@ -9,6 +9,7 @@ import 'package:graduation_project/shared/component/components.dart';
 
 import '../../../models/horse_model.dart';
 import '../../../models/section_data_model.dart';
+import '../../../shared/component/constants.dart';
 import 'HorseDetails.dart';
 import 'add_horses_screen.dart';
 
@@ -25,9 +26,9 @@ class HorsesScreen extends StatelessWidget {
         builder: (context,state){
           var cubit=OwnerCubit.get(context);
           return Scaffold(//0xFF4DB6AC
-            backgroundColor: Color(0xFF4DB6AC),
+
             floatingActionButton: FloatingActionButton(
-              backgroundColor: Color(0xFFE0F2F1),
+              backgroundColor:  Color(0xFFE0F2F1),
               onPressed: (){
                 navigateTo(context, AddHorseScreen());
               },
@@ -75,7 +76,7 @@ class HorsesScreen extends StatelessWidget {
                     image: NetworkImage('https://www.europeanequinelawyers.com/wp-content/uploads/2018/03/brexit-1024x682.jpg'),
                   ),
                   Text(
-                      'No horses Yet !!!!',
+                    'No horses Yet !!!!',
                     style: TextStyle(
                       fontSize: 30.0,
                     ),
@@ -88,7 +89,7 @@ class HorsesScreen extends StatelessWidget {
         listener: (context,state){
 
           if(state is GetHorsesSecDataSuccessState)
-                navigateTo(context, HorsesSectionSection());
+            navigateTo(context, HorsesSectionSection());
 
         });
   }
@@ -103,7 +104,7 @@ class HorsesScreen extends StatelessWidget {
             height: 160.0,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(22),
-                color: Colors.white,
+                color: isDark==true ?Color(0xFF4DB6AC):Color(0xFF4DB6AC),
                 boxShadow: [
                   BoxShadow(
                       offset: Offset(0, 25),
@@ -144,8 +145,12 @@ class HorsesScreen extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            'عنبر :',
-                            style: TextStyle(color: Colors.black, fontSize: 28),
+                            ' عنبر :',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 22,
+                              fontWeight: FontWeight.bold
+                            ),
                           ),
                           SizedBox(
                             width: 5.0,
@@ -153,9 +158,10 @@ class HorsesScreen extends StatelessWidget {
                           Text(
                             '${model.name}',
                             style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 28,
-                                fontWeight: FontWeight.bold
+                              color: Colors.black,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold
+
                             ),
                           ),
                         ],

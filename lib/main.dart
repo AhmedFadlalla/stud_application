@@ -81,11 +81,11 @@ class MyApp extends StatelessWidget {
             ..getUserData()
             ..getAllUsers()
             ..getAllPosts()
-            ..getAccomData()
+            ..getAccomData()..getProductData()
           ),
           BlocProvider(
               create: (context) => OwnerCubit()
-            ..getOwnerData(ownerId: oId)
+            ..getOwnerData()
             ..getAllPosts()
             ..getUserData()
             ..getSectionsData()
@@ -105,7 +105,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: lightTheme,
               darkTheme: darkTheme,
-              themeMode: appCubit.get(context).isDark
+              themeMode: appCubit.get(context).isDark==true
                   ? ThemeMode.dark
                   : ThemeMode.light,
               home: startWidget,

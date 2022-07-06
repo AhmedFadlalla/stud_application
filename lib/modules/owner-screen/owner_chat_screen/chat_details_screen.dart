@@ -41,10 +41,7 @@ class OwnerChatDetailsScreen extends StatelessWidget {
                       width:6.0,
                     ),
                     Text(userModel.name,
-                      style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600
-                      ),),
+                      style: Theme.of(context).textTheme.subtitle1,),
 
                   ],
                 ),
@@ -161,7 +158,7 @@ class OwnerChatDetailsScreen extends StatelessWidget {
                               child: MaterialButton(
                                 onPressed: (){
 
-                                  DoctorCubit.get(context).sendMessage(
+                                  OwnerCubit.get(context).sendMessage(
                                       receiverId: userModel.uId,
                                       text: messageController.text,
                                       dateTime: DateTime.now().toString());

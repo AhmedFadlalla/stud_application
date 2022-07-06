@@ -39,29 +39,12 @@ class NassapScreen extends StatelessWidget {
                if(index == 0) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      list(context: context,
-                      text: '$fatherName1',
-                      function: () {},
-                      count: 1),
-                      list(context: context,
-                          text: '$motherName1',
-                          function: () {},
-                          count: 1),
-                      SizedBox(
-                        height: 9.0,
-                      ),
-
-                      list(context: context,
-                          text: '$fatherName2',
-                          function: () {},
-                          count: 1),
-                      list(context: context,
-                          text: '$motherName2',
-                          function: () {},
-                          count: 1),
+                  child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                    children: [list(context: context, text: '$fatherName1', function: () {}, count: 1),
+                      list(context: context, text: '$motherName1', function: () {}, count: 1),
+                      SizedBox(height: 9.0,),
+                      list(context: context, text: '$fatherName2', function: () {}, count: 1),
+                      list(context: context, text: '$motherName2', function: () {}, count: 1),
 
                     ],
                   ),
@@ -73,17 +56,11 @@ class NassapScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      list(context: context,
-                      text: '$fatherName',
-                      function: () {},
-                      count: 1),
+                      list(context: context, text: '$fatherName', function: () {}, count: 1),
                       SizedBox(
                         height: 35.0,
                       ),
-                      list(context: context,
-                          text: '$motherName',
-                          function: () {},
-                          count: 1),
+                      list(context: context, text: '$motherName', function: () {}, count: 1),
 
                     ],
                   ),
@@ -91,9 +68,7 @@ class NassapScreen extends StatelessWidget {
               }
               return list(context: context, text: '$horseName', function: (){}, count: 1);
             },
-            separatorBuilder: (context, index) =>SizedBox(width: 20),
-            itemCount: 3,
-            shrinkWrap: true,
+            separatorBuilder: (context, index) =>SizedBox(width: 20), itemCount: 3, shrinkWrap: true,
           ),
         ),
       ),

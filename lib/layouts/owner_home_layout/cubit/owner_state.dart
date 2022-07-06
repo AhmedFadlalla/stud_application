@@ -221,3 +221,12 @@ class GetHorsesSecDataErrorState extends OwnerState{
 
   GetHorsesSecDataErrorState(this.error);
 }
+
+class OwnerLikePostSuccessfulState extends OwnerState{}
+
+class OwnerSocialLikePostErrorState extends OwnerState{}
+
+class OwnerPostCommentSuccessfulState extends OwnerState{}
+
+class OwnerPostCommentPostErrorState extends OwnerState{}
+

@@ -9,6 +9,7 @@ import 'package:graduation_project/shared/component/components.dart';
 
 import '../../../layouts/owner_home_layout/cubit/owner_cubit.dart';
 import '../../../layouts/owner_home_layout/cubit/owner_state.dart';
+import '../../../shared/component/constants.dart';
 
 class DoctorHomeScreen extends StatelessWidget {
   const DoctorHomeScreen({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class DoctorHomeScreen extends StatelessWidget {
           var cubit=OwnerCubit.get(context);
           Size size = MediaQuery.of(context).size;
           return Scaffold(
-            backgroundColor: Color(0xFF4DB6AC),
+            backgroundColor: isDark !=false?Colors.black:Colors.white,
             floatingActionButton: FloatingActionButton(
               backgroundColor: Colors.white,
               onPressed: (){
@@ -92,14 +93,16 @@ class DoctorHomeScreen extends StatelessWidget {
     child: Container(
       margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
       height: 190.0,
+
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           Container(
             height: 160.0,
+
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(22),
-                color: Colors.white,
+                color:  Color(0xFF4DB6AC),
                 boxShadow: [
                   BoxShadow(
                       offset: Offset(0, 25),
@@ -140,8 +143,8 @@ class DoctorHomeScreen extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            'العنبر :',
-                            style: TextStyle(color: Colors.black, fontSize: 28),
+                            ' العنبر :',
+                            style: TextStyle(color: Colors.black, fontSize: 22),
                           ),
                           SizedBox(
                             width: 5.0,
@@ -149,8 +152,8 @@ class DoctorHomeScreen extends StatelessWidget {
                           Text(
                             '${model.name}',
                             style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 28,
+                              color: Colors.black,
+                              fontSize: 22,
 
                             ),
                           ),

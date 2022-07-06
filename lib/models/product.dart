@@ -7,13 +7,18 @@ class HorseProductModel {
   late String productInfo;
   late String phone;
 
+  late String dateTime;
+  late String amount;
+
   HorseProductModel({
    required this.userId,
     required this.name,
     required this.price,
     required this.image,
     required this.productInfo,
-    required this.phone
+    required this.phone,
+    required this.dateTime,
+    required this.amount
 
 });
   HorseProductModel.fromJson(Map<String,dynamic>? json){
@@ -23,6 +28,8 @@ class HorseProductModel {
     image=json['image'];
     productInfo  =json['productInfo'];
     phone  =json['phone'];
+    dateTime  =json['dateTime'];
+    amount  =json['amount'];
   }
   Map<String,dynamic> toMap(){
     return
@@ -33,6 +40,8 @@ class HorseProductModel {
         'image':image,
         'productInfo':productInfo,
         'phone':phone,
+        'dateTime':dateTime,
+        'amount':amount,
       };
   }
 }

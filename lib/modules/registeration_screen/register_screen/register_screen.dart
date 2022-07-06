@@ -23,7 +23,7 @@ class RegisterScreen extends StatelessWidget {
         listener: (context,state){
 
           if(state is CreateUserSuccessState) {
-              navigateAndFinish(context, LoginScreen());
+            navigateAndFinish(context, LoginScreen());
 
 
           }
@@ -50,7 +50,7 @@ class RegisterScreen extends StatelessWidget {
                       Text(
                         'REGISTER',
                         style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                            color: defaultColor,
+                            color: Color(0xFF4DB6AC),
                             fontWeight: FontWeight.w600,
                             fontSize: 25.0
                         ),),
@@ -129,7 +129,7 @@ class RegisterScreen extends StatelessWidget {
 
                               },
                               bottomText: 'Confirm',
-                              backgroundColor: defaultColor,
+                              backgroundColor: Color(0xFF4DB6AC),
                               width: double.infinity),
                           fallback: (context)=>Center(child: CircularProgressIndicator()))
                     ],

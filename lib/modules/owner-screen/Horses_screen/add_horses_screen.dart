@@ -1,7 +1,10 @@
+
+
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_project/modules/owner-screen/Horses_screen/horse_complete_info.dart';
 import 'package:intl/intl.dart';
 // import 'package:intl/intl.dart';
 
@@ -31,12 +34,12 @@ class AddHorseScreen extends StatelessWidget {
           var farmController = TextEditingController();
           var microController = TextEditingController();
           var dateController = TextEditingController();
-          var sourceLocationController = TextEditingController();
+
 
           var formKey = GlobalKey<FormState>();
 
           var cubit = OwnerCubit.get(context);
-          farmController.text = cubit.ownerModel!.ownerName;
+          farmController.text = cubit.ownerModel!.studName;
 
           return Scaffold(
               body: Form(
@@ -59,7 +62,9 @@ class AddHorseScreen extends StatelessWidget {
                                     radius: 60.0,
                                     backgroundImage: cubit.horseImage == null
                                         ? NetworkImage(
-                                        'https://store-images.s-microsoft.com/image/apps.62288.13620585470013536.11ea7ace-068b-4450-a62e-2233e0b32064.39ccf900-bfd0-48d2-8259-e9bbfa50f4c2?mode=scale&q=90&h=300&w=300')
+                                        'https://cdn3.iconfinder.com/data/icons/horse-riding-sport/64/horse-riding-add-new-512.png'
+                                      // 'https://store-images.s-microsoft.com/image/apps.62288.13620585470013536.11ea7ace-068b-4450-a62e-2233e0b32064.39ccf900-bfd0-48d2-8259-e9bbfa50f4c2?mode=scale&q=90&h=300&w=300'
+                                    )
                                         : FileImage(cubit.horseImage!)
                                     as ImageProvider,
                                   ),
@@ -91,7 +96,7 @@ class AddHorseScreen extends StatelessWidget {
                                 return null;
                               },
                               label: 'يجب ادخال كود المايكروشيب',
-                              prefixIcon: Icons.drive_file_rename_outline),
+                              prefixIcon: Icons.info),
                           SizedBox(
                             height: 15.0,
                           ),
@@ -104,7 +109,7 @@ class AddHorseScreen extends StatelessWidget {
                                 }
                               },
                               label: 'اسم الحصان',
-                              prefixIcon: Icons.drive_file_rename_outline),
+                              prefixIcon: Icons.info),
                           SizedBox(
                             height: 15.0,
                           ),
@@ -120,7 +125,7 @@ class AddHorseScreen extends StatelessWidget {
                                       }
                                     },
                                     label: 'اسم الاب ',
-                                    prefixIcon: Icons.ad_units),
+                                    prefixIcon: Icons.drive_file_rename_outline),
                               ),
                               SizedBox(
                                 width: 7.0,
@@ -135,7 +140,7 @@ class AddHorseScreen extends StatelessWidget {
                                       }
                                     },
                                     label: 'اسم الام',
-                                    prefixIcon: Icons.ad_units),
+                                    prefixIcon: Icons.drive_file_rename_outline),
                               ),
                             ],
                           ),
@@ -154,7 +159,7 @@ class AddHorseScreen extends StatelessWidget {
                                       }
                                     },
                                     label: 'اسم الجد ',
-                                    prefixIcon: Icons.ad_units),
+                                    prefixIcon: Icons.drive_file_rename_outline),
                               ),
                               SizedBox(
                                 width: 7.0,
@@ -169,7 +174,7 @@ class AddHorseScreen extends StatelessWidget {
                                       }
                                     },
                                     label: 'اسم الجدة ',
-                                    prefixIcon: Icons.ad_units),
+                                    prefixIcon: Icons.drive_file_rename_outline),
                               ),
                             ],
                           ),
@@ -188,7 +193,7 @@ class AddHorseScreen extends StatelessWidget {
                                       }
                                     },
                                     label: 'اسم اب الجد ',
-                                    prefixIcon: Icons.ad_units),
+                                    prefixIcon: Icons.drive_file_rename_outline),
                               ),
                               SizedBox(
                                 width: 7.0,
@@ -203,7 +208,7 @@ class AddHorseScreen extends StatelessWidget {
                                       }
                                     },
                                     label: 'اسم ام الجدة ',
-                                    prefixIcon: Icons.ad_units),
+                                    prefixIcon: Icons.drive_file_rename_outline),
                               ),
                             ],
                           ),
@@ -219,7 +224,7 @@ class AddHorseScreen extends StatelessWidget {
                                 }
                               },
                               label: 'اسم المربي',
-                              prefixIcon: Icons.add),
+                              prefixIcon: Icons.info),
                           SizedBox(
                             height: 15.0,
                           ),
@@ -232,7 +237,7 @@ class AddHorseScreen extends StatelessWidget {
                                 }
                               },
                               label: 'اسم المزرعة',
-                              prefixIcon: Icons.add),
+                              prefixIcon: Icons.info),
                           SizedBox(
                             height: 20.0,
                           ),
@@ -245,102 +250,14 @@ class AddHorseScreen extends StatelessWidget {
                                 }
                               },
                               label: 'رقم العنبر ',
-                              prefixIcon: Icons.add),
+                              prefixIcon: Icons.info),
                           SizedBox(
                             height: 20.0,
                           ),
-                          BuildDropBottom(
-                            dropdownButtonTitle: ' اختر العنبر',
-                            function: (newValue) {
-                              cubit.onChangeSectionDropDownButton(newValue);
-                            },
-                            items: [
-                              'طلايق ',
-                              ' أمهات',
-                              'بكاري',
-                              'مهارة اناث',
-                              ' مهارة ذكور',
-                            ].map((valueItem) {
-                              return DropdownMenuItem(
-                                value: valueItem,
-                                child: Text(valueItem),
-                              );
-                            }).toList(),
-                            value: cubit.sectionValueChoose,
-                          ),
-                          SizedBox(
-                            height: 20.0,
-                          ),
-                          BuildDropBottom(
-                            dropdownButtonTitle: ' اختر نوع الحصان ',
-                            function: (newValue) {
-                              cubit.onChangeSpecificDropDownButton(newValue);
-                            },
-                            items: [
-                              'ادب ',
-                              ' رقص',
-                              'جمال',
-                              'سباق',
-                            ].map((valueItem) {
-                              return DropdownMenuItem(
-                                value: valueItem,
-                                child: Text(valueItem),
-                              );
-                            }).toList(),
-                            value: cubit.specificValueChoose,
-                          ),
-                          SizedBox(
-                            height: 20.0,
-                          ),
-                          BuildDropBottom(
-                            dropdownButtonTitle: ' اختر جنسية الحصان ',
-                            function: (newValue) {
-                              cubit.onChangeNationalityDropDownButton(newValue);
-                            },
-                            items: [
-                              'عربي ',
-                              ' انجليزي',
-                            ].map((valueItem) {
-                              return DropdownMenuItem(
-                                value: valueItem,
-                                child: Text(valueItem),
-                              );
-                            }).toList(),
-                            value: cubit.nationlityValueChoose,
-                          ),
-                          SizedBox(
-                            height: 20.0,
-                          ),
-                          BuildDropBottom(
-                            dropdownButtonTitle: ' اختر مصدر الحصان ',
-                            function: (newValue) {
-                              cubit.onChangeSourceDropDownButton(newValue);
-                            },
-                            items: [
-                              'محلي ',
-                              ' من الخارج',
-                            ].map((valueItem) {
-                              return DropdownMenuItem(
-                                value: valueItem,
-                                child: Text(valueItem),
-                              );
-                            }).toList(),
-                            value: cubit.sourceValueChoose,
-                          ),
-                          SizedBox(
-                            height: 15.0,
-                          ),
-                          defaultFormField(
-                              controller: sourceLocationController,
-                              type: TextInputType.text,
-                              label: 'عنوان هذا المصدر',
-                              prefixIcon: Icons.ad_units,
-                              validator: (value) {
-                                if (value.isEmpty) {
-                                  return 'هذا الفيلد مطلوب';
-                                }
-                                return null;
-                              }),
+
+
+
+
                           SizedBox(
                             height: 15.0,
                           ),
@@ -348,7 +265,7 @@ class AddHorseScreen extends StatelessWidget {
                               controller: boxnumController,
                               type: TextInputType.text,
                               label: 'رقم الصندوق',
-                              prefixIcon: Icons.ad_units,
+                              prefixIcon: Icons.info,
                               validator: (value) {
                                 if (value.isEmpty) {
                                   return 'هذا الفيلد مطلوب';
@@ -362,7 +279,7 @@ class AddHorseScreen extends StatelessWidget {
                               controller: priceController,
                               type: TextInputType.text,
                               label: 'السعر',
-                              prefixIcon: Icons.ad_units,
+                              prefixIcon: Icons.price_check_sharp,
                               validator: (value) {
                                 if (value.isEmpty) {
                                   return 'هذا الفيلد مطلوب';
@@ -372,234 +289,82 @@ class AddHorseScreen extends StatelessWidget {
                           SizedBox(
                             height: 15.0,
                           ),
-                          // Row(
-                          //   children: [
-                          //     Expanded(child: Text('يجب ادخال تاريخ ميلاد الحصان ')),
-                          //     Expanded(
-                          //       child: BuildDropBottom(
-                          //         dropdownButtonTitle: ' اليوم ',
-                          //         function: (newValue) {
-                          //           cubit.onChangeDayDropDownButton(newValue);
-                          //         },
-                          //         items: [
-                          //           '1',
-                          //           '2',
-                          //           '3',
-                          //           '4',
-                          //           '5',
-                          //           '6',
-                          //           '7',
-                          //           '6',
-                          //           '8',
-                          //           '9',
-                          //           '10',
-                          //           '11',
-                          //           '12',
-                          //           '13',
-                          //           '14',
-                          //           '15',
-                          //           '16',
-                          //           '17',
-                          //           '18',
-                          //           '19',
-                          //           '20',
-                          //           '21',
-                          //           '22',
-                          //           '23',
-                          //           '24',
-                          //           '25',
-                          //           '26',
-                          //           '27',
-                          //           '28',
-                          //           '29',
-                          //           '30',
-                          //           '31'
-                          //         ].map((valueItem) {
-                          //           return DropdownMenuItem(
-                          //             value: valueItem,
-                          //             child: Text(valueItem),
-                          //           );
-                          //         }).toList(),
-                          //         value: cubit.DayValueChoose,
-                          //       ),
-                          //     ),
-                          //     Expanded(
-                          //       child: BuildDropBottom(
-                          //         dropdownButtonTitle: ' الشهر ',
-                          //         function: (newValue) {
-                          //           cubit.onChangeMonthsDropDownButton(newValue);
-                          //         },
-                          //         items: [
-                          //           'يناير',
-                          //           'فبراير',
-                          //           'مارس',
-                          //           'ابريل',
-                          //           'مايو',
-                          //           'يونيو',
-                          //           'يوليو',
-                          //           'اغسطس',
-                          //           'سبتمبر',
-                          //           'اكتوبر',
-                          //           'نوفمبر',
-                          //           'ديسمبر'
-                          //         ].map((valueItem) {
-                          //           return DropdownMenuItem(
-                          //             value: valueItem,
-                          //             child: Text(valueItem),
-                          //           );
-                          //         }).toList(),
-                          //         value: cubit.MonthsValueChoose,
-                          //       ),
-                          //     ),
-                          //     Expanded(
-                          //       child: Directionality(
-                          //         textDirection: TextDirection.rtl,
-                          //         child: defaultFormField(
-                          //             controller: dateController,
-                          //             type: TextInputType.text,
-                          //             label: 'السنة',
-                          //             prefixIcon: Icons.timeline_outlined,
-                          //             validator: (value) {
-                          //               if (value.isEmpty) {
-                          //                 return 'هذا الفيلد مطلوب';
-                          //               }
-                          //               return null;
-                          //             }),
-                          //       ),
-                          //     ),
-                          //   ],
-                          // ),
+
 
                           defaultFormField(
-                              controller: dateController,
-                              type: TextInputType.datetime,
+                            controller: dateController,
+                            type: TextInputType.datetime,
 
-                              validator: (value){
-                                if(value.isEmpty){
-                                  return 'يجب ادخال التاريخ';
-                                }
-                                return null;
-                              },
-                              label: 'ادخل تاريخ الميلاد',
+                            validator: (value){
+                              if(value.isEmpty){
+                                return 'يجب ادخال التاريخ';
+                              }
+                              return null;
+                            },
+                            label: 'ادخل تاريخ الميلاد',
 
-                              prefixIcon: Icons.date_range,
+                            prefixIcon: Icons.date_range,
 
                             prefixIconTapFunction: (){
-                                showDatePicker(
-                                    context: context,
-                                    initialDate: DateTime.now(),
-                                    firstDate: DateTime.parse('1990-01-01'),
-                                    lastDate:DateTime.now())
-                                    .then((value) {
-                                      dateController.text=DateFormat.yMMMd().format(value!);
+                              showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime.parse('1990-01-01'),
+                                  lastDate:DateTime.now())
+                                  .then((value) {
+                                dateController.text=DateFormat.yMMMd().format(value!);
 
-                                });
+                              });
                             },),
+
+
+
                           SizedBox(
                             height: 15.0,
                           ),
-                          BuildDropBottom(
-                            dropdownButtonTitle: ' اختر الرسن',
-                            function: (newValue) {
-                              cubit.onChangeRasanDropDownButton(newValue);
+
+
+
+
+
+
+
+
+
+
+
+                          SizedBox(height: 15.0,),
+
+                          defaultButton(
+                            text: 'التالي',
+                            function: () {
+                              if(formKey.currentState!.validate()){
+                                navigateTo(context, HorseCompleteInfoScreen(
+                                    name: horsenameController.text,
+                                    microShip: microController.text,
+                                    fatherName: fathernameController.text,
+                                    fatherName1: fathername1Controller.text,
+                                    fatherName2: fathername2Controller.text,
+                                    motherName: mothernameController.text,
+                                    motherName1: mothername1Controller.text,
+                                    motherName2: mothername2Controller.text,
+                                    horseOwner: ownernameController.text,
+                                    studName: farmController.text,
+                                    sectionNum: sectionNumberController.text,
+                                    price: priceController.text,
+                                    boxNum: boxnumController.text,
+                                    birthDate: priceController.text,
+                                    image: cubit.horseImage != null?cubit.horseImage:'https://cdn.pixabay.com/photo/2017/12/10/15/16/white-horse-3010129_1280.jpg'
+                                  ,
+                                ));
+                              }
                             },
-                            items: [
-                              ' كحيلان',
-                              ' صقلاوي',
-                              ' دهمان',
-                              ' عبيان',
-                              ' هدبان',
-                            ].map((valueItem) {
-                              return DropdownMenuItem(
-                                value: valueItem,
-                                child: Text(valueItem),
-                              );
-                            }).toList(),
-                            value: cubit.rasanValueChoose,
                           ),
-                          SizedBox(
-                            height: 20.0,
-                          ),
-                          BuildDropBottom(
-                            dropdownButtonTitle: ' اختر النوع',
-                            function: (newValue) {
-                              cubit.onChangeGanderItem(newValue);
-                            },
-                            items: [
-                              ' ذكر',
-                              ' انثي',
-                            ].map((valueItem) {
-                              return DropdownMenuItem(
-                                value: valueItem,
-                                child: Text(valueItem),
-                              );
-                            }).toList(),
-                            value: cubit.ganderValueChoose,
-                          ),
-                          SizedBox(
-                            height: 20.0,
-                          ),
-                          BuildDropBottom(
-                            dropdownButtonTitle: ' اختر  اللون',
-                            function: (newValue) {
-                              cubit.onChangeColorItem(newValue);
-                            },
-                            items: [
-                              'ابيض',
-                              'اشهب',
-                              'ادهم',
-                              'الأحمر(الكميت)',
-                              'الأشقر(الأصفر)',
-                              'بني',
-                              'الرمادي (الأشيب)'
-                            ].map((valueItem) {
-                              return DropdownMenuItem(
-                                value: valueItem,
-                                child: Text(valueItem),
-                              );
-                            }).toList(),
-                            value: cubit.colorValueChoose,
-                          ),
-                          SizedBox(
-                            height: 20.0,
-                          ),
-                          ConditionalBuilder(
-                              condition: state is! CreateHorseLoadingState,
-                              builder: (context) => defaultButton(
-                                  text: 'Submit',
-                                  function: () {
-                                    print(cubit.sectionValueChoose as String);
-                                    print(microController.text);
-                                    if (formKey.currentState!.validate()) {
-                                      cubit.uploadHorseImage(
-                                        horseName: horsenameController.text,
-                                        fatherName: fathernameController.text,
-                                        fatherName1: fathername1Controller.text,
-                                        fatherName2: fathername2Controller.text,
-                                        motherName: mothernameController.text,
-                                        motherName1: mothername1Controller.text,
-                                        motherName2: mothername2Controller.text,
-                                        sectionNUmber: sectionNumberController.text,
-                                        sectionName:
-                                        cubit.sectionValueChoose as String,
-                                        boxNum: boxnumController.text,
-                                        owner: ownernameController.text,
-                                        dateTime: dateController.text,
-                                        initPrice: priceController.text,
-                                        microshipCode: microController.text,
-                                        type: cubit.rasanValueChoose as String,
-                                        color: cubit.colorValueChoose as String,
-                                        gander: cubit.ganderValueChoose as String,
-                                        specific: cubit.specificValueChoose as String,
-                                        nationality:
-                                        cubit.nationlityValueChoose as String,
-                                        source: cubit.sourceValueChoose as String,
-                                        sourceLocation: sourceLocationController.text,
-                                      );
-                                    }
-                                  }),
-                              fallback: (context) =>
-                                  Center(child: CircularProgressIndicator()))
+
+
+
+
+
                         ],
                       ),
                     )),

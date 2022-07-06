@@ -103,38 +103,43 @@ class DocSettingsScreen extends StatelessWidget {
               },
             ),
             myDivider(),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    child: Row(
-                      children: [
+            InkWell(
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      child: Row(
+                        children: [
 
-                        IconButton(
-                          onPressed: (){
-                            appCubit.get(context).changeMode();
+                          IconButton(
+                            onPressed: (){
+                              appCubit.get(context).changeMode();
 
-                          },
-                          icon: Icon(
-                            Icons.dark_mode,
-                            size: 35,
-                          ),),
-                        Text('Dark Mode',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            height: 1.3,
+                            },
+                            icon: Icon(
+                              Icons.dark_mode,
+                              size: 35,
+                            ),),
+                          Text('Dark Mode',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              height: 1.3,
 
-                          ),),
+                            ),),
 
 
 
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
+              onTap: (){
+                appCubit.get(context).changeMode();
+              },
             ),
             Spacer(),
             defaultButton(

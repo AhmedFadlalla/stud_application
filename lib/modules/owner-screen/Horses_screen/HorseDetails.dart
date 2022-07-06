@@ -11,11 +11,9 @@ import '../../../shared/component/constants.dart';
 
 class HorseDetailsScreen extends StatelessWidget {
   const HorseDetailsScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-
     double width = MediaQuery.of(context).size.width;
     var horsenameController = TextEditingController();
     var sectionController = TextEditingController();
@@ -27,15 +25,11 @@ class HorseDetailsScreen extends StatelessWidget {
     var ganderController = TextEditingController();
     var nationalityController = TextEditingController();
     var boxNumController = TextEditingController();
-
     var ownerController=TextEditingController();
     var specificController = TextEditingController();
     var sourceController = TextEditingController();
     var sourceLocationController = TextEditingController();
     var colorController=TextEditingController();
-    // var horsenameController = TextEditingController();
-    // var horsenameController = TextEditingController();
-    // var horsenameController = TextEditingController();
 
     return BlocConsumer<OwnerCubit, OwnerState>(
         builder: (context, state) {
@@ -53,7 +47,7 @@ class HorseDetailsScreen extends StatelessWidget {
           colorController.text=cubit.horseData[cubit.index].color;
           sourceController.text=cubit.horseData[cubit.index].source;
           sourceLocationController.text=cubit.horseData[cubit.index].sourceLocation;
-          ownerController.text=cubit.horseData[cubit.index].source;
+          ganderController.text=cubit.horseData[cubit.index].gander;
           print(cubit.index);
           return Scaffold(
             appBar: AppBar(
@@ -63,19 +57,14 @@ class HorseDetailsScreen extends StatelessWidget {
               actions: [
                 IconButton(
                     onPressed: (){
-
-                      cubit.deleteHorse(secId: cubit.horseModel!.sectionName, horseId:cubit.horseModel!.microshipCode );
-
+                      cubit.deleteHorse(secId: cubit.horseModel!.sectionName,
+                          horseId:cubit.horseModel!.microshipCode );
                     }, icon: Icon(
                     Icons.delete
                 )),
                 IconButton(
-                    onPressed: (){
-
-                      cubit.updateHorseData(
-                          secId: cubit.horseModel!.sectionName,
-                          horseId: microshipController.text,
-                          horseName: horsenameController.text,
+                    onPressed: (){cubit.updateHorseData(secId: cubit.horseModel!.sectionName,
+                          horseId: microshipController.text, horseName: horsenameController.text,
                           horseImage: cubit.horseData[cubit.index].horseImage,
                           fatherName: cubit.horseData[cubit.index].fatherName,
                           fatherName1: cubit.horseData[cubit.index].fatherName1,
@@ -84,18 +73,12 @@ class HorseDetailsScreen extends StatelessWidget {
                           motherName1: cubit.horseData[cubit.index].motherName1,
                           motherName2: cubit.horseData[cubit.index].motherName2,
                           sectionNUmber: sectionNumController.text,
-                          sectionName: sectionController.text,
-                          boxNum: boxNumController.text,
-                          owner: ownerController.text,
-                          initPrice: priceController.text,
-                          dateTime: birthDateController.text,
-                          microshipCode: microshipController.text,
-                          type: typeController.text,
-                          color: colorController.text,
-                          gander: ganderController.text,
-                          specific: specificController.text,
-                          nationality: nationalityController.text,
-                          source: sourceController.text,
+                          sectionName: sectionController.text, boxNum: boxNumController.text,
+                          owner: ownerController.text, initPrice: priceController.text,
+                          dateTime: birthDateController.text, microshipCode: microshipController.text,
+                          type: typeController.text, color: colorController.text,
+                          gander: ganderController.text, specific: specificController.text,
+                          nationality: nationalityController.text, source: sourceController.text,
                           sourceLocation: sourceLocationController.text);
 
 
@@ -133,33 +116,31 @@ class HorseDetailsScreen extends StatelessWidget {
                           height: height * 0.01,
 
                         ),
-                        Container(
-                          height: 250,
-                            width: width,
-                            padding: EdgeInsets.only(top: 1),
-                            margin: EdgeInsets.only(top: 1,),
-                            decoration:BoxDecoration(
-                              borderRadius:BorderRadius.circular(20),
-
-                            ) ,
-                            child: Container(
-                              width: width,
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Image(
-                                    image: NetworkImage(
-                                        '${cubit.horseData[cubit.index].horseImage}')),
+                        Card(
+                      elevation: 22.0,
+                      clipBehavior: Clip.antiAlias,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      child: Column(
+                        children: [
+                          Stack(
+                            alignment: Alignment.bottomCenter,
+                            children: [
+                              Image(
+                                image: NetworkImage(
+                                    '${cubit.horseData[cubit.index].horseImage}'),
+                                width: double.infinity,
+                                height: 250.0,
+                                fit: BoxFit.fill,
                               ),
-                              decoration:BoxDecoration(
-                                  borderRadius:BorderRadius.circular(22),
-
-
-                              ),
-                            )
-                        ),
-                        SizedBox(height: 20.0,),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                        SizedBox(height: 25.0,),
                         Container(
-
                           child: Padding(
                             padding: const EdgeInsets.only(right: 10.0),
                             child: Column(
@@ -167,105 +148,169 @@ class HorseDetailsScreen extends StatelessWidget {
                                 SizedBox(
                                   height: 5.0,
                                 ),
-                                defaultFormField(
-                                    controller: horsenameController,
-                                    type: TextInputType.name,
-                                    validator: (value){
+                                Row(
+                                  children: [
+                                    Expanded(child: horseFormField(controller: horsenameController, type: TextInputType.name,
+                                            validator: (value){
+                                              if(value.isEmpty){
+                                                return 'يجب ادخال البيانات';
+                                              }
+                                              return null;
+                                            },
+                                            hintText: 'اسم الحصان', prefixIcon: Icons.person, label: 'اسم الحصان'), ),
+                                    SizedBox(width: 10.0,),
+                                    Expanded(child: horseFormField(controller:microshipController, type: TextInputType.name,
+                                        validator: (value){
+                                          if(value.isEmpty){
+                                            return 'يجب ادخال البيانات';
+                                          }
+                                          return null;
+                                        },
+                                        prefixIcon: Icons.person, label: 'المايكروشيب'),)
+                                  ],
+                                ),
+                                
+                                SizedBox(height: 15.0,),
+                                Row(
+                                  children: [
+                                    Expanded(child: horseFormField(controller: sectionController, type: TextInputType.name,
+                                          validator: (value){
+                                            if(value.isEmpty){
+                                              return 'يجب ادخال البيانات';
+                                            }
+                                            return null;
+                                          },
+                                          hintText: 'العنبر', prefixIcon: Icons.local_fire_department, label: 'العنبر'),),
+                                    SizedBox(width: 10.0,),
+                                    Expanded(child: horseFormField(controller: sectionNumController, type: TextInputType.name,
+                                          validator: (value){
+                                            if(value.isEmpty){
+                                              return 'يجب ادخال البيانات';
+                                            }
+                                            return null;
+                                          },
+                                          hintText: 'العنبر', prefixIcon: Icons.local_fire_department, label: 'رقم العنبر'),)
+                                  ],
+                                ),
 
-                                      if(value.isEmpty){
-                                        return 'يجب ادخال البيانات';
-                                      }
-                                      return null;
-                                    },
-                                    hintText: 'اسم الحصان',
+                                SizedBox(height: 15.0,),
+                                Row(children: [
+                                    Expanded(child: horseFormField(controller:priceController, type: TextInputType.name,
+                                          validator: (value){
+                                            if(value.isEmpty){
+                                              return 'يجب ادخال البيانات';
+                                            }
+                                            return null;
+                                          },
+                                          prefixIcon: Icons.person, label: 'السعر'),),
+                                    SizedBox(width: 10.0,),
+                                    Expanded(child: horseFormField(controller:boxNumController, type: TextInputType.name,
+                                          validator: (value){
+                                            if(value.isEmpty){
+                                              return 'يجب ادخال البيانات';
+                                            }
+                                            return null;
+                                          },
+                                          prefixIcon: Icons.person, label: 'رقم الصندوق'),)
+                                  ],
+                                ),
 
-                                    prefixIcon: Icons.person, label: 'اسم الحصان'),
+
+                                SizedBox(height: 15.0,),
+                                Row(
+                                  children: [
+                                    Expanded(child: horseFormField(controller:typeController, type: TextInputType.name,
+                                          validator: (value){
+                                            if(value.isEmpty){
+                                              return 'يجب ادخال البيانات';
+                                            }
+                                            return null;
+                                          },
+                                          prefixIcon: Icons.person, label: 'الرسن'),),
+                                    SizedBox(width: 10.0,),
+                                    Expanded(child: horseFormField(controller:specificController, type: TextInputType.name,
+                                          validator: (value){
+                                            if(value.isEmpty){
+                                              return 'يجب ادخال البيانات';
+                                            }
+                                            return null;
+                                          },
+                                          prefixIcon: Icons.person, label: 'الفئه'),)
+                                  ],
+                                ),
+                                
                                 SizedBox(height: 15.0,),
 
-                                defaultFormField(
-                                    controller: sectionController,
-                                    type: TextInputType.name,
-                                    validator: (value){
-
-                                      if(value.isEmpty){
-                                        return 'يجب ادخال البيانات';
-                                      }
-                                      return null;
-                                    },
-                                    hintText: 'العنبر',
-
-                                    prefixIcon: Icons.local_fire_department, label: 'العنبر'),
+                                Row(
+                                  children: [
+                                    Expanded(child: horseFormField(controller:nationalityController, type: TextInputType.name,
+                                          validator: (value){
+                                            if(value.isEmpty){
+                                              return 'يجب ادخال البيانات';
+                                            }
+                                            return null;
+                                          },
+                                          prefixIcon: Icons.person, label: 'الجنسية'),),
+                                    SizedBox(width: 10.0,),
+                                    Expanded(child: horseFormField(controller:birthDateController, type: TextInputType.name,
+                                          validator: (value){
+                                            if(value.isEmpty){
+                                              return 'يجب ادخال البيانات';
+                                            }
+                                            return null;
+                                          },
+                                          prefixIcon: Icons.person, label: 'تاريخ الميلاد'),)
+                                  ],
+                                ),
                                 SizedBox(height: 15.0,),
 
-                                defaultFormField(
-                                    controller: sectionNumController,
-                                    type: TextInputType.name,
-                                    validator: (value){
-
-                                      if(value.isEmpty){
-                                        return 'يجب ادخال البيانات';
-                                      }
-                                      return null;
-                                    },
-                                    hintText: 'العنبر',
-
-                                    prefixIcon: Icons.local_fire_department, label: 'رقم العنبر'),
+                                Row(
+                                  children: [
+                                    Expanded(child: horseFormField(controller:typeController, type: TextInputType.name,
+                                          validator: (value){
+                                            if(value.isEmpty){
+                                              return 'يجب ادخال البيانات';
+                                            }
+                                            return null;
+                                          },
+                                          prefixIcon: Icons.person, label: 'الرسن'),),
+                                    SizedBox(width: 10.0,),
+                                    Expanded(child: horseFormField(controller:colorController, type: TextInputType.name,
+                                          validator: (value){
+                                            if(value.isEmpty){
+                                              return 'يجب ادخال البيانات';
+                                            }
+                                            return null;
+                                          },
+                                          prefixIcon: Icons.person, label: 'اللون'),)
+                                  ],
+                                ),
                                 SizedBox(height: 15.0,),
+                                Row(
+                                  children: [
+                                    Expanded(child: horseFormField(controller:sourceController, type: TextInputType.name,
+                                          validator: (value){
+                                            if(value.isEmpty){
+                                              return 'يجب ادخال البيانات';
+                                            }
+                                            return null;
+                                          },
+                                          prefixIcon: Icons.person, label: 'المصدر'),),
+                                    SizedBox(width: 10.0,),
+                                    Expanded(child: horseFormField(controller:sourceLocationController, type: TextInputType.name,
+                                          validator: (value){
 
-
-                                defaultFormField(
-                                    controller:microshipController,
-                                    type: TextInputType.name,
-                                    validator: (value){
-
-                                      if(value.isEmpty){
-                                        return 'يجب ادخال البيانات';
-                                      }
-                                      return null;
-                                    },
-                                    prefixIcon: Icons.person, label: 'المايكروشيب'),
+                                            if(value.isEmpty){
+                                              return 'يجب ادخال البيانات';
+                                            }
+                                            return null;
+                                          },
+                                          prefixIcon: Icons.person, label: 'مكان المصدر'),)
+                                  ],
+                                ),
                                 SizedBox(height: 15.0,),
-                                defaultFormField(
-                                    controller:priceController,
-                                    type: TextInputType.name,
+                                horseFormField(controller:ganderController, type: TextInputType.name,
                                     validator: (value){
-
-                                      if(value.isEmpty){
-                                        return 'يجب ادخال البيانات';
-                                      }
-                                      return null;
-                                    },
-                                    prefixIcon: Icons.person, label: 'السعر'),
-                                SizedBox(height: 15.0,),
-                                defaultFormField(
-                                    controller:birthDateController,
-                                    type: TextInputType.name,
-                                    validator: (value){
-
-                                      if(value.isEmpty){
-                                        return 'يجب ادخال البيانات';
-                                      }
-                                      return null;
-                                    },
-                                    prefixIcon: Icons.person, label: 'تاريخ الميلاد'),
-                                SizedBox(height: 15.0,),
-                                defaultFormField(
-                                    controller:typeController,
-                                    type: TextInputType.name,
-                                    validator: (value){
-
-                                      if(value.isEmpty){
-                                        return 'يجب ادخال البيانات';
-                                      }
-                                      return null;
-                                    },
-                                    prefixIcon: Icons.person, label: 'الرسن'),
-                                SizedBox(height: 15.0,),
-                                defaultFormField(
-                                    controller:ganderController,
-                                    type: TextInputType.name,
-                                    validator: (value){
-
                                       if(value.isEmpty){
                                         return 'يجب ادخال البيانات';
                                       }
@@ -273,106 +318,26 @@ class HorseDetailsScreen extends StatelessWidget {
                                     },
                                     prefixIcon: Icons.person, label: 'النوع'),
                                 SizedBox(height: 15.0,),
-                                defaultFormField(
-                                    controller:nationalityController,
-                                    type: TextInputType.name,
-                                    validator: (value){
-
-                                      if(value.isEmpty){
-                                        return 'يجب ادخال البيانات';
-                                      }
-                                      return null;
-                                    },
-                                    prefixIcon: Icons.person, label: 'الجنسية'),
-                                SizedBox(height: 15.0,),
-                                defaultFormField(
-                                    controller:boxNumController,
-                                    type: TextInputType.name,
-                                    validator: (value){
-
-                                      if(value.isEmpty){
-                                        return 'يجب ادخال البيانات';
-                                      }
-                                      return null;
-                                    },
-                                    prefixIcon: Icons.person, label: 'رقم الصندوق'),
-                                SizedBox(height: 15.0,),
-                                defaultFormField(
-                                    controller:specificController,
-                                    type: TextInputType.name,
-                                    validator: (value){
-
-                                      if(value.isEmpty){
-                                        return 'يجب ادخال البيانات';
-                                      }
-                                      return null;
-                                    },
-                                    prefixIcon: Icons.person, label: 'التخصص'),
-                                SizedBox(height: 15.0,),
-                                defaultFormField(
-                                    controller:colorController,
-                                    type: TextInputType.name,
-                                    validator: (value){
-
-                                      if(value.isEmpty){
-                                        return 'يجب ادخال البيانات';
-                                      }
-                                      return null;
-                                    },
-                                    prefixIcon: Icons.person, label: 'اللون'),
-                                SizedBox(height: 15.0,),
-                                defaultFormField(
-                                    controller:sourceController,
-                                    type: TextInputType.name,
-                                    validator: (value){
-
-                                      if(value.isEmpty){
-                                        return 'يجب ادخال البيانات';
-                                      }
-                                      return null;
-                                    },
-                                    prefixIcon: Icons.person, label: 'المصدر'),
-                                SizedBox(height: 15.0,),
-                                defaultFormField(
-                                    controller:sourceLocationController,
-                                    type: TextInputType.name,
-                                    validator: (value){
-
-                                      if(value.isEmpty){
-                                        return 'يجب ادخال البيانات';
-                                      }
-                                      return null;
-                                    },
-                                    prefixIcon: Icons.person, label: 'مكان المصدر'),
-                                SizedBox(height: 15.0,),
                                 Row(
                                   children: [
                                     Text(
                                         'لاستعراض شهادة النسب',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-
+                                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold,
+                                          color: isDark==true ? Colors.white:Colors.black
                                       ),
                                     ),
                                     TextButton(
-                                        onPressed: (){
-
-                                          navigateTo(context, NassapScreen(
-                                              horseName:cubit.horseData[cubit.index].horseName ,
+                                        onPressed: (){navigateTo(context, NassapScreen(
+                                            horseName:cubit.horseData[cubit.index].horseName ,
                                               fatherName: cubit.horseData[cubit.index].fatherName,
                                               fatherName1: cubit.horseData[cubit.index].fatherName1,
                                               fatherName2: cubit.horseData[cubit.index].fatherName2,
                                               motherName: cubit.horseData[cubit.index].motherName,
                                               motherName1: cubit.horseData[cubit.index].motherName1,
                                               motherName2: cubit.horseData[cubit.index].motherName2));
-                                        },
-                                        child: Text(
+                                        }, child: Text(
                                             'اضغط هنا',
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.blue
+                                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.blue
                                           ),
                                         )
                                     )

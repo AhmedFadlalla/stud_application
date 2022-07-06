@@ -27,12 +27,98 @@ class DocHomeScreen extends StatelessWidget {
       (
         builder: (context,state){
 
+          return SingleChildScrollView(
+            child:ConditionalBuilder(
+              condition: cubit.horses.length>0,
+              builder:(context)=>SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: height*0.1,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
 
-        return SingleChildScrollView(
-          child:ConditionalBuilder(
-            condition: cubit.horses.length>0,
-            builder:(context)=>SingleChildScrollView(
-              child: Column(
+
+                        Text(
+                          'Welcome ',
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+                            width: double.infinity,
+                            height: 60.0,
+                            child: defaultButton(
+                                width:double.infinity,
+                                function:(){Navigator.push(context, MaterialPageRoute(builder: (context)=>AlekaHomeScreen()));},
+                                text:' العلائق',
+                                fontSize: 30.0
+
+
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: InkWell(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>CareHorse()));
+                            },
+                            child: Container(
+                              margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+                              width: double.infinity,
+                              height: 60.0,
+                              child: defaultButton(
+                                  width:double.infinity,
+
+                                  function:(){ Navigator.push(context, MaterialPageRoute(builder: (context)=>CareHorse()));},
+                                  text:'التغذية',
+                                  fontSize: 30.0
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Center(
+                      child: Container(
+                        margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+                        padding: EdgeInsets.only(right: 8.0,left: 8.0),
+                        height: 35.0,
+                        color: Colors.white,
+                        child: Text(
+                          'Your Horses',
+                          style: TextStyle(
+                              fontSize: 25.0,
+                              fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      ),
+                    ),
+                    ListView.separated(
+                        physics: BouncingScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context,index)=>buildHorseCard(
+                            cubit.horses[index],
+                            size,
+                            index,
+                            context
+                        ),
+                        separatorBuilder:(context,index)=> myDivider(),
+                        itemCount: cubit.horses.length)
+
+                  ],
+                ),
+              ) ,
+              fallback:(context)=>Center(child: Column(
                 children: [
                   SizedBox(
                     height: height*0.1,
@@ -62,7 +148,7 @@ class DocHomeScreen extends StatelessWidget {
                               width:double.infinity,
                               function:(){Navigator.push(context, MaterialPageRoute(builder: (context)=>AlekaHomeScreen()));},
                               text:' العلائق',
-                            fontSize: 30.0
+                              fontSize: 30.0
 
 
                           ),
@@ -80,144 +166,61 @@ class DocHomeScreen extends StatelessWidget {
                             child: defaultButton(
                                 width:double.infinity,
 
-                                function:(){ Navigator.push(context, MaterialPageRoute(builder: (context)=>CareHorse()));},
+                                function:(){Navigator.push(context, MaterialPageRoute(builder: (context)=>CareHorse()));},
                                 text:'التغذية',
                                 fontSize: 30.0
+
                             ),
                           ),
                         ),
                       ),
                     ],
                   ),
+
+
                   Center(
                     child: Container(
                       margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
                       padding: EdgeInsets.only(right: 8.0,left: 8.0),
                       height: 35.0,
-                      color: Colors.blue,
+                      color: Colors.white,
                       child: Text(
                         'Your Horses',
                         style: TextStyle(
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.bold
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold
                         ),
                       ),
                     ),
                   ),
-                  ListView.separated(
-                      physics: BouncingScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (context,index)=>buildHorseCard(
-                          cubit.horses[index],
-                          size,
-                          index,
-                          context
-                      ),
-                      separatorBuilder:(context,index)=> myDivider(),
-                      itemCount: cubit.horses.length)
 
+
+                  Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      Image(
+                        image: NetworkImage('https://www.europeanequinelawyers.com/wp-content/uploads/2018/03/brexit-1024x682.jpg'),
+                      ),
+                      Text(
+                        'No horses Yet !!!!',
+                        style: TextStyle(
+                          fontSize: 30.0,
+                        ),
+                      )
+                    ],
+                  ),
                 ],
-              ),
+              ))  ,
             ) ,
-            fallback:(context)=>Center(child: Column(
-              children: [
-                SizedBox(
-                  height: height*0.1,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-
-
-                    Text(
-                      'Welcome ',
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-                        width: double.infinity,
-                        height: 60.0,
-                        child: defaultButton(
-                            width:double.infinity,
-                            function:(){Navigator.push(context, MaterialPageRoute(builder: (context)=>AlekaHomeScreen()));},
-                            text:' العلائق',
-                            fontSize: 30.0
-
-
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: InkWell(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>CareHorse()));
-                        },
-                        child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-                          width: double.infinity,
-                          height: 60.0,
-                          child: defaultButton(
-                              width:double.infinity,
-
-                              function:(){Navigator.push(context, MaterialPageRoute(builder: (context)=>CareHorse()));},
-                              text:'التغذية',
-                            fontSize: 30.0
-
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Center(
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-                    padding: EdgeInsets.only(right: 8.0,left: 8.0),
-                    height: 35.0,
-                    color: Colors.blue,
-                    child: Text(
-                      'Your Horses',
-                      style: TextStyle(
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.bold
-                      ),
-                    ),
-                  ),
-                ),
-                Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    Image(
-                      image: NetworkImage('https://www.europeanequinelawyers.com/wp-content/uploads/2018/03/brexit-1024x682.jpg'),
-                    ),
-                    Text(
-                      'No horses Yet !!!!',
-                      style: TextStyle(
-                        fontSize: 30.0,
-                      ),
-                    )
-                  ],
-                ),
-              ],
-            ))  ,
-          ) ,
-        );
-    },
+          );
+        },
         listener: (context,state){
           if (state is GetDocSuccessfulState)
-            {
-              cubit.getDocFullData();
-              cubit.getHorses();
+          {
+            cubit.getDocFullData();
+            cubit.getHorses();
 
-            }
+          }
 
 
 
@@ -275,7 +278,7 @@ class DocHomeScreen extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Text('الاسم :', style: TextStyle(color: Colors.red, fontSize: 20),
+                          Text(' الاسم :', style: TextStyle(color: Colors.black, fontSize: 20),
                           ),
                           SizedBox(
                             width: 5.0,
@@ -283,7 +286,7 @@ class DocHomeScreen extends StatelessWidget {
                           Text(
                             '${model.horseName}',
                             style: TextStyle(
-                                color: Colors.brown,
+                                color: Colors.black,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold
                             ),
@@ -293,8 +296,8 @@ class DocHomeScreen extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            'الاب :',
-                            style: TextStyle(color: Colors.red, fontSize: 20),
+                            ' الاب :',
+                            style: TextStyle(color: Colors.black, fontSize: 20),
                           ),
                           SizedBox(
                             width: 5.0,
@@ -302,7 +305,7 @@ class DocHomeScreen extends StatelessWidget {
                           Text(
                             '${model.fatherName}',
                             style: TextStyle(
-                                color: Colors.brown,
+                                color: Colors.black,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold
                             ),
@@ -312,8 +315,8 @@ class DocHomeScreen extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            'الام :',
-                            style: TextStyle(color: Colors.red, fontSize: 20),
+                            ' الام :',
+                            style: TextStyle(color: Colors.black, fontSize: 20),
                           ),
                           SizedBox(
                             width: 5.0,
@@ -321,7 +324,7 @@ class DocHomeScreen extends StatelessWidget {
                           Text(
                             '${model.motherName}',
                             style: TextStyle(
-                                color: Colors.brown,
+                                color: Colors.black,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold
                             ),
@@ -331,8 +334,8 @@ class DocHomeScreen extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            'المايكروشيب :',
-                            style: TextStyle(color: Colors.red, fontSize: 20),
+                            ' المايكروشيب :',
+                            style: TextStyle(color: Colors.black, fontSize: 20),
                           ),
                           SizedBox(
                             width: 5.0,
@@ -340,7 +343,7 @@ class DocHomeScreen extends StatelessWidget {
                           Text(
                             '${model.microshipCode}',
                             style: TextStyle(
-                                color: Colors.brown,
+                                color: Colors.black,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold
                             ),
@@ -364,101 +367,101 @@ class DocHomeScreen extends StatelessWidget {
       showDialog(
           context: context,
           builder: (_) => Padding(
-        padding: const EdgeInsets.only(
-          right: 0,
-          left: 0,
-        ),
-        child: AlertDialog(
-          shape: RoundedRectangleBorder(
-
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          title: Center(
-            child: Text(
-              '               خدمات الدكتور',
-              style: TextStyle(
-                fontSize: 25.0,
-              ),
+            padding: const EdgeInsets.only(
+              right: 0,
+              left: 0,
             ),
-          ),
-          content: BlocConsumer<DoctorCubit, DoctorStates>(
-            listener: (context, state) {
+            child: AlertDialog(
+              shape: RoundedRectangleBorder(
 
-            },
-            builder: (context,state){
-              var data=DoctorCubit.get(context).data;
-              var diseases=DoctorCubit.get(context).diseaseData;
-              return SingleChildScrollView(
-                child: Column(
-                  children: [
-                    defaultButton2(
-                      text: 'التاريخ المرضي',
-                      background: defColorApp,
-                      function: () {
-                        Navigator.push(
-                          context, //my place
-
-                          MaterialPageRoute(
-                            builder: (context) => HealthRecord(diseases),
-                          ),
-                          /////اللي انا رايحله
-                        );
-                      },
-                    ),
-
-                    SizedBox(
-                      height: 15,
-                    ),
-
-                    ///////////////////////////////////////////////////////////////////////////////
-                    defaultButton2(
-                      text: 'اضافة دواء أو لقاح',
-                      background: defColorApp,
-                      function: () {
-                        Navigator.push(
-                          context, //my place
-                          MaterialPageRoute(
-                            builder: (context) => Rosheta(),
-                          ),
-                          /////اللي انا رايحله
-                        );
-                      },
-                    ),
-                    /////////////////////////////////////////////////////////////////////////////////////////////////////
-                    SizedBox(
-                      height: 15,
-                    ),
-
-                    defaultButton2(
-                      text: 'متابعة مواعيد الدواء',
-
-                      function: () {
-                        Navigator.push(
-                          context, //my place
-                          MaterialPageRoute(
-                            builder: (context) => FollowMedicine(data),
-                          ),);
-                        /////اللي انا رايحله
-                      },
-                      background: defColorApp,
-                    ),
-
-                    ////////////////////////////////
-                    SizedBox(
-                      height: 15,
-                    ),
-                    //////////////////////////////////
-
-
-                  ],
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              title: Center(
+                child: Text(
+                  'خدمات الدكتور',
+                  style: TextStyle(
+                    fontSize: 25.0,
+                  ),
                 ),
-              );
-            },
-          ),
-          backgroundColor: Colors.white,
-        ),
+              ),
+              content: BlocConsumer<DoctorCubit, DoctorStates>(
+                listener: (context, state) {
 
-      )
+                },
+                builder: (context,state){
+                  var data=DoctorCubit.get(context).data;
+                  var diseases=DoctorCubit.get(context).diseaseData;
+                  return SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        defaultButton2(
+                          text: 'تاريخ مرضي',
+                          background: defColorApp,
+                          function: () {
+                            Navigator.push(
+                              context, //my place
+
+                              MaterialPageRoute(
+                                builder: (context) => HealthRecord(diseases),
+                              ),
+                              /////اللي انا رايحله
+                            );
+                          },
+                        ),
+
+                        SizedBox(
+                          height: 15,
+                        ),
+
+                        ///////////////////////////////////////////////////////////////////////////////
+                        defaultButton2(
+                          text: 'اضافة دواء  ',
+                          background: defColorApp,
+                          function: () {
+                            Navigator.push(
+                              context, //my place
+                              MaterialPageRoute(
+                                builder: (context) => Rosheta(),
+                              ),
+                              /////اللي انا رايحله
+                            );
+                          },
+                        ),
+                        /////////////////////////////////////////////////////////////////////////////////////////////////////
+                        SizedBox(
+                          height: 15,
+                        ),
+
+                        defaultButton2(
+                          text: ' وقت الدواء',
+
+                          function: () {
+                            Navigator.push(
+                              context, //my place
+                              MaterialPageRoute(
+                                builder: (context) => FollowMedicine(data),
+                              ),);
+                            /////اللي انا رايحله
+                          },
+                          background: defColorApp,
+                        ),
+
+                        ////////////////////////////////
+                        SizedBox(
+                          height: 15,
+                        ),
+                        //////////////////////////////////
+
+
+                      ],
+                    ),
+                  );
+                },
+              ),
+              backgroundColor: Colors.white,
+            ),
+
+          )
       );
 
     },
