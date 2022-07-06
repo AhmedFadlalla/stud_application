@@ -53,7 +53,7 @@ class InfoScreen extends StatelessWidget {
         builder: (context,state){
 
         return Scaffold(
-          backgroundColor: defaultColor,
+
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
