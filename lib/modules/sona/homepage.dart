@@ -13,7 +13,7 @@ class Hompag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const edgeInsets =
-        const EdgeInsets.only(left: 120.0, right: 120, top: 200, bottom: 20);
+        const EdgeInsets.only(left: 100.0, right: 100, top: 200, bottom: 20);
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text('السنه النبوية')),
@@ -38,7 +38,7 @@ class Hompag extends StatelessWidget {
                       child: Center(
                           child: Text(
                         "احاديث",
-                        style: Theme.of(context).textTheme.bodyText1
+                        style: TextStyle(fontSize: 25,color: Colors.white),
                       )),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
@@ -51,9 +51,12 @@ class Hompag extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
+
+
+
                 Padding(
                   padding: const EdgeInsets.only(
-                      left: 120.0, right: 120, top: 5, bottom: 50),
+                      left: 100.0, right: 100, top: 5, bottom: 50),
                   child: InkWell(
                     onTap: () {
                       Navigator.push(context,
@@ -62,10 +65,11 @@ class Hompag extends StatelessWidget {
                     child: Container(
                       width: double.infinity,
                       height: 120,
+                      
                       child: Center(
                           child: Text(
                         "ايات في القرأن",
-                        style: Theme.of(context).textTheme.bodyText1
+                         style: TextStyle(fontSize: 25,color: Colors.white),
                       )),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
@@ -76,10 +80,10 @@ class Hompag extends StatelessWidget {
                   ),
                 ),
               ]),
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('images/new.jpg'), fit: BoxFit.cover),
-              ),
+              // decoration: BoxDecoration(
+              //   image: DecorationImage(
+              //       image: AssetImage('images/new.jpg'), fit: BoxFit.cover),
+              // ),
             ),
           ],
         ),

@@ -18,15 +18,19 @@ class DoctorSection extends StatelessWidget {
           var cubit=OwnerCubit.get(context);
           Size size = MediaQuery.of(context).size;
           return Scaffold(
-            backgroundColor: Colors.green,
-            floatingActionButton: FloatingActionButton(
-              onPressed: (){
+            backgroundColor: Color(0xFF4DB6AC),
 
-              },
-              child: Icon(
-                  Icons.add
-              ),
-            ),
+
+            // floatingActionButton: FloatingActionButton(
+            //   onPressed: (){
+
+            //   },
+            //   child: Icon(
+            //       Icons.add,
+                  
+            //   ),
+            //   backgroundColor: Colors.white,
+            // ),
             body: ConditionalBuilder(
               condition: cubit.sectionData.length>0,
               builder:(context)=>SingleChildScrollView(
@@ -132,11 +136,13 @@ class DoctorSection extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
+
+
                       Row(
                         children: [
                           Text(
                             'الاسم :',
-                            style: TextStyle(color: Colors.red, fontSize: 20),
+                            style: TextStyle(color: Colors.black, fontSize: 20),
                           ),
                           SizedBox(
                             width: 5.0,
@@ -144,13 +150,37 @@ class DoctorSection extends StatelessWidget {
                           Text(
                             '${model.name}',
                             style: TextStyle(
-                                color: Colors.brown,
+                                color: Colors.black,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold
                             ),
                           ),
                         ],
                       ),
+
+   Row(
+                        children: [
+                          // Text(
+                          //   '',
+                          //   style: TextStyle(color: Colors.black, fontSize: 20),
+                          // ),
+                          // SizedBox(
+                          //   width: 5.0,
+                          // ),
+                          Text(
+                            ' ${model.email}',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold
+                            ),
+                          ),
+                        ],
+                      ),
+
+
+
+
 
                     ],
                   ),

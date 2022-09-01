@@ -37,13 +37,13 @@ class AddDoctorScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('Add Doctor', style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold,
+                            Text('أضف دكتور', style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold,
                                   color: Color(0xFF4DB6AC)
                               ),
                             )
                           ],
                         ),
-                        SizedBox(height: height*0.1,),
+                        SizedBox(height:25,),
                         Container(decoration: BoxDecoration(color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                             boxShadow: [
@@ -113,7 +113,7 @@ class AddDoctorScreen extends StatelessWidget {
                                 SizedBox(height: height*0.02,),
                                 ConditionalBuilder(
                                     condition: state is! DocRegisterLoadingState,
-                                    builder: (context) => defaultButton(text: 'Submit',
+                                    builder: (context) => defaultButton(text: 'حفظ',
                                         function: () {cubit.docRegister(name: nameController.text,
                                             email: emailController.text, password: passwordController.text,
                                           phone: phoneController.text, section: cubit.sectionValueChoose as String,

@@ -12,7 +12,7 @@ class Page2 extends StatelessWidget {
       ) ,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(left: 30, top: 30, bottom: 10),
+          padding: const EdgeInsets.only(left: 30, top: 30, bottom: 10,),
           child: Center(
             child: Column(children: [
               Padding(
@@ -23,8 +23,8 @@ class Page2 extends StatelessWidget {
                       context: context,
                       builder: (_) => Padding(
                         padding: const EdgeInsets.only(
-                          right: 50,
-                          left: 50,
+                          right: 1,
+                          left: 1,
                         ),
                         child: AlertDialog(
                           shape: RoundedRectangleBorder(
@@ -79,8 +79,8 @@ class Page2 extends StatelessWidget {
                       context: context,
                       builder: (_) => Padding(
                         padding: const EdgeInsets.only(
-                          right: 50,
-                          left: 50,
+                          right: 1,
+                          left: 1,
                         ),
                         child: AlertDialog(
                           shape: RoundedRectangleBorder(
@@ -135,8 +135,8 @@ class Page2 extends StatelessWidget {
                       context: context,
                       builder: (_) => Padding(
                         padding: const EdgeInsets.only(
-                          right: 50,
-                          left: 50,
+                          right: 1,
+                          left: 1,
                         ),
                         child: AlertDialog(
                           shape: RoundedRectangleBorder(
@@ -191,8 +191,8 @@ class Page2 extends StatelessWidget {
                       context: context,
                       builder: (_) => Padding(
                         padding: const EdgeInsets.only(
-                          right: 50,
-                          left: 50,
+                          right: 1,
+                          left: 1,
                         ),
                         child: AlertDialog(
                           shape: RoundedRectangleBorder(
@@ -247,8 +247,8 @@ class Page2 extends StatelessWidget {
                       context: context,
                       builder: (_) => Padding(
                         padding: const EdgeInsets.only(
-                          right: 50,
-                          left: 50,
+                          right: 1,
+                          left: 1,
                         ),
                         child: AlertDialog(
                           shape: RoundedRectangleBorder(
@@ -303,8 +303,8 @@ class Page2 extends StatelessWidget {
                       context: context,
                       builder: (_) => Padding(
                         padding: const EdgeInsets.only(
-                          right: 50,
-                          left: 50,
+                          right: 1,
+                          left: 1,
                         ),
                         child: AlertDialog(
                           shape: RoundedRectangleBorder(
@@ -361,8 +361,8 @@ class Page2 extends StatelessWidget {
                       context: context,
                       builder: (_) => Padding(
                         padding: const EdgeInsets.only(
-                          right: 50,
-                          left: 50,
+                          right: 1,
+                          left: 1,
                         ),
                         child: AlertDialog(
                           shape: RoundedRectangleBorder(
@@ -417,8 +417,8 @@ class Page2 extends StatelessWidget {
                       context: context,
                       builder: (_) => Padding(
                         padding: const EdgeInsets.only(
-                          right: 50,
-                          left: 50,
+                          right: 1,
+                          left: 1,
                         ),
                         child: AlertDialog(
                           shape: RoundedRectangleBorder(
@@ -473,8 +473,8 @@ class Page2 extends StatelessWidget {
                       context: context,
                       builder: (_) => Padding(
                         padding: const EdgeInsets.only(
-                          right: 50,
-                          left: 50,
+                          right: 1,
+                          left: 1,
                         ),
                         child: AlertDialog(
                           shape: RoundedRectangleBorder(
@@ -529,8 +529,8 @@ class Page2 extends StatelessWidget {
                       context: context,
                       builder: (_) => Padding(
                         padding: const EdgeInsets.only(
-                          right: 50,
-                          left: 50,
+                          right: 1,
+                          left: 1,
                         ),
                         child: AlertDialog(
                           shape: RoundedRectangleBorder(
@@ -585,8 +585,8 @@ class Page2 extends StatelessWidget {
                       context: context,
                       builder: (_) => Padding(
                         padding: const EdgeInsets.only(
-                          right: 50,
-                          left: 50,
+                          right: 1,
+                          left: 1,
                         ),
                         child: AlertDialog(
                           shape: RoundedRectangleBorder(
@@ -641,8 +641,8 @@ class Page2 extends StatelessWidget {
                       context: context,
                       builder: (_) => Padding(
                         padding: const EdgeInsets.only(
-                          right: 50,
-                          left: 50,
+                          right: 1,
+                          left: 1,
                         ),
                         child: AlertDialog(
                           shape: RoundedRectangleBorder(

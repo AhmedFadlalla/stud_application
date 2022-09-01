@@ -109,7 +109,7 @@ class UserAccomindationHomeScreen extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
                 height: 140,
-                width: 200,
+                width: 180,
                 child: Container(
                   height:80,
                   width: 80,
@@ -137,7 +137,7 @@ class UserAccomindationHomeScreen extends StatelessWidget {
                         children: [
                           Text(
                             'اسم المزرعه :',
-                            style: TextStyle(color: Colors.red, fontSize: 20),
+                            style: TextStyle(color: Colors.black, fontSize: 20),
                           ),
                           SizedBox(
                             width: 5.0,
@@ -145,9 +145,9 @@ class UserAccomindationHomeScreen extends StatelessWidget {
                           Text(
                             '${model.accomCreatorName}',
                             style: TextStyle(
-                                color: Colors.brown,
+                                color: Colors.black,
                                 fontSize: 18,
-                                fontWeight: FontWeight.bold
+                                //fontWeight: FontWeight.bold
                             ),
                           ),
                         ],

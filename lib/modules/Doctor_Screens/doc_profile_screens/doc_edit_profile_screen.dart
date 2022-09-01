@@ -133,17 +133,23 @@ class DoctorEditProfileScreen extends StatelessWidget {
                           Expanded(
                             child: Column(
                               children: [
-                                defaultButton(
-                                    function: () {
-                                      DoctorCubit.get(context)
-                                          .uploadProfileImage(
-                                          docName: nameController.text,
-                                          phone: phoneController.text,
-                                          bio: bioController.text,
-                                          address: addressController.text,
-                                          context: context);
-                                    },
-                                    text: 'Upload Profile'),
+
+
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: defaultButton(
+                                      function: () {
+                                        DoctorCubit.get(context)
+                                            .uploadProfileImage(
+                                            docName: nameController.text,
+                                            phone: phoneController.text,
+                                            bio: bioController.text,
+                                            address: addressController.text,
+                                            context: context);
+                                      },
+                                      text: 'Upload Profile'),
+                                ),
+
                                 if (state is DoctorUpdateLoadingState)
                                   SizedBox(
                                     height: 5.0,
@@ -160,16 +166,19 @@ class DoctorEditProfileScreen extends StatelessWidget {
                           Expanded(
                             child: Column(
                               children: [
-                                defaultButton(
-                                    function: () {
-                                      DoctorCubit.get(context).uploadCoverImage(
-                                          docName: nameController.text,
-                                          phone: phoneController.text,
-                                          bio: bioController.text,
-                                          address: addressController.text,
-                                          context: context);
-                                    },
-                                    text: 'Upload Cover'),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: defaultButton(
+                                      function: () {
+                                        DoctorCubit.get(context).uploadCoverImage(
+                                            docName: nameController.text,
+                                            phone: phoneController.text,
+                                            bio: bioController.text,
+                                            address: addressController.text,
+                                            context: context);
+                                      },
+                                      text: 'Upload Cover'),
+                                ),
                                 if (state is DoctorUpdateLoadingState)
                                   SizedBox(
                                     height: 5.0,
@@ -195,7 +204,7 @@ class DoctorEditProfileScreen extends StatelessWidget {
                       label: 'Name',
                       prefixIcon: IconBroken.User),
                   SizedBox(
-                    height: 5.0,
+                    height: 20.0,
                   ),
                   defaultFormField(
                       controller: bioController,
@@ -208,7 +217,7 @@ class DoctorEditProfileScreen extends StatelessWidget {
                       label: 'Bio',
                       prefixIcon: IconBroken.Info_Circle),
                   SizedBox(
-                    height: 5.0,
+                    height: 20.0,
                   ),
                   defaultFormField(
                       controller: phoneController,
@@ -221,7 +230,7 @@ class DoctorEditProfileScreen extends StatelessWidget {
                       label: 'Phone',
                       prefixIcon: IconBroken.Call),
                   SizedBox(
-                    height: 5.0,
+                    height: 20.0,
                   ),
                   defaultFormField(
                       controller: addressController,

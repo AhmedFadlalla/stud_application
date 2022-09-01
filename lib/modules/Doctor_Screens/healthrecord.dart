@@ -34,7 +34,7 @@ class HealthRecord extends StatelessWidget {
           return Scaffold(floatingActionButton: FloatingActionButton(
             onPressed: () {
               showDialog(context: context, builder: (context) => Padding(
-                  padding: const EdgeInsets.only(right: 50, left: 50,),
+                  padding: const EdgeInsets.only(right: 0, left: 0,),
                   child: AlertDialog(
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0),),
                     title: Center(child: Text('أضف البيانات', style: TextStyle(fontSize: 25.0,),),),
@@ -95,7 +95,7 @@ class HealthRecord extends StatelessWidget {
                             date: diseaseDate.text),DoctorCubit.get(context).horseId).then((value){
                               DoctorCubit.get(context).getdDisease(hId: DoctorCubit.get(context).horseId);
                               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Added')
-                                ,backgroundColor: Colors.green,));
+                                ,backgroundColor: Color(0xFF4DB6AC),));
                                    Navigator.pushReplacement(
                                     context, //my place
 
@@ -108,7 +108,7 @@ class HealthRecord extends StatelessWidget {
                          }
                         },
 
-                        background: Colors.red.withOpacity(0.8),
+                        background: Color(0xFF4DB6AC),
                       ),
 
 
@@ -135,18 +135,21 @@ class HealthRecord extends StatelessWidget {
           body: SafeArea(child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(children: [
-                  Row(children: [
-                      Expanded(child: defaultRecordItem(txt: 'الدكتور المعالج')),
-                      SizedBox(width: 3.0,),
-                      Expanded(child: defaultRecordItem(txt: 'الحالة')),
-                      SizedBox(width: 3.0,),
-                      Expanded(child: defaultRecordItem(txt: 'المرض')),
-                      SizedBox(width: 3.0,),
-                      Expanded(child: defaultRecordItem(txt: 'التاريخ')),
-                      SizedBox(width: 3.0,),
 
-                    ],
-                  ),
+
+
+                  // Row(children: [
+                  //     Expanded(child: defaultRecordItem(txt: 'الدكتور المعالج')),
+                  //     SizedBox(width: 3.0,),
+                  //     Expanded(child: defaultRecordItem(txt: 'الحالة')),
+                  //     SizedBox(width: 3.0,),
+                  //     Expanded(child: defaultRecordItem(txt: 'المرض')),
+                  //     SizedBox(width: 3.0,),
+                  //     Expanded(child: defaultRecordItem(txt: 'التاريخ')),
+                  //     SizedBox(width: 3.0,),
+
+                  //   ],
+                  // ),
                   SizedBox(height:10,),
                   //////////////////scroll list view //////////////////////////////////////////////////
                   Expanded(

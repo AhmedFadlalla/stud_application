@@ -67,11 +67,10 @@ Widget defaultFormField({
       onTap: onTap,
       enabled: isClickable,
       style: TextStyle(
-        color: isDark==true ? Colors.black:Colors.white
+        color: isDark==true ? Colors.white:Colors.black
       ),
       decoration: InputDecoration(
         labelText: label,
-
         hintStyle: TextStyle(
           color: isDark==true ? Colors.white:Colors.black
         ),
@@ -341,30 +340,41 @@ Widget BuildDropBottom(
         decoration: BoxDecoration(
             border: Border.all(color: Color(0xFF4DB6AC)),
             borderRadius: BorderRadius.circular(5.0)),
-        child: DropdownButton(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 10,right: 10),
+          child: DropdownButton(
 //elevation: 0,
-            hint: Text(
-              dropdownButtonTitle,
-              style: TextStyle(
-                fontSize: 18.0,
+              hint: Text(
+                
+                dropdownButtonTitle,
+                //textDirection: TextDirection.ltr,
+                style: TextStyle(
+                  
+                  fontSize: 16.0,
 //fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            dropdownColor: Color(0xFFD4F8F5),
-            icon: Icon(Icons.arrow_drop_down),
-            iconSize: 36,
-            isExpanded: true,
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-             //textDirection: TextDirection.rtl, عايز اعمل ده
-            ),
-            value: value,
-            onChanged: function,
-            items: items),
+              
+              dropdownColor: Color.fromARGB(214, 206, 210, 210),
+              borderRadius: BorderRadius.circular(33),
+              icon: Icon(Icons.arrow_drop_down),
+              iconSize: 36,
+              isExpanded: true,
+              style: TextStyle(
+                
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+               //textDirection: TextDirection.rtl, عايز اعمل ده
+              ),
+              value: value,
+              
+              onChanged: function,
+              items: items),
+        ),
       ),
     );
+
 
 Widget defaultButton2({
   double width = double.infinity,
@@ -415,66 +425,184 @@ Widget defaultButton2({
         color: background,
       ),
     );
+
+
+
+
+
+
+
+
+// Widget defaultRecordItem({
+//   required String txt,
+// }) =>
+//     Expanded(
+//       child: Material(
+//         elevation: 22.0,
+//         child: SizedBox(
+//           height: 60.0,
+//           child: Container(
+//             width: 150,
+//             child: Center(
+//               child: Padding(
+//                 padding: EdgeInsets.all(8.0),
+//                 child: Text(
+//                   '${txt}',
+//                   style: TextStyle(
+//                     fontWeight: FontWeight.bold,
+//                     fontSize: 15.0,
+//                   ),
+//                 ),
+//               ),
+//             ),
+//             decoration: BoxDecoration(
+//               borderRadius: BorderRadius.circular(5),
+//               color: Colors.white,
+//               boxShadow: const [
+//                 BoxShadow(color: Colors.red, spreadRadius: 0.5),
+//               ],
+//             ),
+//             height: 50,
+//           ),
+//         ),
+//       ),
+//     );
+// Widget defaultRecord({
+//   required String drName,
+//   required String horseState,
+//   required String horseDisease,
+//   required String DiseaseDate,
+// }) =>
+//     Row(
+//       children: [
+//         Expanded(child: defaultRecordItem(txt: '${drName}')),
+//         SizedBox(
+//           width: 3.0,
+//         ),
+//         Expanded(child: defaultRecordItem(txt: '${horseState}')),
+//         SizedBox(
+//           width: 3.0,
+//         ),
+//         Expanded(child: defaultRecordItem(txt: '${horseDisease}')),
+//         SizedBox(
+//           width: 3.0,
+//         ),
+//         Expanded(child: defaultRecordItem(txt: '${DiseaseDate}')),
+//         SizedBox(
+//           width: 3.0,
+//         ),
+//       ],
+//     );
 Widget defaultRecordItem({
   required String txt,
 }) =>
-    Expanded(
-      child: Material(
-        elevation: 22.0,
-        child: SizedBox(
-          height: 60.0,
-          child: Container(
-            width: 150,
-            child: Center(
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  '${txt}',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15.0,
-                  ),
+    Material(
+      elevation: 22.0,
+      child: SizedBox(
+        height: 60.0,
+        child: Container(
+          width: double.infinity,
+          child: Center(
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                '${txt}',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15.0,
                 ),
               ),
             ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              color: Colors.white,
-              boxShadow: const [
-                BoxShadow(color: Colors.red, spreadRadius: 0.5),
-              ],
-            ),
-            height: 50,
           ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            color: Colors.white,
+            boxShadow: const [
+              BoxShadow(color: Color(0xFF4DB6AC), spreadRadius: 0.5),
+            ],
+          ),
+          height: 50,
         ),
       ),
     );
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Widget defaultRecord({
   required String drName,
   required String horseState,
   required String horseDisease,
   required String DiseaseDate,
 }) =>
-    Row(
+    // Row(
+    //   children: [
+    //     Expanded(child: defaultRecordItem(txt: '${drName}')),
+    //     SizedBox(
+    //       width: 3.0,
+    //     ),
+    //     Expanded(child: defaultRecordItem(txt: '${horseState}')),
+    //     SizedBox(
+    //       width: 3.0,
+    //     ),
+    //     Expanded(child: defaultRecordItem(txt: '${horseDisease}')),
+    //     SizedBox(
+    //       width: 3.0,
+    //     ),
+    //     Expanded(child: defaultRecordItem(txt: '${DiseaseDate}')),
+    //     SizedBox(
+    //       width: 3.0,
+    //     ),
+    //   ],
+    // );
+Column(
+  crossAxisAlignment: CrossAxisAlignment.center,
+  mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(child: defaultRecordItem(txt: '${drName}')),
-        SizedBox(
-          width: 3.0,
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: defaultRecordItem(txt: 'اسم الدكتور : ${drName}'),
         ),
-        Expanded(child: defaultRecordItem(txt: '${horseState}')),
-        SizedBox(
-          width: 3.0,
+        
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: defaultRecordItem(txt: 'حالة المرض : ${horseState}'),
         ),
-        Expanded(child: defaultRecordItem(txt: '${horseDisease}')),
-        SizedBox(
-          width: 3.0,
+        
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: defaultRecordItem(txt: 'المرض : ${horseDisease}'),
         ),
-        Expanded(child: defaultRecordItem(txt: '${DiseaseDate}')),
-        SizedBox(
-          width: 3.0,
+        
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: defaultRecordItem(txt: 'التاريخ : ${DiseaseDate}'),
         ),
+
+        Text('-----------------------',
+        style: TextStyle(
+          fontSize: 33,
+          color: Color.fromARGB(255, 219, 218, 212),
+         fontWeight: FontWeight.bold,
+        ),),
+
+        
       ],
     );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Widget defaultfollowingMedicineItem({
   required String txt,
   required double height,

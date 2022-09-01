@@ -75,15 +75,16 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(30.0),
+                padding: const EdgeInsets.all(20.0),
                 child: Container(
                   width: double.infinity,
+
                   child: Row(
                     children: [
                       Expanded(
                         child: InkWell(
                           child: buildImageInteractionCard(
-                            title: 'Manage my stud',
+                            title: 'ادارة الاسطبل',
                             image: 'https://apis.xogrp.com/media-api/images/cd833cb0-6160-11e5-9816-22000aa61a3e',
                           ),
                           onTap: (){
@@ -113,7 +114,7 @@ class HomeScreen extends StatelessWidget {
               /////////////////الصف  التاني ///////////////////////////////
               // EdgeInsets.symmetric(horizontal: 20.0),
               Padding(
-                padding: const EdgeInsets.all(30.0),
+                padding: const EdgeInsets.all(20.0),
                 child: Container(
                   width: double.infinity,
                   child: Row(
@@ -134,6 +135,7 @@ class HomeScreen extends StatelessWidget {
                           },
                         ),
                       ),
+                      SizedBox(width: 50.0,),
                       Expanded(
                         child: InkWell(
                           child: buildImageInteractionCard(

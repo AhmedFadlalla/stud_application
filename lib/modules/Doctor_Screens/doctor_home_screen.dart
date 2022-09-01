@@ -88,21 +88,34 @@ class DocHomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Center(
-                      child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-                        padding: EdgeInsets.only(right: 8.0,left: 8.0),
-                        height: 35.0,
-                        color: Colors.white,
-                        child: Text(
-                          'Your Horses',
+
+SizedBox(height: 10,),
+Text(
+                          'الأحصنة الخاصة بك ',
                           style: TextStyle(
                               fontSize: 25.0,
+                              color: Color(0xFF4DB6AC),
                               fontWeight: FontWeight.bold
                           ),
                         ),
-                      ),
-                    ),
+                    // Center(
+                    //   child: Container(
+                    //     margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+                    //     padding: EdgeInsets.only(right: 8.0,left: 8.0),
+                    //     height: 35.0,
+                    //     color: Colors.white,
+                    //     child: Text(
+                    //       'Your Horses',
+                    //       style: TextStyle(
+                    //           fontSize: 25.0,
+                    //           fontWeight: FontWeight.bold
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+
+
+
                     ListView.separated(
                         physics: BouncingScrollPhysics(),
                         shrinkWrap: true,
@@ -176,23 +189,33 @@ class DocHomeScreen extends StatelessWidget {
                       ),
                     ],
                   ),
+SizedBox(height: 10,),
 
-
-                  Center(
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-                      padding: EdgeInsets.only(right: 8.0,left: 8.0),
-                      height: 35.0,
-                      color: Colors.white,
-                      child: Text(
-                        'Your Horses',
-                        style: TextStyle(
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.bold
+Text(
+                          'Your Horses',
+                          style: TextStyle(
+                              fontSize: 25.0,
+                              color: Color(0xFF4DB6AC),
+                              fontWeight: FontWeight.bold
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
+
+                  // Center(
+                  //   child: Container(
+                  //     margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+                  //     padding: EdgeInsets.only(right: 8.0,left: 8.0),
+                  //     height: 35.0,
+                  //     color: Colors.white,
+                      
+                  //     child: Text(
+                  //       'Your Horses',
+                  //       style: TextStyle(
+                  //           fontSize: 25.0,
+                  //           fontWeight: FontWeight.bold
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
 
 
                   Stack(
@@ -229,7 +252,7 @@ class DocHomeScreen extends StatelessWidget {
 
   Widget buildHorseCard(HorseModel model,var size,index,context)=> InkWell(
     child: Container(
-      margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+      margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
       height: 190.0,
       child: Stack(
         alignment: Alignment.bottomCenter,
@@ -252,7 +275,7 @@ class DocHomeScreen extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
                 height: 140,
-                width: 200,
+                width: 180,
                 child: Container(
                   height:80,
                   width: 80,
@@ -288,7 +311,7 @@ class DocHomeScreen extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 18,
-                                fontWeight: FontWeight.bold
+                                //fontWeight: FontWeight.bold
                             ),
                           ),
                         ],
@@ -307,15 +330,16 @@ class DocHomeScreen extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 18,
-                                fontWeight: FontWeight.bold
+                                //fontWeight: FontWeight.bold
                             ),
                           ),
                         ],
                       ),
+
                       Row(
                         children: [
                           Text(
-                            ' الام :',
+                            ' الأم:',
                             style: TextStyle(color: Colors.black, fontSize: 20),
                           ),
                           SizedBox(
@@ -326,11 +350,13 @@ class DocHomeScreen extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 18,
-                                fontWeight: FontWeight.bold
+                               // fontWeight: FontWeight.bold
                             ),
                           ),
                         ],
                       ),
+
+
                       Row(
                         children: [
                           Text(
@@ -345,7 +371,7 @@ class DocHomeScreen extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 18,
-                                fontWeight: FontWeight.bold
+                               // fontWeight: FontWeight.bold
                             ),
                           ),
                         ],

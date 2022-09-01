@@ -492,7 +492,7 @@ class HorseCubit extends Cubit<HorseStates> {
         .doc(uId)
         .collection('chats')
         .doc(receiverId)
-        .collection('messages')
+        .collection('message')
         .add(model.toMap())
         .then((value) {
       emit(SendMessageSuccessState());
@@ -507,7 +507,7 @@ class HorseCubit extends Cubit<HorseStates> {
         .doc(receiverId)
         .collection('chats')
         .doc(uId)
-        .collection('messages')
+        .collection('message')
         .add(model.toMap())
         .then((value) {
       emit(SendMessageSuccessState());

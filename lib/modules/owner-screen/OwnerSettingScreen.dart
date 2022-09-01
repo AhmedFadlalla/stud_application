@@ -104,12 +104,10 @@ class OwnerSettingsScreen extends StatelessWidget {
                               color: isDark==true ? Colors.white:Colors.black,
                             ),
                           ),
-                          if(isDark==true)
-                           Text('Light Mode',
+
+                           Text(isDark==true?'Light Mode':'Dark Mode',
                             style: Theme.of(context).textTheme.bodyText1,),
-                          if(isDark==false)
-                           Text('Dark Mode',
-                              style: Theme.of(context).textTheme.bodyText1,)
+
 
 
                         ],

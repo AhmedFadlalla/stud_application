@@ -6,14 +6,14 @@ import 'package:hexcolor/hexcolor.dart';
 import 'colors.dart';
 
 ThemeData lightTheme = ThemeData(
-    primarySwatch: defaultColor,
+    primarySwatch: Colors.blue,
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: AppBarTheme(
-        backgroundColor: Colors.green,
+        backgroundColor: Color(0xFF4DB6AC),
         titleSpacing: 20.0,
         backwardsCompatibility: false,
         systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Colors.green,
+          statusBarColor: Color(0xFF4DB6AC),
           statusBarIconBrightness: Brightness.dark,
         ),
         titleTextStyle: TextStyle(
@@ -27,8 +27,8 @@ ThemeData lightTheme = ThemeData(
         backgroundColor: Colors.white),
 
     textTheme: TextTheme(
-        bodyText1: TextStyle(
-            fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.black),
+        headline1: TextStyle(
+            fontSize: 20.0, fontWeight: FontWeight.w600, color: Colors.black),
     subtitle1: TextStyle(
       fontSize: 14.0,
       fontWeight: FontWeight.bold,

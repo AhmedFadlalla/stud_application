@@ -15,8 +15,32 @@ class AlekaHomeScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            SizedBox(height: 40,),
+
+  Card(
+                    elevation: 22.0, clipBehavior: Clip.antiAlias, shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24),),
+                    child: Column(
+                      children: [Stack(
+                          alignment: Alignment.bottomCenter,
+                          children: [
+                            Image(image: NetworkImage(
+                                'https://nffpm.ae/wp-content/uploads/2020/11/Horse-Feed-16-Pellets-1.jpg',),
+                              width: double.infinity,
+                              height: 300.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ],
+                        ),
+
+                      ],
+                    ),
+                  ),
+
+
+
             InkWell(
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>ShowDetails()));
@@ -24,7 +48,7 @@ class AlekaHomeScreen extends StatelessWidget {
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
                 width: double.infinity,
-                height: 100.0,
+                height: 80.0,
                 child: defaultbutton(
                     width:double.infinity,
                     background: defColorApp,
@@ -34,7 +58,7 @@ class AlekaHomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 30,),
+            
             InkWell(
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>NewFile()));
@@ -42,7 +66,7 @@ class AlekaHomeScreen extends StatelessWidget {
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
                 width: double.infinity,
-                height: 100.0,
+                height: 80.0,
                 child: defaultbutton(
                   width:double.infinity,
                   function:(){print("hello flutter");},

@@ -91,7 +91,7 @@ class DoctorHomeScreen extends StatelessWidget {
   }
   Widget buildSectionCard(SectionDataModel model,var size,index,context)=> InkWell(
     child: Container(
-      margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+      margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
       height: 190.0,
 
       child: Stack(
@@ -116,14 +116,14 @@ class DoctorHomeScreen extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
                 height: 140,
-                width: 200,
+                width: 180,
                 child: Container(
                   height:80,
                   width: 80,
                   decoration: BoxDecoration(
-                    borderRadius:BorderRadius.circular(70),
+                    borderRadius:BorderRadius.circular(22),
                     image: DecorationImage(
-                      image: NetworkImage('https://media.istockphoto.com/photos/veterinary-horses-on-the-farm-picture-id1212267638?s=612x612'),
+                      image: NetworkImage('https://media.istockphoto.com/photos/animals-barn-with-horses-picture-id488536888?k=20&m=488536888&s=612x612&w=0&h=yrVGau1K-LnZC-wbJ7QN6cELBDscgXmKD1ah9PJ6eoI='),
                       fit: BoxFit.cover,
                     ),
                   ),

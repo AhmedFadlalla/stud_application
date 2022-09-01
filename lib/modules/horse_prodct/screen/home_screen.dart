@@ -38,7 +38,7 @@ class ProductHomeScreen extends StatelessWidget {
             floatingActionButton: FloatingActionButton(
               onPressed: () {
                 showDialog(context: context, builder: (context) => Padding(
-                  padding: const EdgeInsets.only(right: 50, left: 50,),
+                  padding: const EdgeInsets.only(right: 0, left: 0,),
                   child: AlertDialog(
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0),),
                     title: Center(child: Text('أضف البيانات', style: TextStyle(fontSize: 25.0,),),),
@@ -56,12 +56,12 @@ class ProductHomeScreen extends StatelessWidget {
                                       children: [
                                         CircleAvatar(
                                           radius: 65.0,
-                                          backgroundColor:
-                                          Theme.of(context).scaffoldBackgroundColor,
+                                          backgroundColor:Colors.white,
+                                         // Theme.of(context).scaffoldBackgroundColor,
                                           child: CircleAvatar(
                                             radius: 60.0,
                                             backgroundImage:cubit.productImage==null ?
-                                            NetworkImage('https://media.istockphoto.com/photos/veterinarian-examining-the-horse-picture-id154954791')
+                                            NetworkImage('https://mehrdad-dev.ir/posts/gallary/certifications/rokad/hero.jpg')
                                                 :FileImage(cubit.productImage!)as ImageProvider,
                                           ),
                                         ),
@@ -81,16 +81,26 @@ class ProductHomeScreen extends StatelessWidget {
                                     },
                                     label: 'اسم المنتج', prefixIcon: Icons.drive_file_rename_outline,)
                                   , SizedBox(height: 15,),
+
+
+
+
                                   defaultFormField(
                                       controller: priceController,
                                       type: TextInputType.text,
+                                      
                                       validator: (value) {
                                         if (value.isEmpty) {
                                           return 'يجب ادخال سعر المنتج ';
                                         }
                                         },
                                       label: 'السعر', prefixIcon: Icons.price_check_outlined),
+
+
+
                                   SizedBox(height: 15,),
+
+
                                   defaultFormField(
                                       controller: phoneController,
                                       type: TextInputType.text,
@@ -100,6 +110,9 @@ class ProductHomeScreen extends StatelessWidget {
                                         }
                                       },
                                       label: 'رقم التليفون', prefixIcon: Icons.phone),
+
+
+
                                   SizedBox(height: 15,),
                                   defaultFormField(
                                       controller: detailsController,
@@ -109,7 +122,8 @@ class ProductHomeScreen extends StatelessWidget {
                                           return 'يجب ادخال البيانات ';
                                         }
                                       },
-                                      label: 'تفاصيل المنتج', prefixIcon: Icons.medical_services),
+                                      label: 'تفاصيل المنتج'
+                                      , prefixIcon: Icons.info),
                                   SizedBox(
                                     height: 15,
                                   ),
@@ -130,6 +144,7 @@ class ProductHomeScreen extends StatelessWidget {
                                           lastDate:DateTime.now()).then((value) {
                                         datetimeController.text=DateFormat.yMMMd().format(value!);});
                                     }
+                                    
                                   ),
                                   SizedBox(
                                     height: 15,
@@ -166,7 +181,7 @@ class ProductHomeScreen extends StatelessWidget {
                                           cubit.getProductData();
                                           // HorseCubit.get(context).getProduct(hId: DoctorCubit.get(context).horseId);
                                           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Added')
-                                            ,backgroundColor: Colors.green,));
+                                            ,backgroundColor: Color(0xFF4DB6AC),));
                                           Navigator.pushReplacement(
                                             context, //my place
 
@@ -179,7 +194,7 @@ class ProductHomeScreen extends StatelessWidget {
                                       }
                                     },
 
-                                    background: Colors.red.withOpacity(0.8),
+                                    background: Color(0xFF4DB6AC),
                                   ),
 
 
@@ -198,7 +213,7 @@ class ProductHomeScreen extends StatelessWidget {
 
               },
               child: const Icon(Icons.add),
-              backgroundColor: Color.fromARGB(255, 36, 209, 206),
+              backgroundColor: Color(0xFF4DB6AC),
             ),
             body: SingleChildScrollView(
               child: Column(
@@ -240,16 +255,21 @@ class ProductHomeScreen extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         children: [
           Container(
+            
             height: 160.0,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(22),
                 // color: isDark==true ?Color(0xFF4DB6AC):Color(0xFF4DB6AC),
+                color: Colors.white,
                 boxShadow: [
                   BoxShadow(
                       offset: Offset(0, 25),
                       blurRadius: 25,
                       color: Colors.black26),
-                ]),
+                ]
+                 
+                ),
+                
           ),
           Positioned(
               top: 0.0,
@@ -257,7 +277,7 @@ class ProductHomeScreen extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
                 height: 140,
-                width: 200,
+                width: 180,
                 child: Container(
                   height:80,
                   width: 80,
@@ -276,33 +296,147 @@ class ProductHomeScreen extends StatelessWidget {
               child: SizedBox(
                 height: 130.0,
                 width: size.width - 200,
+
                 child: Column(
+
+                  
+                  
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
+
+
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(
-                          'اسم المنتج ',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold
-                          ),
-                        ),
-                        SizedBox(
-                          width: 5.0,
-                        ),
+
                         Text(
                           '${model.name}',
                           style: TextStyle(
                               color: Colors.black,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold
+                              fontSize: 20,
+                             // fontWeight: FontWeight.bold
 
                           ),
                         ),
+                        
+
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        
+Text(
+                          ' :  المنتج',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              //fontWeight: FontWeight.bold
+                          ),
+                        ),
+
+
                       ],
                     ),
+
+//////////////////////////////////////////////////////////////////////////////////////////
+///
+//
+   Row( mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+
+                        Text(
+                          '${model.price}',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                             // fontWeight: FontWeight.bold
+
+                          ),
+                        ),
+                        
+
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        
+Text(
+                          ' : سعر المنتج',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              //fontWeight: FontWeight.bold
+                          ),
+                        ),
+
+
+                      ],
+                    ),
+////////////////////////////////
+///
+// Row( mainAxisAlignment: MainAxisAlignment.end,
+//                       children: [
+
+                      
+
+//                         SizedBox(
+//                           width: 5.0,
+//                         ),
+                        
+// Text(
+//                           ' chat :للتواصل ',
+//                           style: TextStyle(
+//                               color: Colors.black,
+//                               fontSize: 22,
+//                               //fontWeight: FontWeight.bold
+//                           ),
+//                         ),
+
+
+//                       ],
+//                     ),
+
+///
+   Row( mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+
+                        Text(
+                          ' او chat للتواصل',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                             // fontWeight: FontWeight.bold
+
+                          ),
+                        ),
+                        
+
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        
+                      ],
+                    ),
+
+                    Row( mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+
+                        Text(
+                          '   ${model.phone}',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                             // fontWeight: FontWeight.bold
+
+                          ),
+                        ),
+                        
+
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        
+                      ],
+                    ),
+
 
                   ],
                 ),

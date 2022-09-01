@@ -213,7 +213,7 @@ class OwnerHomeScreen extends StatelessWidget {
                             child: InkWell(
                               child: TestCard(
                                 title: 'العليقه',
-                                image: 'https://cdn.altibbi.com/cdn/cache/1000x500/image/2021/12/26/5b0e062448bbcb8220b3ffc9938aa306.webp',
+                                image: 'https://nffpm.ae/wp-content/uploads/2020/11/Horse-Feed-16-Pellets-1.jpg',
 
 
                               ),

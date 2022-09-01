@@ -251,10 +251,7 @@ class AddHorseScreen extends StatelessWidget {
                               },
                               label: 'رقم العنبر ',
                               prefixIcon: Icons.info),
-                          SizedBox(
-                            height: 20.0,
-                          ),
-
+                         
 
 
 
@@ -316,20 +313,6 @@ class AddHorseScreen extends StatelessWidget {
 
                               });
                             },),
-
-
-
-                          SizedBox(
-                            height: 15.0,
-                          ),
-
-
-
-
-
-
-
-
 
 
 

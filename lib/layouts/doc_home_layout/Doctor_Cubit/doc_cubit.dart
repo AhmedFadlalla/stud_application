@@ -321,6 +321,8 @@ class DoctorCubit extends Cubit<DoctorStates> //1
       emit(SendRoshetErrorState(error.toString()));
     });
   }
+////////////////////////////////////////////////////////
+
 
   bool shouldCheck = false;
 
@@ -329,6 +331,18 @@ class DoctorCubit extends Cubit<DoctorStates> //1
     emit(CheckBoxx());
   }
 
+  ///////////////////////////////////////////////////
+List<bool> shouldChecks=[];
+  void Check_Boxes(val,int index)
+  {
+    shouldChecks[index] = val;
+    emit(CheckBoxx());
+  }
+
+
+
+
+///////////////////////////
   File? profileImage;
 
   Future<void> getProfileImage() async {

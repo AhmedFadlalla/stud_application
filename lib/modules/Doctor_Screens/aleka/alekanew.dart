@@ -105,36 +105,49 @@ class NewFile extends StatelessWidget {
                         SizedBox(width: 20.0,),
                         Text(" = وزن العليقة المطلوبة ", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.0),),
                       ],),),
+
                   Directionality(textDirection: TextDirection.rtl,
-                    child: defaultFormField(controller: aliqaNameController, type: TextInputType.name,
-                        validator: (value){
-                          if(value.isEmpty){
-                            return 'يجب ادخال اسم العليقه';
-                          }
-                          return null;
-                        },
-                        label: 'اسم العلقه', prefixIcon: Icons.production_quantity_limits),),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20,right: 20),
+                      child: defaultFormField(controller: aliqaNameController, type: TextInputType.name,
+                          validator: (value){
+                            if(value.isEmpty){
+                              return 'يجب ادخال اسم العليقه';
+                            }
+                            return null;
+                          },
+                          label: 'اسم العلقه', prefixIcon: Icons.production_quantity_limits),
+                    ),),
+
+
                   Padding(padding: const EdgeInsets.only(top: 10.0),
                     child: Column(
+
+
                       children: [
                         SingleChildScrollView(scrollDirection: Axis.horizontal,
                             child: Container(padding: EdgeInsets.all(8.0), margin: EdgeInsets.all(8.0),
                               decoration: BoxDecoration(border: Border.all(),
                                 borderRadius: BorderRadius.all(Radius.circular(10.0)), color: Colors.grey[100],),
                               child: Column(
+
                                 children: [Row(
+
                                     children: [
+                                      
                                       Directionality(textDirection: TextDirection.rtl,
                                           child: Text("كجم", style: TextStyle(fontSize: 20),)),
                                       SizedBox(width: 5.0,),
-                                      Container(width: 100, height: 30,
+                                      Container(width: 140, height: 30,
                                         child: Directionality(textDirection: TextDirection.rtl,
                                           child: defaultFormField(type: TextInputType.number,
+
                                               validator: (value) {
                                                 if (value.isEmpty) {
                                                   return 'يجب ادخال الوزن ';
                                                 }
                                               },
+                                              
                                               onChange: (value){cubit.onChangeWeightItem();},
                                               label: 'الوزن', prefixIcon: Icons.add_to_drive_rounded, controller: menu),
                                         ),
@@ -143,7 +156,7 @@ class NewFile extends StatelessWidget {
                                       InkWell(
                                         onTap: () {
                                           showDialog(context: context,
-                                            builder: (_) => Padding(padding: const EdgeInsets.only(right: 50, left: 50,),
+                                            builder: (_) => Padding(padding: const EdgeInsets.only(right: 0, left: 0,),
                                               child: AlertDialog(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0),),
                                                 content: StreamBuilder(stream: cubit.getProducts(),
                                                     builder: ((context, snapshot) {
@@ -174,9 +187,15 @@ class NewFile extends StatelessWidget {
                                                       }})),
                                                 actionsAlignment: MainAxisAlignment.center,
                                                 actions: [
-                                                  ElevatedButton(onPressed: (){
+
+                                                  ElevatedButton(
+
+                                                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF4DB6AC)),  ),
+
+                                                    onPressed: (){
                                                     Navigator.pop(context);
-                                                  }, child: Text('ok'))
+                                                  }, 
+                                                  child: Text('ok'),)
                                                 ],
                                               ),
                                             ),
@@ -186,11 +205,11 @@ class NewFile extends StatelessWidget {
                                           margin: EdgeInsets.symmetric(
                                               horizontal: 10.0,
                                               vertical: 10.0),
-                                          width: 140,
+                                          width: 100,
                                           height: 40.0,
-                                          child: defaultbutton(width: double.infinity, background: Colors.grey,
+                                          child: defaultbutton(width: double.infinity, background: Color(0xFF4DB6AC),
                                               function: () {print("hello flutter");},
-                                              text: cubit.AliqaValueChoose1!=null?cubit.AliqaValueChoose1.toString():'مكون الطاقة',
+                                              text: cubit.AliqaValueChoose1!=null?cubit.AliqaValueChoose1.toString():'الطاقة',
                                               size: 20.0),
                                         ),), SizedBox(width: 5),],),
                                              Text(menu.text.isEmpty?
@@ -223,7 +242,7 @@ class NewFile extends StatelessWidget {
                                         onTap: () {
                                           showDialog(context: context,
                                             builder: (_) => Padding(
-                                              padding: const EdgeInsets.only(right: 50, left: 50,),
+                                              padding: const EdgeInsets.only(right: 0, left: 0,),
                                               child: AlertDialog(shape: RoundedRectangleBorder(
                                                   borderRadius: BorderRadius.circular(20.0),),
                                                 content: StreamBuilder(stream: DoctorCubit.get(context).getProducts(),
@@ -258,9 +277,14 @@ class NewFile extends StatelessWidget {
 
                                                 actionsAlignment: MainAxisAlignment.center,
                                                 actions: [
-                                                  ElevatedButton(onPressed: (){
+                                                  ElevatedButton(
+                                                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF4DB6AC)),  ),
+                                                   
+                                                    onPressed: (){
                                                     Navigator.pop(context);
-                                                  }, child: Text('ok'))
+                                                  }, 
+                                                  
+                                                  child: Text('ok'))
                                                 ],
                                               ),
                                             ),
@@ -270,15 +294,15 @@ class NewFile extends StatelessWidget {
                                           margin: EdgeInsets.symmetric(
                                               horizontal: 10.0,
                                               vertical: 10.0),
-                                          width: 140,
+                                          width: 100,
                                           height: 40.0,
                                           child: defaultbutton(
                                               width: double.infinity,
-                                              background: Colors.grey,
+                                              background: Color(0xFF4DB6AC),
                                               function: () {
                                                 print("hello flutter");
                                               },
-                                              text: cubit.AliqaValueChoose2!=null?cubit.AliqaValueChoose2.toString():'مكون الحديد',
+                                              text: cubit.AliqaValueChoose2!=null?cubit.AliqaValueChoose2.toString():' الحديد',
                                               size: 20.0),
                                         ),
                                       ),
@@ -350,8 +374,8 @@ class NewFile extends StatelessWidget {
                                             context: context,
                                             builder: (_) => Padding(
                                               padding: const EdgeInsets.only(
-                                                right: 50,
-                                                left: 50,
+                                                right: 0,
+                                                left: 0,
                                               ),
                                               child: AlertDialog(
                                                 shape: RoundedRectangleBorder(
@@ -401,7 +425,9 @@ class NewFile extends StatelessWidget {
 
                                                 actionsAlignment: MainAxisAlignment.center,
                                                 actions: [
-                                                  ElevatedButton(onPressed: (){
+                                                  ElevatedButton(
+                                                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF4DB6AC)),  ),
+                                                    onPressed: (){
                                                     Navigator.pop(context);
                                                   }, child: Text('ok'))
                                                 ],
@@ -413,15 +439,15 @@ class NewFile extends StatelessWidget {
                                           margin: EdgeInsets.symmetric(
                                               horizontal: 10.0,
                                               vertical: 10.0),
-                                          width: 140,
+                                          width: 100,
                                           height: 40.0,
                                           child: defaultbutton(
                                               width: double.infinity,
-                                              background: Colors.grey,
+                                              background: Color(0xFF4DB6AC),
                                               function: () {
                                                 print("hello flutter");
                                               },
-                                              text: cubit.AliqaValueChoose3!=null?cubit.AliqaValueChoose3.toString():'مكون البروتنات ',
+                                              text: cubit.AliqaValueChoose3!=null?cubit.AliqaValueChoose3.toString():'بروتين',
                                               size: 20.0),
                                         ),
                                       ),
@@ -440,9 +466,9 @@ class NewFile extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: 20.0),
+                  
                   SizedBox(
-                    height: 20.0,
+                    height: 15.0,
                   ),
                   InkWell(
                     onTap: () {
@@ -460,12 +486,12 @@ class NewFile extends StatelessWidget {
                     },
                     child: Container(
                       margin: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10.0),
+                          horizontal: 10.0, vertical: 0.0),
                       width: 200,
-                      height: 60.0,
+                      height: 50.0,
                       child: defaultbutton(
                           width: double.infinity,
-                          background: Colors.grey,
+                          background: Color(0xFF4DB6AC),
                           function: () {},
                           text: ' كون عليقة ',
                           size: 30.0),

@@ -43,6 +43,7 @@ class _FollowMedicine extends State<FollowMedicine>{
               'الادويه'
             ),
           ),
+
           body: Padding(
             padding: const EdgeInsets.all(22.0),
             child: Column(
@@ -57,14 +58,20 @@ class _FollowMedicine extends State<FollowMedicine>{
                       right:5 ,
                     ),
                     child: ListView.separated(
-
                       scrollDirection: Axis.vertical,
-                      itemBuilder: (context, index) =>
-                          Material(
+
+
+
+                     // itemBuilder: (context, index) =>
+itemBuilder: (context, index) {
+                        DoctorCubit.get(context).shouldChecks.add(false);
+
+
+                          return Material(
                             elevation: 22.0,
                             child: Container(
                               width: double.infinity,
-                              height: 100,
+                              height: 110,
                               child:Padding(
                                 padding: EdgeInsets.all(8.0),
                                 child: Row(
@@ -84,29 +91,29 @@ class _FollowMedicine extends State<FollowMedicine>{
                                           children:  [
                                             Text(
                                               // 'vaccine : ${vaccine}' ,
-                                              'vaccine :${widget.mydata[index].vaccine} ',
+                                              'الدواء  : ${widget.mydata[index].vaccine} ',
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: 20.0,
+                                                fontSize: 18.0,
                                               ),
                                             ),
-                                            SizedBox(height: 2.0,),
+                                           // SizedBox(height: 1.0,),
                                             Text(
-                                              'date :${widget.mydata[index].vaccineDate}',
+                                              'التاريخ : ${widget.mydata[index].vaccineDate}',
                                               // 'date : ${date}' ,
                                               style: TextStyle(
 
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: 20.0,
+                                                fontSize: 18.0,
                                               ),
                                             ),
                                             Text(
-                                              'Duration:${widget.mydata[index].type}${widget.mydata[index].medicineDuraition}',
+                                              '${widget.mydata[index].type}${widget.mydata[index].medicineDuraition}  :    المدة',
                                               // 'date : ${date}' ,
                                               style: TextStyle(
 
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: 20.0,
+                                                fontSize: 18.0,
                                               ),
                                             ),
                                           ],
@@ -116,29 +123,29 @@ class _FollowMedicine extends State<FollowMedicine>{
 
 
 
-                                    CustomCheckBox(
-                                      value: DoctorCubit.get(context).shouldCheck,
-                                      shouldShowBorder: true,
-                                      borderColor: Colors.black54,
-                                      checkedFillColor: Colors.black54,
-                                      borderRadius: 8,
-                                      borderWidth: 1,
-                                      checkBoxSize: 25,
-                                      onChanged: DoctorCubit.get(context).Check_Box,
-                                    ),
-
                                     // CustomCheckBox(
-                                    //   value: DoctorCubit.get(context).shouldChecks[index],
+                                    //   value: DoctorCubit.get(context).shouldCheck,
                                     //   shouldShowBorder: true,
                                     //   borderColor: Colors.black54,
                                     //   checkedFillColor: Colors.black54,
                                     //   borderRadius: 8,
                                     //   borderWidth: 1,
                                     //   checkBoxSize: 25,
-                                    //   onChanged: (val){
-                                    //     DoctorCubit.get(context).Check_Boxes(val,index);
-                                    //   },
+                                    //   onChanged: DoctorCubit.get(context).Check_Box,
                                     // ),
+
+                                    CustomCheckBox(
+                                      value: DoctorCubit.get(context).shouldChecks[index],
+                                      shouldShowBorder: true,
+                                      borderColor: Colors.black54,
+                                      checkedFillColor: Colors.black54,
+                                      borderRadius: 8,
+                                      borderWidth: 1,
+                                      checkBoxSize: 25,
+                                      onChanged: (val){
+                                        DoctorCubit.get(context).Check_Boxes(val,index);
+                                      },
+                                    ),
 
 
 
@@ -156,7 +163,8 @@ class _FollowMedicine extends State<FollowMedicine>{
 
 
                             ),
-                          ),
+                          );
+},
 /////////////////////////////////////////////
                       separatorBuilder: (context, index) =>SizedBox(height:8,),
 

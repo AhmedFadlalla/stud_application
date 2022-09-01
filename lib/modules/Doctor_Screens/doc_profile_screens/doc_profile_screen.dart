@@ -80,78 +80,90 @@ class DocProfileScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(
                   vertical: 20.0,
                 ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: InkWell(
-                        child: Column(
-                          children: [
-                            Text(
-                              '100',
-                              style: Theme.of(context).textTheme.subtitle2,
-                            ),
-                            Text(
-                              'Posts',
-                              style: Theme.of(context).textTheme.caption,
-                            ),
-                          ],
-                        ),
-                        onTap: () {},
-                      ),
-                    ),
-                    Expanded(
-                      child: InkWell(
-                        child: Column(
-                          children: [
-                            Text(
-                              '265',
-                              style: Theme.of(context).textTheme.subtitle2,
-                            ),
-                            Text(
-                              'Photos',
-                              style: Theme.of(context).textTheme.caption,
-                            ),
-                          ],
-                        ),
-                        onTap: () {},
-                      ),
-                    ),
-                    Expanded(
-                      child: InkWell(
-                        child: Column(
-                          children: [
-                            Text(
-                              '10k',
-                              style: Theme.of(context).textTheme.subtitle2,
-                            ),
-                            Text(
-                              'Followers',
-                              style: Theme.of(context).textTheme.caption,
-                            ),
-                          ],
-                        ),
-                        onTap: () {},
-                      ),
-                    ),
-                    Expanded(
-                      child: InkWell(
-                        child: Column(
-                          children: [
-                            Text(
-                              '64',
-                              style: Theme.of(context).textTheme.subtitle2,
-                            ),
-                            Text(
-                              'Followings',
-                              style: Theme.of(context).textTheme.caption,
-                            ),
-                          ],
-                        ),
-                        onTap: () {},
-                      ),
-                    ),
-                  ],
-                ),
+
+
+
+
+                // child: Row(
+                //   children: [
+                //     Expanded(
+                //       child: InkWell(
+                //         child: Column(
+                //           children: [
+                //             Text(
+                //               '100',
+                //               style: Theme.of(context).textTheme.subtitle2,
+                //             ),
+                //             Text(
+                //               'Posts',
+                //               style: Theme.of(context).textTheme.caption,
+                //             ),
+                //           ],
+                //         ),
+                //         onTap: () {},
+                //       ),
+                //     ),
+                //     Expanded(
+                //       child: InkWell(
+                //         child: Column(
+                //           children: [
+                //             Text(
+                //               '265',
+                //               style: Theme.of(context).textTheme.subtitle2,
+                //             ),
+                //             Text(
+                //               'Photos',
+                //               style: Theme.of(context).textTheme.caption,
+                //             ),
+                //           ],
+                //         ),
+                //         onTap: () {},
+                //       ),
+                //     ),
+                //     Expanded(
+                //       child: InkWell(
+                //         child: Column(
+                //           children: [
+                //             Text(
+                //               '10k',
+                //               style: Theme.of(context).textTheme.subtitle2,
+                //             ),
+                //             Text(
+                //               'Followers',
+                //               style: Theme.of(context).textTheme.caption,
+                //             ),
+                //           ],
+                //         ),
+                //         onTap: () {},
+                //       ),
+                //     ),
+                //     Expanded(
+                //       child: InkWell(
+                //         child: Column(
+                //           children: [
+                //             Text(
+                //               '64',
+                //               style: Theme.of(context).textTheme.subtitle2,
+                //             ),
+                //             Text(
+                //               'Followings',
+                //               style: Theme.of(context).textTheme.caption,
+                //             ),
+                //           ],
+                //         ),
+                //         onTap: () {},
+                //       ),
+                //     ),
+                //   ],
+                // ),
+
+
+
+
+
+
+
+
               ),
               Row(
                 children: [

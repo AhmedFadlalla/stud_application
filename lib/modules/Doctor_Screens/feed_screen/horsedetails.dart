@@ -59,7 +59,9 @@ class DetailsScren extends StatelessWidget {
             body: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: 20,), Card(
+                  SizedBox(height: 20,),
+                  
+                   Card(
                     elevation: 22.0, clipBehavior: Clip.antiAlias, shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(24),),
                     child: Column(

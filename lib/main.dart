@@ -7,6 +7,7 @@ import 'package:graduation_project/layouts/home_layout/cubit/cubit.dart';
 import 'package:graduation_project/layouts/owner_home_layout/owner_home_Layout.dart';
 import 'package:graduation_project/modules/Doctor_Screens/complete_info.dart';
 import 'package:graduation_project/modules/registeration_screen/login_screen/login_screen.dart';
+import 'package:graduation_project/modules/sona/homepage.dart';
 import 'package:graduation_project/modules/splash_screen/splashScreen.dart';
 import 'package:graduation_project/shared/bloc_observer.dart';
 import 'package:graduation_project/shared/component/constants.dart';
@@ -108,7 +109,7 @@ class MyApp extends StatelessWidget {
               themeMode: appCubit.get(context).isDark==true
                   ? ThemeMode.dark
                   : ThemeMode.light,
-              home: startWidget,
+              home:startWidget,
             );
           },
         ));

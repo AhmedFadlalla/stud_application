@@ -12,6 +12,7 @@ import 'package:graduation_project/shared/component/components.dart';
 import 'package:graduation_project/shared/network/local/cach_helper.dart';
 import 'package:graduation_project/shared/styles/icon_broken.dart';
 
+import '../../shared/component/constants.dart';
 import '../../shared/styles/colors.dart';
 import 'doc_profile_screens/doc_profile_screen.dart';
 
@@ -121,7 +122,7 @@ class DocSettingsScreen extends StatelessWidget {
                               Icons.dark_mode,
                               size: 35,
                             ),),
-                          Text('Dark Mode',
+                          Text(isDark==true?'Light Mode':'DarkMode',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -142,18 +143,22 @@ class DocSettingsScreen extends StatelessWidget {
               },
             ),
             Spacer(),
-            defaultButton(
-                function: (){
-                  // OwnerCubit.get(context).signOut(context: context);
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: defaultButton(
+                  function: (){
+                    // OwnerCubit.get(context).signOut(context: context);
 
 
-                  CachHelper.saveData(key: 'dId', value: 'null')
-                      .then((value) {
-                        navigateTo(context, LoginScreen());
-                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('تم تسجيل الخروج')));
-                  });
-                },
-                text: 'Log out')
+                    CachHelper.saveData(key: 'dId', value: 'null')
+                        .then((value) {
+                          navigateTo(context, LoginScreen());
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('تم تسجيل الخروج')));
+                    });
+                  },
+                  text: 'Log out'),
+            )
 
 
           ],

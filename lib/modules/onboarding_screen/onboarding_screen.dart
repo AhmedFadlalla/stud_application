@@ -95,7 +95,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       dotWidth: 10,
                       expansionFactor: 4,
                       spacing: 5.0,
-                      activeDotColor: defaultColor,
+                      activeDotColor: Color(0xFF4DB6AC),
                     ),
                     count: boardItems.length),
                 Spacer(),

@@ -98,29 +98,35 @@ class InfoScreen extends StatelessWidget {
                 SizedBox(
                   height: height*0.02,
                 ),
-                defaultFormField(
-                    controller: studNameController,
-                    type: TextInputType.name,
-                    validator: (value){
-                      if(value.isEmpty){
-                        return 'Stud Name can\'t be empty';
-                      }
-                    },
-                    label: 'Enter Stud Name',
-                    prefixIcon: Icons.house),
+                Directionality(textDirection: TextDirection.rtl,
+                  child: defaultFormField(
+                    
+                      controller: studNameController,
+                      type: TextInputType.name,
+                      validator: (value){
+                        if(value.isEmpty){
+                          return 'Stud Name can\'t be empty';
+                        }
+                      },
+                      label: ' اسم الاسطبل',
+                      prefixIcon: Icons.house),
+
+                ),
                 SizedBox(
                   height: height*0.02,
                 ),
-                defaultFormField(
-                    controller: studAddressController,
-                    type: TextInputType.streetAddress,
-                    validator: (value){
-                      if(value.isEmpty){
-                        return 'Stud Address can\'t be empty';
-                      }
-                    },
-                    label: 'Enter Stud Address',
-                    prefixIcon: Icons.location_on),
+                Directionality(textDirection: TextDirection.rtl,
+                  child: defaultFormField(
+                      controller: studAddressController,
+                      type: TextInputType.streetAddress,
+                      validator: (value){
+                        if(value.isEmpty){
+                          return 'Stud Address can\'t be empty';
+                        }
+                      },
+                      label: 'عنوان الاسطبل',
+                      prefixIcon: Icons.location_on),
+                ),
                 SizedBox(
                   height: height*0.02,
                 ),
@@ -135,7 +141,7 @@ class InfoScreen extends StatelessWidget {
 
                         },
                         bottomText: 'Confirm',
-                        backgroundColor: defaultColor,
+                        backgroundColor: Color(0xFF4DB6AC),
                         width: double.infinity),
                     fallback: (context)=>Center(child: CircularProgressIndicator()))
               ],

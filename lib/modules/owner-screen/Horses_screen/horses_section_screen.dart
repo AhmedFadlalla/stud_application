@@ -84,7 +84,7 @@ class HorsesSectionSection extends StatelessWidget {
   }
   Widget buildHorseCard(HorseModel model,var size,index,context)=> InkWell(
     child: Container(
-      margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+      margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
       height: 190.0,
 
       child: Stack(
@@ -107,13 +107,13 @@ class HorsesSectionSection extends StatelessWidget {
               left: 0.0,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
-                height: 170,
-                width: 160,
+                height: 140,
+                width: 180,
                 child: Container(
                   height:120,
                   width: 80,
                   decoration: BoxDecoration(
-                    borderRadius:BorderRadius.circular(70),
+                    borderRadius:BorderRadius.circular(22),
                     image: DecorationImage(
                       image: NetworkImage('${model.horseImage}'),
                       fit: BoxFit.cover,
@@ -138,7 +138,7 @@ class HorsesSectionSection extends StatelessWidget {
                           children: [
                             Text(
                               'الاسم :',
-                              style: TextStyle(color: Colors.black, fontSize: 28,
+                              style: TextStyle(color: Colors.black, fontSize: 22,
                                 ),
 
                             ),
@@ -149,7 +149,7 @@ class HorsesSectionSection extends StatelessWidget {
                               '${model.horseName}',
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 28,
+                                  fontSize: 22,
 
                               ),
                             ),
@@ -161,8 +161,8 @@ class HorsesSectionSection extends StatelessWidget {
                         child: Row(
                           children: [
                             Text(
-                              'المايكروشيب :',
-                              style: TextStyle(color: Colors.black, fontSize: 28,
+                              'مايكروشيب :',
+                              style: TextStyle(color: Colors.black, fontSize: 22,
 
                               ),
                             ),
@@ -173,7 +173,7 @@ class HorsesSectionSection extends StatelessWidget {
                               '${model.microshipCode}',
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 28,
+                                fontSize: 22,
 
                               ),
                             ),
@@ -186,7 +186,7 @@ class HorsesSectionSection extends StatelessWidget {
                           children: [
                             Text(
                               'رقم الصندوق :',
-                              style: TextStyle(color: Colors.black, fontSize: 28,
+                              style: TextStyle(color: Colors.black, fontSize: 22,
 
                               ),
                             ),
@@ -197,7 +197,7 @@ class HorsesSectionSection extends StatelessWidget {
                               '${model.boxNum}',
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 28,
+                                  fontSize: 22,
 
 
                               ),
